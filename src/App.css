@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+.home{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+}
+.navbar{
+  padding-bottom:2%;
+}
+.recipesmenu{
+  padding: 2%;
+}
+.recipes{
+  display:flex;
+  flex-direction:row;
+  flex-flow: row wrap;
+}
+.recipecard{
+  padding:1%;
+}
+
+.recipe{
+  display:flex;
+  flex-direction: column;
+}
+.recipeTop{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-bottom:2%;
+}
+
+@media only screen and (max-width: 800px){
+  .recipeTop{
+    flex-direction: column;
+    align-items: center;
+  }
+}
