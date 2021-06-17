@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-
+import { Button } from 'primereact/button';
 import PrimeReact from "primereact/api";
+import { Link } from 'react-router-dom'
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
@@ -29,10 +30,6 @@ export default class Header extends Component {
             {
                 label: 'Favoriten',
                 icon: 'pi pi-fw pi-calendar',
-                    },
-            {
-                label: 'Login',
-                icon: 'pi pi-fw pi-sign-in'
             }
         ];
     }
@@ -43,9 +40,12 @@ export default class Header extends Component {
     const end = <InputText placeholder="Search" type="text" />;
     
     return (
-      <div class="header">
-            <Menubar model={this.items} start={start} end={end} />
-                </div>
+        <div class="header">
+            <Menubar model={this.items} start={start} end={
+                <Link to="/login">
+                    <Button label="Login" icon="pi pi-fw pi-sign-in"/>
+                </Link>} />
+        </div>
     );
   }
 }

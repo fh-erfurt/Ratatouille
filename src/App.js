@@ -3,6 +3,7 @@ import Header from './components/header';
 import Home from './components/home';
 import RecipesMenu from './components/recipesMenu';
 import Recipe from './components/recipe';
+import Login from './components/login';
 import React from 'react';
 
 import PrimeReact from "primereact/api";
@@ -18,8 +19,9 @@ function App() {
   const HomePage=()=>{
     return (
     <React.Fragment>
-    <Header></Header>
-    <Home></Home></React.Fragment> )
+      <Header></Header>
+      <Home></Home>
+    </React.Fragment> )
   }
   const RecipesMenuPage=()=>{
     return (
@@ -32,7 +34,13 @@ function App() {
     return (
       <React.Fragment>
         <Header></Header>
-      <Recipe></Recipe>
+        <Recipe></Recipe>
+      </React.Fragment> )
+  }
+  const LoginPage=()=>{
+    return (
+      <React.Fragment>
+        <Login></Login>
       </React.Fragment> )
   }
     return(
@@ -44,6 +52,9 @@ function App() {
             </Route>
             <Route path="/recipe">
               <RecipePage/>
+            </Route>
+            <Route path="/login">
+              <LoginPage/>
             </Route>
             <Route path="/">
               <HomePage/>
