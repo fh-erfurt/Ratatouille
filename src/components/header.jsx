@@ -23,7 +23,12 @@ const Header = (props) => {
         <Button
         label="Logout"
         icon="pi pi-fw pi-sign-in"
-        onClick={() => {setCount(count => count + 1);window.$email = null;setWindowEmailActive(false)}}
+        onClick={() => {
+                            setCount(count => count + 1);
+                            window.$email = null;
+                            setWindowEmailActive(false)
+                        }
+                }
         />
     ) : (
         <Link to="/login">
