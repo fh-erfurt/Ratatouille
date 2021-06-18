@@ -6,7 +6,6 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 
 import { Menubar } from "primereact/menubar";
-import { InputText } from 'primereact/inputtext';
 
 
 const Header = (props) => {
@@ -16,6 +15,7 @@ const Header = (props) => {
             window.$email != null && setWindowEmailActive(true);
         }, []);
 
+    // eslint-disable-next-line no-unused-vars
     const [count, setCount] = useState(0);
 
     const authBtn = (windowEmailActive) =>
@@ -51,7 +51,6 @@ const Header = (props) => {
     ];
 
     const start = <img alt="logo" src="showcase/images/logo.png" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} height="40" className="p-mr-2"></img>;
-    const end = <InputText placeholder="Search" type="text" />;
 
 
     return (
