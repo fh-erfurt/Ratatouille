@@ -4,6 +4,7 @@ import Home from './components/home';
 import RecipesMenu from './components/recipesMenu';
 import Recipe from './components/recipe';
 import Login from './components/login';
+import CreateReceipt from './components/createReceipt';
 import React from 'react';
 
 import PrimeReact from "primereact/api";
@@ -43,6 +44,12 @@ function App() {
         <Login></Login>
       </React.Fragment> )
   }
+  const CreateReceiptPage=()=>{
+    return (
+      <React.Fragment>
+        <CreateReceipt></CreateReceipt>
+      </React.Fragment> )
+  }
     return(
       <Router>
         <div className="App">
@@ -50,11 +57,14 @@ function App() {
             <Route path="/menu">
               <RecipesMenuPage/>
             </Route>
-            <Route path="/recipe">
+            <Route path="/recipes">
               <RecipePage/>
             </Route>
             <Route path="/login">
               <LoginPage/>
+            </Route>
+            <Route path="/create">
+              <CreateReceiptPage/>
             </Route>
             <Route path="/">
               <HomePage/>

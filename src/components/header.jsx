@@ -42,6 +42,10 @@ const Header = (props) => {
             icon: 'pi pi-fw pi-file',
         },
         {
+            label: 'Rezepte',
+            icon: 'pi pi-fw pi-file',
+        },
+        {
             label: 'Erstellen',//in Profil einfügen?
             icon: 'pi pi-fw pi-pencil',
         },
