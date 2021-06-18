@@ -53,36 +53,6 @@ const Header = (props) => {
     const start = <img alt="logo" src="showcase/images/logo.png" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} height="40" className="p-mr-2"></img>;
     const end = <InputText placeholder="Search" type="text" />;
 
-    /*let btn;
-    const returnAuthButton = () => {
-        if (window.$email != null)
-        {
-            btn = <Button label="Logout" icon="pi pi-fw pi-sign-in" onClick={window.$email = null} />;
-        }
-        else {
-            btn = <Button label="Login" icon="pi pi-fw pi-sign-in"/>;
-        }
-    }*/
-
-    /*let authbtn;
-    useEffect(() => {
-        if (window.$email != null)
-        {
-            authbtn = <Button label="Logout" icon="pi pi-fw pi-sign-in" onClick={window.$email = null} />;
-        }
-        else {
-            authbtn = <Button label="Login" icon="pi pi-fw pi-sign-in"/>;
-        }
-    }, [])*/
-
-    
-    /*if (window.$email != null)
-    {
-        authbtn = <Button label="Logout" icon="pi pi-fw pi-sign-in" onClick={window.$email = null} />;
-    }
-    else {
-        authbtn = <Button label="Login" icon="pi pi-fw pi-sign-in"/>;
-    }*/
 
     return (
         <div>
@@ -97,59 +67,3 @@ const Header = (props) => {
 }
 
 export default Header;
-
-
-
-
-
-
-
-/*export default class Header extends Component {
-
-    constructor(props) {
-        super(props);
-        this.items = [
-            {
-                label: 'Home',
-                icon: 'pi pi-fw pi-file',
-            },
-            {
-                label: 'Erstellen',//in Profil einfügen?
-                icon: 'pi pi-fw pi-pencil',
-            },
-            {
-                label: 'Profil',
-                icon: 'pi pi-fw pi-user',
-            },
-            {
-                label: 'Favoriten',
-                icon: 'pi pi-fw pi-calendar',
-            }
-        ];
-    }
-
-  state = {};
-  render() {
-    const start = <img alt="logo" src="" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} height="40" className="p-mr-2"></img>;//Logo einfügen
-    const end = <InputText placeholder="Search" type="text" />;
-
-    let authbtn;
-    if (window.$email != null)
-    {
-        authbtn = <Button label="Logout" icon="pi pi-fw pi-sign-in"/>;
-    }
-    else {
-        authbtn = <Button label="Login" icon="pi pi-fw pi-sign-in"/>;
-    }
-    
-    return (
-        <div class="header">
-            <Menubar model={this.items} start={start} end={
-                <Link to="/login">
-                    {authbtn}
-                </Link>} />
-        </div>
-    );
-  }
-}
-*/

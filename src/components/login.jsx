@@ -18,10 +18,12 @@ const Login = (props) => {
     const handleOnLoginSuccess = useCallback(() => history.push('/'), [history]);
 
     const showSuccess = () => {
+        toast.current.clear();
         toast.current.show({severity:'success', summary: 'Login erfolgreich', detail:"Sie werden nun weitergeleitet", life: 2000});
     }
 
     const showError = () => {
+        toast.current.clear();
         toast.current.show({severity:'error', summary: 'Login Fehlgeschlagen', detail:'Bitte Eingaben überprüfen', life: 3000});
     }
 
@@ -70,8 +72,8 @@ const Login = (props) => {
                     <InputText id="password" name="Password" onChange={e => setPassword(e.target.value)} type="text"/>
                 </div>
             </div>
-            <Button onClick={login} label="Primary" className="p-button-rounded p-button-secondary" />
-            <Button label="Primary" className="p-button-rounded p-button-secondary" />
+            <Button onClick={login} label="Anmelden" className="p-button-rounded p-button-secondary" />
+            <Button label="Registrieren" className="p-button-rounded p-button-secondary" />
         </React.Fragment>
     );
 };
