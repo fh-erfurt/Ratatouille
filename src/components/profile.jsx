@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { InputText } from 'primereact/inputtext';
 import axios from "axios";
 import { Button } from 'primereact/button';
@@ -8,12 +8,18 @@ import { useHistory } from 'react-router-dom';
 
 
 const Profile = (props) => {
+    const history = useHistory();
 
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("********");
 
     const sleep = (milliseconds) => {
         return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+
+    const handleNotLoggedIn = useCallback(() => history.push('/login'), [history]);
+    if (window.$email == null) {
+        handleNotLoggedIn();
     }
 
     const fetchAccountInfo = async () => {

@@ -3,6 +3,12 @@ import { useHistory } from 'react-router-dom';
 
 
 const CreateReceipt = (props) => {
+    const history = useHistory();
+
+    const handleNotLoggedIn = useCallback(() => history.push('/login'), [history]);
+    if (window.$email == null) {
+        handleNotLoggedIn();
+    }
   
 
     return (

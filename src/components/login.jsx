@@ -8,12 +8,11 @@ import { useHistory } from 'react-router-dom';
 
 
 const Login = (props) => {
+    const history = useHistory();
 
     const toast = useRef(null);
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
-
-    const history = useHistory();
 
     const handleOnLoginSuccess = useCallback(() => history.push('/'), [history]);
 
@@ -41,7 +40,7 @@ const Login = (props) => {
           });
 
         res.data.forEach(account => {
-            if (account.email.toLowerCase() === Email.toLowerCase() && account.Password === Password)
+            if (account.email.toLowerCase() === Email.toLowerCase() && account.password === Password)
             {
                 loggedin = true;
                 window.$email = Email.toLowerCase();

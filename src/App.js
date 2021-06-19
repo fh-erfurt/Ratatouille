@@ -42,6 +42,7 @@ function App() {
   const LoginPage=()=>{
     return (
       <React.Fragment>
+        <Header></Header>
         <Login></Login>
       </React.Fragment> )
   }
@@ -55,6 +56,7 @@ function App() {
   const CreateReceiptPage=()=>{
     return (
       <React.Fragment>
+        <Header></Header>
         <CreateReceipt></CreateReceipt>
       </React.Fragment> )
   }
