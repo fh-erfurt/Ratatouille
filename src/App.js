@@ -4,6 +4,7 @@ import Home from './components/home';
 import RecipesMenu from './components/recipesMenu';
 import Recipe from './components/recipe';
 import Login from './components/login';
+import Profile from './components/profile';
 import CreateReceipt from './components/createReceipt';
 import React from 'react';
 
@@ -44,6 +45,13 @@ function App() {
         <Login></Login>
       </React.Fragment> )
   }
+  const ProfilePage=()=>{
+    return (
+      <React.Fragment>
+        <Header></Header>
+        <Profile></Profile>
+      </React.Fragment> )
+  }
   const CreateReceiptPage=()=>{
     return (
       <React.Fragment>
@@ -62,6 +70,9 @@ function App() {
             </Route>
             <Route path="/login">
               <LoginPage/>
+            </Route>
+            <Route path="/profile">
+              <ProfilePage/>
             </Route>
             <Route path="/create">
               <CreateReceiptPage/>

@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Button } from 'primereact/button';
 import { Link } from 'react-router-dom'
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
+import { useHistory } from 'react-router-dom';
 
 import { Menubar } from "primereact/menubar";
 
 
 const Header = (props) => {
+
+    const history = useHistory();
+
+    const navigateToPage = useCallback((path) => history.push(path), [history]);
 
     const [windowEmailActive, setWindowEmailActive] = useState(false);
         useEffect(() => {
@@ -40,22 +45,27 @@ const Header = (props) => {
         {
             label: 'Home',
             icon: 'pi pi-fw pi-file',
+            command:()=>{ navigateToPage("/")}
         },
-        {
+        { 
             label: 'Rezepte',
             icon: 'pi pi-fw pi-file',
+            command:()=>{ navigateToPage("/recipes")}
         },
         {
             label: 'Erstellen',//in Profil einfügen?
             icon: 'pi pi-fw pi-pencil',
+            command:()=>{ navigateToPage("/create")}
         },
         {
             label: 'Profil',
             icon: 'pi pi-fw pi-user',
+            command:()=>{ navigateToPage("/profile")}
         },
         {
             label: 'Favoriten',
             icon: 'pi pi-fw pi-calendar',
+            command:()=>{ navigateToPage("/favorites")}
         }
     ];
 

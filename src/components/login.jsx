@@ -41,7 +41,7 @@ const Login = (props) => {
           });
 
         res.data.forEach(account => {
-            if (account.EMail.toLowerCase() === Email.toLowerCase() && account.Password === Password)
+            if (account.email.toLowerCase() === Email.toLowerCase() && account.Password === Password)
             {
                 loggedin = true;
                 window.$email = Email.toLowerCase();
