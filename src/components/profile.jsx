@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { InputText } from 'primereact/inputtext';
 import axios from "axios";
-import { Button } from 'primereact/button';
-import { Toast } from 'primereact/toast';
 import { useHistory } from 'react-router-dom';
 
 
@@ -10,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 const Profile = (props) => {
     const history = useHistory();
 
-    const [Email, setEmail] = useState("");
+    const [Email, setEmail] = useState(window.$email);
     const [Password, setPassword] = useState("********");
 
     const sleep = (milliseconds) => {
@@ -43,18 +41,22 @@ const Profile = (props) => {
 
     return (
         <React.Fragment>
-            <div className="p-field p-grid">
-                        <label htmlFor="email" className="p-col-fixed" style={{width:'100px'}}>Email</label>
-                        <div className="p-col">
-                            <InputText id="email" type="text" value={Email}/>
+            <div className="p-grid p-fluid">
+                    <div className="p-col-12 p-md-4">
+                        <div className="p-inputgroup" style={{width:'400px'}}>
+                            <span className="p-inputgroup-addon">
+                                <i className="pi pi-user" ></i>
+                            </span>
+                            <InputText placeholder="Email Adresse" value={Email} onChange={e => setEmail(e.target.value)} />
+                        </div>
+                        <div className="p-inputgroup" style={{width:'400px'}}>
+                            <span className="p-inputgroup-addon">
+                                <i className="pi pi-user" ></i>
+                            </span>
+                            <InputText placeholder="Passwort" value={Password} onChange={e => setPassword(e.target.value)} />
                         </div>
                     </div>
-                    <div className="p-field p-grid">
-                        <label htmlFor="password" className="p-col-fixed" style={{width:'100px'}}>Passwort</label>
-                        <div className="p-col">
-                            <InputText id="password" type="text" value={Password}/>
-                        </div>
-                    </div>
+                </div>
         </React.Fragment>
     );
 };

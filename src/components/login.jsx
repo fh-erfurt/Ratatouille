@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useRef } from "react";
 import { InputText } from 'primereact/inputtext';
+import { Password } from 'primereact/password';
 import axios from "axios";
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import { useHistory } from 'react-router-dom';
-
 
 
 const Login = (props) => {
@@ -12,7 +12,7 @@ const Login = (props) => {
 
     const toast = useRef(null);
     const [Email, setEmail] = useState("");
-    const [Password, setPassword] = useState("");
+    const [Pass, setPassword] = useState("");
 
     const handleOnLoginSuccess = useCallback(() => history.push('/'), [history]);
 
@@ -40,7 +40,7 @@ const Login = (props) => {
           });
 
         res.data.forEach(account => {
-            if (account.email.toLowerCase() === Email.toLowerCase() && account.password === Password)
+            if (account.email.toLowerCase() === Email.toLowerCase() && account.password === Pass)
             {
                 loggedin = true;
                 window.$email = Email.toLowerCase();
@@ -59,20 +59,24 @@ const Login = (props) => {
     return (
         <React.Fragment>
             <Toast ref={toast} />
+
             <div className="p-field p-grid">
                 <label htmlFor="email" className="p-col-fixed" style={{width:'100px'}}>Email</label>
                 <div className="p-col">
-                    <InputText id="email" name="Email" value={Email} onChange={e => setEmail(e.target.value)} type="text"/>
+                    <InputText id="email" name="Email" onChange={e => setEmail(e.target.value)} type="text"/>
                 </div>
             </div>
+            
             <div className="p-field p-grid">
                 <label htmlFor="password" className="p-col-fixed" style={{width:'100px'}}>Password</label>
                 <div className="p-col">
-                    <InputText id="password" name="Password" onChange={e => setPassword(e.target.value)} type="text"/>
+                    <Password id="password" name="Password" onChange={e => setPassword(e.target.value)} type="text" feedback={false} />
                 </div>
             </div>
+
             <Button onClick={login} label="Anmelden" className="p-button-rounded p-button-secondary" />
             <Button label="Registrieren" className="p-button-rounded p-button-secondary" />
+
         </React.Fragment>
     );
 };
