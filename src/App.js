@@ -5,7 +5,7 @@ import RecipesMenu from './components/recipesMenu';
 import Recipe from './components/recipe';
 import Login from './components/login';
 import Profile from './components/profile';
-import CreateRecipt from './components/createRecipt';
+import CreateRecipe from './components/createRecipe';
 import React from 'react';
 
 import PrimeReact from "primereact/api";
@@ -53,11 +53,11 @@ function App() {
         <Profile></Profile>
       </React.Fragment> )
   }
-  const CreateReciptPage=()=>{
+  const CreateRecipePage=()=>{
     return (
       <React.Fragment>
         <Header></Header>
-        <CreateRecipt></CreateRecipt>
+        <CreateRecipe></CreateRecipe>
       </React.Fragment> )
   }
     return(
@@ -77,7 +77,7 @@ function App() {
               <ProfilePage/>
             </Route>
             <Route path="/create">
-              <CreateReciptPage/>
+              <CreateRecipePage/>
             </Route>
             <Route path="/">
               <HomePage/>
