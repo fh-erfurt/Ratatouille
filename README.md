@@ -8,5 +8,5 @@ Start development server<br>
 <code>npm run start</code>
 <br>
 <br>
-Start fake api<br>
+Start express api<br>
 <code>npm run backend</code>

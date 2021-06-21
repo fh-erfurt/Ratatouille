@@ -39,13 +39,15 @@ const Login = (props) => {
             return { error: error };
           });
 
+          console.log(res.data);
+
         res.data.forEach(account => {
             if (account.email.toLowerCase() === Email.toLowerCase() && account.password === Pass)
             {
                 loggedin = true;
                 window.$email = Email.toLowerCase();
                 showSuccess();
-                sleep(3000).then(r => {
+                sleep(2000).then(r => {
                     handleOnLoginSuccess();
                 });
             }

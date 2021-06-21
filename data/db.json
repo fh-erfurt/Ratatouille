@@ -2,7 +2,7 @@
     "accounts":
     [
         {
-            "id": "0",
+            "id": 0,
             "createdat": "01.01.1990 00:00:01",
             "email": "Michelle00@mailpoof.com",
             "userame": "Michelle",
@@ -11,7 +11,7 @@
             "favoriterecipes":["2","4"]
         },
         {
-            "id": "1",
+            "id": 1,
             "createdat": "01.01.1990 00:00:01",
             "email": "Jonas01@mailpoof.com",
             "userame": "Jonas",
@@ -20,7 +20,7 @@
             "favoriterecipes":["2"]
         },
         {
-            "id": "2",
+            "id": 2,
             "createdat": "01.01.1990 00:00:01",
             "email": "Katja02@mailpoof.com",
             "userame": "Katja",
@@ -29,7 +29,7 @@
             "favoriterecipes":["1","2"]
         },
         {
-            "id": "3",
+            "id": 3,
             "createdat": "01.01.1990 00:00:01",
             "email": "Roman03@mailpoof.com",
             "userame": "Roman",
@@ -38,19 +38,19 @@
             "favoriterecipes":["0","4"]
         },
         {
-            "id": "4",
+            "id": 4,
             "createdat": "01.01.1990 00:00:01",
             "email": "Dodo04@mailpoof.com",
             "userame": "Dodo",
             "password": "1234",
             "createdrecipes": ["1"],
-            "favoritrRecipes":["2","3"]
+            "favoriterecipes":["2","3"]
         }
     ],
     "recipes": 
   [
     {
-      "id": "0",
+      "id": 0,
       "name": "Vegetarische Spinat-Gemüse-Lasagne mit Tomatensoße",
       "imageurl": "https://cdn.pixabay.com/photo/2021/01/24/19/31/lasagna-5946299_960_720.jpg",
       "averagetimeinminutes": 25,
@@ -62,7 +62,7 @@
       "createdbyuser": 0
     },
     {
-      "id": "1",
+      "id": 1,
       "name": "Feine Linsensuppe",
       "imageurl": "https://cdn.pixabay.com/photo/2018/10/10/22/28/lentil-soup-3738547_960_720.jpg",
       "averagetimeinminutes": 50,
@@ -74,7 +74,7 @@
       "createdbyuser": 4
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Griechischer Bauernsalat",
       "imageurl": "https://cdn.pixabay.com/photo/2017/05/21/22/49/farmers-salad-2332580_960_720.jpg",
       "averagetimeinminutes": 15,
@@ -86,7 +86,7 @@
       "createdbyuser": 3
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Schwarzwälderkirschtorte",
       "imageurl": "https://cdn.pixabay.com/photo/2021/03/08/19/15/black-forest-cake-6080070_960_720.jpg",
       "averagetimeinminutes": 75,
@@ -99,7 +99,7 @@
       "createdbyuser": 2
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Italienischer Pizzateig",
       "imageurl": "https://cdn.pixabay.com/photo/2017/05/25/21/22/pizza-2344399_960_720.jpg",
       "averagetimeinminutes": 15,
