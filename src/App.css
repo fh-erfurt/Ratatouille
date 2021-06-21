@@ -40,6 +40,11 @@
   display: flex;
   flex-direction: row;
   justify-content:space-around;
+  padding-top:5%;
+}
+.home img{
+  width:100%;
+  object-fit: contain;
 }
 .navbar{
   padding-bottom:2%;

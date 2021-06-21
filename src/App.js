@@ -67,7 +67,7 @@ function App() {
             <Route path="/menu">
               <RecipesMenuPage/>
             </Route>
-            <Route path="/recipes">
+            <Route path="/recipe">
               <RecipePage/>
             </Route>
             <Route path="/login">

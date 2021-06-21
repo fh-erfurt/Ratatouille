@@ -1,11 +1,7 @@
-import React, { Component } from "react";
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 
-export default class RecipeCard extends Component {
-    state = {};
-
-    render() {
+const RecipesCard = () => {
         const cardheader = (
             <img alt="Card" src="" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} /> //recipe picture
         );
@@ -22,5 +18,5 @@ export default class RecipeCard extends Component {
                 </Card>
                 </div>
         );
-    }
 }
+export default RecipesCard;
