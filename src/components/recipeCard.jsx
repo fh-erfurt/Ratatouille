@@ -1,7 +1,8 @@
 import { Card } from 'primereact/card';
+import React, { } from "react";
 import { Button } from 'primereact/button';
 
-const RecipesCard = () => {
+const RecipeCard = () => {
         const cardheader = (
             <img alt="Card" src="" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} /> //recipe picture
         );
@@ -19,4 +20,4 @@ const RecipesCard = () => {
                 </div>
         );
 }
-export default RecipesCard;
+export default RecipeCard;
