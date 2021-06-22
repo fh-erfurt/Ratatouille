@@ -11,7 +11,7 @@ const Home = () => {
     const [products, setProducts] = useState('');
     const [currentPosition, setCurrentPosition] = useState(0);
 
-    const getProductsSmall = async () => {
+    const getProducts = async () => {
         const res = await axios({
             method: "get",
             url: "http://localhost:8000/recipes",
@@ -31,7 +31,7 @@ const Home = () => {
     return (
         <div class="home">
             <div class="row">
-            <img alt="Let's get Cooking" src={imageHome} onClick={getProductsSmall} ></img>
+            <img alt="Let's get Cooking" src={imageHome} onClick={getProducts} ></img>
             <img alt="Bild" src="" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} height="500" ></img>
             </div>
          <div className="card">

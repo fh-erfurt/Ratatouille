@@ -50,7 +50,7 @@ const Header = (props) => {
         { 
             label: 'Rezepte',
             icon: 'pi pi-fw pi-file',
-            command:()=>{ navigateToPage("/recipes")}
+            command:()=>{ navigateToPage("/menu")}
         },
         {
             label: 'Erstellen',//in Profil einfügen?
