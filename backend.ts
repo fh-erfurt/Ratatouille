@@ -147,7 +147,7 @@ app.post('/createrecipe', (req,res) => {
 
   let accountid;
   accounts.forEach(account => {
-    if (account.email.toLowerCase() == req.body.createdbyuser.toLowerCase()) {
+    if (account.email.toLowerCase() === req.body.createdbyuser.toLowerCase()) {
       accountid = account.id;
     }
   });
@@ -178,6 +178,7 @@ app.post('/createrecipe', (req,res) => {
 app.post('/accountmgr/register', (req,res) => {
 
   let accountexists = false;
+  console.log("Register request: " + req.body.email);
   accounts.forEach(account => {
     if(account.email.toLowerCase() === req.body.email.toLowerCase())
     {
@@ -187,6 +188,7 @@ app.post('/accountmgr/register', (req,res) => {
 
   if (accountexists) {
     res.sendStatus(400);
+    console.log("Account already exists, sending Bad Request")
   }
   else {
     let account = {
@@ -200,7 +202,8 @@ app.post('/accountmgr/register', (req,res) => {
   
     accounts.push(account);
   
-      res.sendStatus(200);
+    res.sendStatus(200);
+    console.log("Register success")
   }
 });
 
