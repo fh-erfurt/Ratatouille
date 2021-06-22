@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef} from "react";
 import { useHistory } from 'react-router-dom';
 import { Slider } from 'primereact/slider';
 import { InputText } from 'primereact/inputtext';
@@ -7,31 +7,39 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { SelectButton } from 'primereact/selectbutton';
 import { InputNumber } from 'primereact/inputnumber';
 import { Button } from 'primereact/button';
+import { Toast } from 'primereact/toast';
+import axios from "axios";
 
 
 
 
 const CreateRecipe = (props) => {
     const history = useHistory();
-   
-
+    const toast = useRef(null);
+    
     const handleNotLoggedIn = useCallback(() => history.push('/login'), [history]);
     if (window.$email == null) {
         handleNotLoggedIn();
     };
 
-    const [recipeName, setRecipeName] = useState('');
-    const [recipeImageUrl, setRecipeImageUrl] = useState('');
+    const sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    };
+
+    const handleOnAddRecipeSuccess = useCallback(() => history.push('/'), [history]);
+
+    const [recipeName, setRecipeName] = useState();
+    const [recipeImageUrl, setRecipeImageUrl] = useState();
     const [recipeavgtime, setRecipeAvgTime] = useState('30');
-    const [recipedifficulty, setRecipeDifficulty] = useState(null);
-    const [recipeingredients, setRecipeIngredients] = useState('');
-    const [recipeinstruction, setRecipeInstruction] = useState('');
-    const [selectedcategorys, setSelectedCategorys] = useState(null);
+    const [recipedifficulty, setRecipeDifficulty] = useState();
+    const [recipeingredients, setRecipeIngredients] = useState();
+    const [recipeinstruction, setRecipeInstruction] = useState();
+    const [selectedcategorys, setSelectedCategorys] = useState();
 
     const difficultys = [
-        {name: 'einfach', value: 1},
-        {name: 'normal', value: 2},
-        {name: 'schwer', value: 3}
+        {name: 'einfach'},
+        {name: 'normal'},
+        {name: 'schwer'}
     ];
 
     const categorys = [
@@ -51,15 +59,75 @@ const CreateRecipe = (props) => {
        setRecipeName("");
        setRecipeImageUrl("");
        setRecipeAvgTime("30");
-       setRecipeDifficulty(null); 
+       setRecipeDifficulty(""); 
        setRecipeIngredients(""); 
        setRecipeInstruction("");
-       setSelectedCategorys(null);
+       setSelectedCategorys("");
    };
     
+   const checkIfInputIsValid = () =>{
+        console.log(recipeName , recipeImageUrl , recipedifficulty , recipeingredients , recipeinstruction , selectedcategorys)
+        //ich kann nicht selectedcategorys mit ins IF nehem ... dann geht es nicht mehr idk
+        if (recipeName & recipeImageUrl & recipeingredients & recipeinstruction & recipedifficulty !== undefined ){
+            
+            addRecipe();
+        }
+        else{
+            
+            showInputValidError();
+        }
+    };  
+   const showAddRecipeSuccess = () => {
+        toast.current.clear();
+        toast.current.show({severity:'success', summary: 'Rezept wurde gespeichert!', detail:"", life: 1500});
+    };
+
+    const showAddRecipeError = () => {
+        toast.current.clear();
+        toast.current.show({severity:'error', summary: 'Speichern fehlgeschlagen!', detail:'Bitte versuchen Sie es erneut.', life: 3000});
+    };
+
+    const showInputValidError = () => {
+        toast.current.clear();
+        toast.current.show({severity:'error', summary: 'Es fehlen etwas!', detail:'Bitte alle Felder füllen.', life: 3000});
+    };
+
+   const addRecipe = async () => {
+        const res = await axios({
+            method: "post",
+            url: "http://localhost:8000/createrecipe",
+            data: {
+                "name": recipeName,
+                "imageurl": recipeImageUrl,
+                "averagetimeinminutes": recipeavgtime,
+                "difficulty": recipedifficulty,
+                "ingredients": recipeingredients,
+                "preparation": recipeinstruction,
+                "categories": selectedcategorys,
+                "createdbyuser": window.$email
+            }
+          }).catch(error => {
+            return { error: error };
+          });
+
+          if (res.status === 200) {
+                changeInputToDefault();
+                showAddRecipeSuccess();
+                sleep(1500).then(r => {
+                    handleOnAddRecipeSuccess();
+                });
+                
+          }
+          else {
+                showAddRecipeError();
+          }
+    }
+
+
     return (
         
         <React.Fragment>
+            <Toast ref={toast} />
             <div className="createrecipe">
                         <h1>Rezept erstellen</h1>
                         <span className="recipename">
@@ -105,8 +173,8 @@ const CreateRecipe = (props) => {
                         </div>
                         <br/>
                         <span className="p-buttonset">
-                             <Button label="Submit" icon="pi pi-check" />
-                             <Button label="Cancel" icon="pi pi-times" className="p-button-raised p-button-danger" onClick={changeInputToDefault}/>
+                             <Button label="Submit" icon="pi pi-check" className="p-button-success" onClick={checkIfInputIsValid}/>
+                             <Button label="Reset" icon="pi pi-replay" className="p-button-raised p-button-danger" onClick={changeInputToDefault}/>
                         </span>
             </div>
         </React.Fragment>

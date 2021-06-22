@@ -168,7 +168,7 @@ app.post('/createrecipe', (req,res) => {
       "categories": req.body.categories,
       "createdbyuser": accountid
     }
-
+    
     recipes.push(recipe);
 
     res.sendStatus(200);
@@ -199,9 +199,9 @@ app.post('/accountmgr/register', (req,res) => {
       "createdrecipes": [],
       "favoriterecipes":[]
     };
-  
+    
     accounts.push(account);
-  
+    
     res.sendStatus(200);
     console.log("Register success")
   }
