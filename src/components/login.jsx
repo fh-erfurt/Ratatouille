@@ -16,21 +16,31 @@ const Login = (props) => {
 
     const handleOnLoginSuccess = useCallback(() => history.push('/'), [history]);
 
-    const showSuccess = () => {
+    const showLoginSuccess = () => {
         toast.current.clear();
         toast.current.show({severity:'success', summary: 'Login erfolgreich', detail:"Sie werden nun weitergeleitet", life: 2000});
     }
 
-    const showError = () => {
+    const showRegistrationSuccess = () => {
         toast.current.clear();
-        toast.current.show({severity:'error', summary: 'Login Fehlgeschlagen', detail:'Bitte Eingaben überprüfen', life: 3000});
+        toast.current.show({severity:'success', summary: 'Registrierung erfolgreich', detail:"Sie können sich nun anmelden", life: 2000});
+    }
+
+    const showLoginError = () => {
+        toast.current.clear();
+        toast.current.show({severity:'error', summary: 'Login fehlgeschlagen', detail:'Bitte Eingaben überprüfen', life: 3000});
+    }
+
+    const showRegistrationError = () => {
+        toast.current.clear();
+        toast.current.show({severity:'error', summary: 'Registrierung fehlgeschlagen', detail:'Email Adresse wird bereits verwendet', life: 3000});
     }
 
     const sleep = (milliseconds) => {
         return new Promise(resolve => setTimeout(resolve, milliseconds))
     }
 
-    const login= async () => {
+    const login = async () => {
         let loggedin = false;
         const res = await axios({
             method: "get",
@@ -39,14 +49,14 @@ const Login = (props) => {
             return { error: error };
           });
 
-          console.log(res.data);
+          //console.log(res.data);
 
         res.data.forEach(account => {
             if (account.email.toLowerCase() === Email.toLowerCase() && account.password === Pass)
             {
                 loggedin = true;
                 window.$email = Email.toLowerCase();
-                showSuccess();
+                showLoginSuccess();
                 sleep(2000).then(r => {
                     handleOnLoginSuccess();
                 });
@@ -54,8 +64,28 @@ const Login = (props) => {
         });
 
         if (!loggedin) {
-            showError();
+            showLoginError();
         }
+    }
+
+    const register = async () => {
+        const res = await axios({
+            method: "post",
+            url: "http://localhost:8000/accountmgr/register",
+            data: {
+                "email": Email,
+                "password": Pass
+            }
+          }).catch(error => {
+            return { error: error };
+          });
+
+          if (res.status === 200) {
+            showRegistrationSuccess();
+          }
+          else {
+              showRegistrationError();
+          }
     }
 
     return (
@@ -77,7 +107,7 @@ const Login = (props) => {
             </div>
 
             <Button onClick={login} label="Anmelden" className="p-button-rounded p-button-secondary" />
-            <Button label="Registrieren" className="p-button-rounded p-button-secondary" />
+            <Button onClick={register} label="Registrieren" className="p-button-rounded p-button-secondary" />
 
         </React.Fragment>
     );
