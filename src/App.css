@@ -36,13 +36,13 @@
     transform: rotate(360deg);
   }
 }
-.home{
+.row{
   display: flex;
   flex-direction: row;
   justify-content:space-around;
   padding-top:5%;
 }
-.home img{
+.row img{
   width:100%;
   object-fit: contain;
 }
