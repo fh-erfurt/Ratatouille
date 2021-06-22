@@ -119,6 +119,17 @@ var recipes = [
 ]
 
 
+const generateId = (array) => {
+  let id = 0;
+  array.forEach(element => {
+    if (element.id > id) {
+      id = element.id;
+  }
+
+  
+  });
+  return id+1;
+};
 
 
 app.get('/recipes', (req, res) =>{
@@ -157,7 +168,7 @@ app.post('/createrecipe', (req,res) => {
   }
 
     let recipe = {
-      "id": recipes.length,
+      "id": generateId(recipes),
       "name": req.body.name,
       "imageurl": req.body.imageurl,
       "averagetimeinminutes": req.body.averagetimeinminutes,
@@ -192,7 +203,7 @@ app.post('/accountmgr/register', (req,res) => {
   }
   else {
     let account = {
-      "id": accounts.length,
+      "id": generateId(accounts),
       "email": req.body.email,
       "password": req.body.password,
       "createdat": Date.now(),
@@ -204,6 +215,7 @@ app.post('/accountmgr/register', (req,res) => {
     
     res.sendStatus(200);
     console.log("Register success")
+    console.log(accounts)
   }
 });
 
