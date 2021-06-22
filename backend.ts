@@ -17,40 +17,40 @@ var accounts = [
             "createdat": 1609455600000,
             "email": "Michelle00@mailpoof.com",
             "password": "1234",
-            "createdrecipes": ["0"],
-            "favoriterecipes":["2","4"]
+            "createdrecipes": [0],
+            "favoriterecipes":[2,4]
         },
         {
             "id": 1,
             "createdat": 1609455600000,
             "email": "Jonas01@mailpoof.com",
             "password": "1234",
-            "createdrecipes": ["4"],
-            "favoriterecipes":["2"]
+            "createdrecipes": [4],
+            "favoriterecipes":[2]
         },
         {
             "id": 2,
             "createdat": 1609455600000,
             "email": "Katja02@mailpoof.com",
             "password": "1234",
-            "createdrecipes": ["3"],
-            "favoriterecipes":["1","2"]
+            "createdrecipes": [3],
+            "favoriterecipes":[1,2]
         },
         {
             "id": 3,
             "createdat": 1609455600000,
             "email": "Roman03@mailpoof.com",
             "password": "1234",
-            "createdrecipes": ["2"],
-            "favoriterecipes":["0","4"]
+            "createdrecipes": [2],
+            "favoriterecipes":[0,4]
         },
         {
             "id": 4,
             "createdat": 1609455600000,
             "email": "Dodo04@mailpoof.com",
             "password": "1234",
-            "createdrecipes": ["1"],
-            "favoriterecipes":["2","3"]
+            "createdrecipes": [1],
+            "favoriterecipes":[2,3]
         }
     ];
 
@@ -124,12 +124,34 @@ const generateId = (array) => {
   array.forEach(element => {
     if (element.id > id) {
       id = element.id;
-  }
-
-  
+    }
   });
+
   return id+1;
 };
+
+const findAccountByEmail = (email) => {
+  let account;
+  accounts.forEach(acc => {
+    if (acc.email.toLowerCase() === email.toLowerCase()) {
+      account = acc;
+    }
+  });
+
+  return account;
+}
+
+
+const findRecipeById = (id) => {
+  let recipe;
+  recipes.forEach(element => {
+    if (element.id === id) {
+      recipe = element;
+    }
+  });
+
+  return recipe;
+}
 
 
 app.get('/recipes', (req, res) =>{
@@ -148,6 +170,16 @@ app.get('/recipes/:id', (req, res) => {
 });
 
 
+app.post('/recipes/starred', (req, res) => {
+  let starred = [];
+  findAccountByEmail(req.body.email).favoriterecipes.forEach(recipeId => {
+    starred.push(findRecipeById(recipeId));
+  });
+
+  res.send(starred);
+});
+
+
 app.get('/accounts/:id', (req, res) => {
     let account = accounts[req.params.id];
     res.json(account);
@@ -155,17 +187,6 @@ app.get('/accounts/:id', (req, res) => {
 
 
 app.post('/createrecipe', (req,res) => {
-
-  let accountid;
-  accounts.forEach(account => {
-    if (account.email.toLowerCase() === req.body.createdbyuser.toLowerCase()) {
-      accountid = account.id;
-    }
-  });
-
-  if (accountid == null) {
-    console.log("User email not found");
-  }
 
     let recipe = {
       "id": generateId(recipes),
@@ -177,7 +198,7 @@ app.post('/createrecipe', (req,res) => {
       "ingredients": req.body.ingredients,
       "preparation": req.body.preparation, 
       "categories": req.body.categories,
-      "createdbyuser": accountid
+      "createdbyuser": findAccountByEmail(req.body.createdbyuser).id
     }
 
     recipes.push(recipe);

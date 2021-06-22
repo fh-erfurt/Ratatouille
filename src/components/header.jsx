@@ -16,7 +16,7 @@ const Header = (props) => {
     const navigateToPage = useCallback((path) => history.push(path), [history]);
 
     const [windowEmailActive, setWindowEmailActive] = useState(false);
-        useEffect(() => {
+    useEffect(() => {
             window.$email != null && setWindowEmailActive(true);
         }, []);
 
