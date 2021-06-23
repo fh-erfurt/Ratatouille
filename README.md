@@ -1,7 +1,8 @@
 # Ratatouille
 
 Before the start make sure you installed all modules<br>
-<code>npm install</code>
+<code>npm install
+npm upgrade</code>
 <br>
 <br>
 Start development server<br>
