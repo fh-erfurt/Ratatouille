@@ -6,7 +6,11 @@ import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import { useHistory } from 'react-router-dom';
 
-
+/**
+ * Component to authenticate the user with email and password.
+ *
+ * @component
+ */
 const Login = (props) => {
     const history = useHistory();
 
@@ -40,6 +44,9 @@ const Login = (props) => {
         return new Promise(resolve => setTimeout(resolve, milliseconds))
     }
 
+    /**
+     * Fetches all accounts from the backend and checks if given password matches the given email
+     */
     const login = async () => {
         let loggedin = false;
         const res = await axios({
@@ -68,6 +75,9 @@ const Login = (props) => {
         }
     }
 
+    /**
+     * Sends a new email and password to the backend to register a new user
+     */
     const register = async () => {
         const res = await axios({
             method: "post",

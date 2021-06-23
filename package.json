@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "better-docs": "^2.3.2",
     "jsdoc": "^3.6.7"
   }
 }

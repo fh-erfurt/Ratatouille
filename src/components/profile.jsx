@@ -5,8 +5,11 @@ import { Toast } from 'primereact/toast';
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
 
-
-
+/**
+ * Component for showing details of the user and allowing to change the account password.
+ *
+ * @component
+ */
 const Profile = (props) => {
     const history = useHistory();
 
@@ -52,7 +55,7 @@ const Profile = (props) => {
         });
     }
     /**
-     * Sends Password to backend
+     * Sends new Password to backend
      */
     const submitPassword = async () => {
         if (Pass !== "")

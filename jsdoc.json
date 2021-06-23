@@ -4,7 +4,7 @@
       "includePattern": ".+\\.js(doc|x)?$",
       "excludePattern": "(node_modules/|docs|public)"
     },
-    "plugins": ["plugins/markdown"],
+    "plugins": ["plugins/markdown", "better-docs/component"],
     "templates": {
       "cleverLinks": true,
       "monospaceLinks": true
