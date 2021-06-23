@@ -5,7 +5,7 @@ import axios from "axios";
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import { useHistory } from 'react-router-dom';
-import '../style/style.scss';
+import '../style.scss';
 
 
 const Login = (props) => {
