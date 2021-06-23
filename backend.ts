@@ -170,6 +170,15 @@ app.get('/recipes/:id', (req, res) => {
 });
 
 
+app.post('/recipes/star', (req, res) => {
+  let account = findAccountByEmail(req.body.email);
+
+  account.favoriterecipes.push(req.body.recipeid);
+
+  res.sendStatus(200);
+});
+
+
 app.post('/recipes/starred', (req, res) => {
   let starred = [];
   findAccountByEmail(req.body.email).favoriterecipes.forEach(recipeId => {
