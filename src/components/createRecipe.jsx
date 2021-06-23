@@ -129,7 +129,7 @@ const CreateRecipe = (props) => {
         <React.Fragment>
             <Toast ref={toast} />
             <div className="createrecipe">
-                        <h1>Rezept erstellen</h1>
+                        <h1 >Rezept erstellen</h1>
                         <span className="recipename">
                             <label htmlFor="recipename">Rezeptname: </label>
                             <br/>
