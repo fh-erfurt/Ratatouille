@@ -79,18 +79,22 @@ const CreateRecipe = (props) => {
     };  
    const showAddRecipeSuccess = () => {
         toast.current.clear();
-        toast.current.show({severity:'success', summary: 'Rezept wurde gespeichert!', detail:"", life: 1500});
+        toast.current.show({severity:'success', summary: 'Rezept wurde gespeichert!', detail:"", life: 1500, closable: false});
     };
 
     const showAddRecipeError = () => {
         toast.current.clear();
-        toast.current.show({severity:'error', summary: 'Speichern fehlgeschlagen!', detail:'Bitte versuchen Sie es erneut.', life: 3000});
+        toast.current.show({severity:'error', summary: 'Speichern fehlgeschlagen!', detail:'Bitte versuchen Sie es erneut.', life: 3000, closable: false});
     };
 
     const showInputValidError = () => {
         toast.current.clear();
-        toast.current.show({severity:'error', summary: 'Es fehlen etwas!', detail:'Bitte alle Felder füllen.', life: 3000});
+        toast.current.show({severity:'error', summary: 'Es fehlen etwas!', detail:'Bitte alle Felder füllen.', life: 3000, closable: false});
     };
+
+    const clearToast = () => {
+        toast.current.clear();
+    }
 
    const addRecipe = async () => {
         const res = await axios({
@@ -127,7 +131,7 @@ const CreateRecipe = (props) => {
     return (
         
         <React.Fragment>
-            <Toast ref={toast} />
+            <Toast ref={toast} onClick={clearToast} className="ToastMsg" />
             <div className="createrecipe">
                         <h1 >Rezept erstellen</h1>
                         <span className="recipename">

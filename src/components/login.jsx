@@ -22,26 +22,30 @@ const Login = (props) => {
 
     const showLoginSuccess = () => {
         toast.current.clear();
-        toast.current.show({severity:'success', summary: 'Login erfolgreich', detail:"Sie werden nun weitergeleitet", life: 2000});
+        toast.current.show({severity:'success', summary: 'Login erfolgreich', detail:"Sie werden nun weitergeleitet", life: 2000, closable: false});
     }
 
     const showRegistrationSuccess = () => {
         toast.current.clear();
-        toast.current.show({severity:'success', summary: 'Registrierung erfolgreich', detail:"Sie können sich nun anmelden", life: 2000});
+        toast.current.show({severity:'success', summary: 'Registrierung erfolgreich', detail:"Sie können sich nun anmelden", life: 2000, closable: false});
     }
 
     const showLoginError = () => {
         toast.current.clear();
-        toast.current.show({severity:'error', summary: 'Login fehlgeschlagen', detail:'Bitte Eingaben überprüfen', life: 3000});
+        toast.current.show({severity:'error', summary: 'Login fehlgeschlagen', detail:'Bitte Eingaben überprüfen', life: 3000, closable: false});
     }
 
     const showRegistrationError = () => {
         toast.current.clear();
-        toast.current.show({severity:'error', summary: 'Registrierung fehlgeschlagen', detail:'Email Adresse wird bereits verwendet', life: 3000});
+        toast.current.show({severity:'error', summary: 'Registrierung fehlgeschlagen', detail:'Email Adresse wird bereits verwendet', life: 3000, closable: false});
     }
 
     const sleep = (milliseconds) => {
         return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+
+    const clearToast = () => {
+        toast.current.clear();
     }
 
     /**
@@ -100,7 +104,7 @@ const Login = (props) => {
 
     return (
         <React.Fragment>
-            <Toast ref={toast} />
+            <Toast ref={toast} onClick={clearToast} className="ToastMsg" />
             <div className="p-mt-6" >
                 <div className="p-field p-grid">
                     <div className="p-col">

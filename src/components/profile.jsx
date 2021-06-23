@@ -29,12 +29,16 @@ const Profile = (props) => {
 
     const showPwChangeSuccess = () => {
         toast.current.clear();
-        toast.current.show({severity:'success', summary: 'Passwort erfolgreich geändert', life: 2000});
+        toast.current.show({severity:'success', summary: 'Passwort erfolgreich geändert', life: 2000, closable: false});
     }
 
     const showPwChangeError = () => {
         toast.current.clear();
-        toast.current.show({severity:'error', summary: 'Passwort darf nicht leer sein', detail:'Bitte Eingaben überprüfen', life: 3000});
+        toast.current.show({severity:'error', summary: 'Passwort darf nicht leer sein', detail:'Bitte Eingaben überprüfen', life: 3000, closable: false});
+    }
+
+    const clearToast = () => {
+        toast.current.clear();
     }
 
     const fetchAccountInfo = async () => {
@@ -83,7 +87,7 @@ const Profile = (props) => {
 
     return (
         <React.Fragment>
-            <Toast ref={toast} />
+            <Toast ref={toast} onClick={clearToast} />
             <div className="p-grid p-fluid">
                     <div className="p-col-12 p-md-4">
                         <div className="p-inputgroup" style={{width:'400px'}}>
