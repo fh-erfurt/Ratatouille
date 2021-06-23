@@ -172,9 +172,23 @@ app.get('/recipes/:id', (req, res) => {
 
 app.post('/recipes/star', (req, res) => {
   let account = findAccountByEmail(req.body.email);
+  const recipeid = req.body.recipeid;
 
-  account.favoriterecipes.push(req.body.recipeid);
-
+  if (account.favoriterecipes.includes(recipeid))
+  {
+    for( var i = 0; i < account.favoriterecipes.length; i++){ 
+    
+      if ( account.favoriterecipes[i] === recipeid) { 
+  
+        account.favoriterecipes.splice(i, 1); 
+      }
+    }
+  }
+  else {
+    account.favoriterecipes.push(recipeid);
+  }
+  
+  console.log("+ " + req.body.email + " starred this recipes: " + account.favoriterecipes);
   res.sendStatus(200);
 });
 
@@ -219,7 +233,7 @@ app.post('/createrecipe', (req,res) => {
 app.post('/accountmgr/register', (req,res) => {
 
   let accountexists = false;
-  console.log("Register request: " + req.body.email);
+  console.log("# Register request: " + req.body.email);
   accounts.forEach(account => {
     if(account.email.toLowerCase() === req.body.email.toLowerCase())
     {
@@ -229,7 +243,7 @@ app.post('/accountmgr/register', (req,res) => {
 
   if (accountexists) {
     res.sendStatus(400);
-    console.log("Account already exists, sending Bad Request")
+    console.log("- Account already exists, sending Bad Request")
   }
   else {
     let account = {
@@ -244,8 +258,7 @@ app.post('/accountmgr/register', (req,res) => {
     accounts.push(account);
     
     res.sendStatus(200);
-    console.log("Register success")
-    console.log(accounts)
+    console.log("+ Register success.")
   }
 });
 
@@ -261,9 +274,11 @@ app.post('/accountmgr/newpassword', (req,res) => {
 
   if (acc != null) {
     acc.password = req.body.password;
+    console.log("+ Changed password for user: " + req.body.email)
     res.sendStatus(200);
   }
   else {
+    console.log("- Password change error, user: " + req.body.email)
     res.sendStatus(400);
   }
 });
