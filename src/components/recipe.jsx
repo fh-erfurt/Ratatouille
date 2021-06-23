@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { ListBox } from 'primereact/listbox';
 import { Button } from 'primereact/button';
 import { TabView,TabPanel } from 'primereact/tabview';
-import '../App.css';
 
 export default class Recipe extends Component {
     constructor(props){

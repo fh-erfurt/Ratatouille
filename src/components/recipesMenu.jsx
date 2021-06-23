@@ -1,6 +1,5 @@
-import { MegaMenu } from 'primereact/megamenu';
 import RecipeCard from './recipeCard';
-import React, {  } from "react";
+import React, { useEffect, useState } from "react";
 
 const RecipesMenu = () => {
 
@@ -16,8 +15,6 @@ const RecipesMenu = () => {
                     <RecipeCard></RecipeCard>
                     <RecipeCard></RecipeCard>
                     </div></div>
-      
-
         );
     
 }
