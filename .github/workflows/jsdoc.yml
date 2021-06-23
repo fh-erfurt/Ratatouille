@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  jsdoc-create:
     runs-on: ubuntu-latest
     
     strategy:
@@ -18,13 +18,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Build jsdoc with Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+      - run: npm upgrade
       - run: npm install jsdoc better-docs --force
       - run: npm run doc
 
+      # Publishes created docs folder to gh-pages branch
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
