@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: login.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: login.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useCallback, useRef } from "react";
+import { InputText } from 'primereact/inputtext';
+import { Password } from 'primereact/password';
+import axios from "axios";
+import { Button } from 'primereact/button';
+import { Toast } from 'primereact/toast';
+import { useHistory } from 'react-router-dom';
+
+/**
+ * Component to authenticate the user with email and password.
+ *
+ * @component
+ */
+const Login = (props) => {
+    const history = useHistory();
+
+    const toast = useRef(null);
+    const [Email, setEmail] = useState("");
+    const [Pass, setPassword] = useState("");
+
+    const handleOnLoginSuccess = useCallback(() => history.push('/'), [history]);
+
+    const showLoginSuccess = () => {
+        toast.current.clear();
+        toast.current.show({severity:'success', summary: 'Login erfolgreich', detail:"Sie werden nun weitergeleitet", life: 2000});
+    }
+
+    const showRegistrationSuccess = () => {
+        toast.current.clear();
+        toast.current.show({severity:'success', summary: 'Registrierung erfolgreich', detail:"Sie können sich nun anmelden", life: 2000});
+    }
+
+    const showLoginError = () => {
+        toast.current.clear();
+        toast.current.show({severity:'error', summary: 'Login fehlgeschlagen', detail:'Bitte Eingaben überprüfen', life: 3000});
+    }
+
+    const showRegistrationError = () => {
+        toast.current.clear();
+        toast.current.show({severity:'error', summary: 'Registrierung fehlgeschlagen', detail:'Email Adresse wird bereits verwendet', life: 3000});
+    }
+
+    const sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+
+    /**
+     * Fetches all accounts from the backend and checks if given password matches the given email
+     */
+    const login = async () => {
+        let loggedin = false;
+        const res = await axios({
+            method: "get",
+            url: "http://localhost:8000/accounts",
+          }).catch(error => {
+            return { error: error };
+          });
+
+          //console.log(res.data);
+
+        res.data.forEach(account => {
+            if (account.email.toLowerCase() === Email.toLowerCase() &amp;&amp; account.password === Pass)
+            {
+                loggedin = true;
+                window.$email = Email.toLowerCase();
+                showLoginSuccess();
+                sleep(2000).then(r => {
+                    handleOnLoginSuccess();
+                });
+            }
+        });
+
+        if (!loggedin) {
+            showLoginError();
+        }
+    }
+
+    /**
+     * Sends a new email and password to the backend to register a new user
+     */
+    const register = async () => {
+        const res = await axios({
+            method: "post",
+            url: "http://localhost:8000/accountmgr/register",
+            data: {
+                "email": Email,
+                "password": Pass
+            }
+          }).catch(error => {
+            return { error: error };
+          });
+
+          if (res.status === 200) {
+            showRegistrationSuccess();
+          }
+          else {
+              showRegistrationError();
+          }
+    }
+
+    return (
+        &lt;React.Fragment>
+            &lt;Toast ref={toast} />
+            &lt;div className="p-mt-6" >
+                &lt;div className="p-field p-grid">
+                    &lt;div className="p-col">
+                        &lt;InputText placeholder="... Email Adresse" id="email" name="Email" onChange={e => setEmail(e.target.value)} type="text" className="email"/>
+                    &lt;/div>
+                &lt;/div>
+                
+                &lt;div className="p-field p-grid">
+                    &lt;div className="p-col">
+                        &lt;Password toggleMask placeholder="... Password "id="password" name="Password" onChange={e => setPassword(e.target.value)} type="text" feedback={false} className="password"/>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+            &lt;Button onClick={login} label="Anmelden" className="p-button-primary p-mr-2 p-shadow-1" />
+            &lt;Button onClick={register} label="Registrieren" className="p-button-primary p-shadow-1" />
+        &lt;/React.Fragment>
+    );
+};
+
+export default Login;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Login.html">Login</a></li><li><a href="Profile.html">Profile</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 23 2021 15:26:40 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
