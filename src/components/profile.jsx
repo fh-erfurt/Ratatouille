@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { InputText } from 'primereact/inputtext';
+import { Button } from 'primereact/button';
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
 
@@ -47,13 +48,16 @@ const Profile = (props) => {
                             <span className="p-inputgroup-addon">
                                 <i className="pi pi-user" ></i>
                             </span>
-                            <InputText placeholder="Email Adresse" value={Email} onChange={e => setEmail(e.target.value)} />
+                            <InputText disabled placeholder="Email Adresse" value={Email} onChange={e => setEmail(e.target.value)} />
                         </div>
                         <div className="p-inputgroup" style={{width:'400px'}}>
                             <span className="p-inputgroup-addon">
-                                <i className="pi pi-user" ></i>
+                                <i className="pi pi-key" ></i>
                             </span>
                             <InputText placeholder="Passwort" value={Password} onChange={e => setPassword(e.target.value)} />
+                        </div>
+                        <div>
+                        <Button onClick label="Speichern" className="p-button-primary p-mr-2" />
                         </div>
                     </div>
                 </div>

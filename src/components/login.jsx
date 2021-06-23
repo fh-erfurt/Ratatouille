@@ -5,7 +5,6 @@ import axios from "axios";
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import { useHistory } from 'react-router-dom';
-import '../style.scss';
 
 
 const Login = (props) => {
@@ -105,8 +104,8 @@ const Login = (props) => {
                     </div>
                 </div>
             </div>
-            <Button onClick={login} label="Anmelden" className="p-button-primary p-mr-2" />
-            <Button onClick={register} label="Registrieren" className="p-button-primary" />
+            <Button onClick={login} label="Anmelden" className="p-button-primary p-mr-2 p-shadow-1" />
+            <Button onClick={register} label="Registrieren" className="p-button-primary p-shadow-1" />
         </React.Fragment>
     );
 };

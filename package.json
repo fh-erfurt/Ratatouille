@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "express": "^4.17.1",
+    "jsdoc": "^3.6.7",
     "node-sass": "^6.0.0",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",

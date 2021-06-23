@@ -133,14 +133,14 @@ const CreateRecipe = (props) => {
                         <span className="recipename">
                             <label htmlFor="recipename">Rezeptname: </label>
                             <br/>
-                            <InputText id="recipename" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} placeholder ="z.B: Bauernsalat" /> 
+                            <InputText id="recipename" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} placeholder ="... Bauernsalat" /> 
                             <br/>
                         </span>
                         <br/>  
                         <span className="recipeimageurl">
                             <label htmlFor="recipeimageurl">Bild Url: </label>
                             <br/>
-                            <InputText id="recipeimageurl" value={recipeImageUrl} onChange={(e) => setRecipeImageUrl(e.target.value)} placeholder ="http://..."/> 
+                            <InputText id="recipeimageurl" value={recipeImageUrl} onChange={(e) => setRecipeImageUrl(e.target.value)} placeholder ="... http://link-zum-bild"/> 
                             <br/>
                         </span>
                         <br/>  
@@ -158,23 +158,23 @@ const CreateRecipe = (props) => {
                         </div>
                         <div className="recipecategory">
                             <h5>Zutaten: </h5>
-                            <InputTextarea value={recipeingredients} onChange={(e) => setRecipeIngredients(e.target.value)} placeholder="z.B: Eier 3Stk, Milch 300ml, ..." rows={5} cols={30} autoResize />
+                            <InputTextarea value={recipeingredients} onChange={(e) => setRecipeIngredients(e.target.value)} placeholder="... Eier 3Stk, Milch 300ml, ..." rows={5} cols={30} autoResize />
                 
                         </div>
                         <div className="recipecategory">
                             <h5>Arbeitsanweisung: </h5>
-                            <InputTextarea value={recipeinstruction} onChange={(e) => setRecipeInstruction(e.target.value)} rows={5} cols={30} autoResize />
+                            <InputTextarea value={recipeinstruction} onChange={(e) => setRecipeInstruction(e.target.value)} placeholder="... erst Mixen, dann Backen" rows={5} cols={30} autoResize />
             
                         </div>
                         <div className="recipecategory">
                             <h5>Kategorien</h5>
-                            <MultiSelect value={selectedcategorys} options={categorys} onChange={(e) => setSelectedCategorys(e.value)} optionLabel="name" filter filterPlaceholder= "Vegan" selectionLimit = "4" placeholder="Wähle eine Kategorie" display="chip" />
+                            <MultiSelect value={selectedcategorys} options={categorys} onChange={(e) => setSelectedCategorys(e.value)} optionLabel="name" filter filterPlaceholder= "Vegan" selectionLimit = "4" placeholder="Wähle eine Kategorie" display="chip" showSelectAll={false} />
                             <br/>
                         </div>
                         <br/>
-                        <span className="p-buttonset">
-                             <Button label="Submit" icon="pi pi-check" className="p-button-success" onClick={checkIfInputIsValid}/>
-                             <Button label="Reset" icon="pi pi-replay" className="p-button-raised p-button-danger" onClick={changeInputToDefault}/>
+                        <span>
+                             <Button label="Rezept einreichen" icon="pi pi-check" className="p-button-success p-buttonset" onClick={checkIfInputIsValid}/>
+                             <Button label="Zurücksetzen" icon="pi pi-replay" className="p-button-raised p-button-danger" onClick={changeInputToDefault}/>
                         </span>
             </div>
         </React.Fragment>

@@ -1,4 +1,5 @@
 import './App.css';
+import './style.scss';
 import 'primeflex/primeflex.css';
 
 import Header from './components/header';

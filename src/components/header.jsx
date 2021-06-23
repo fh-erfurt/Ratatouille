@@ -28,6 +28,7 @@ const Header = (props) => {
         <Button
         label="Logout"
         icon="pi pi-fw pi-sign-out"
+        className="p-shadow-1"
         onClick={() => {
                             setCount(count => count + 1);
                             window.$email = null;
@@ -37,7 +38,7 @@ const Header = (props) => {
         />
     ) : (
         <Link to="/login">
-            <Button label="Login" icon="pi pi-fw pi-sign-in" />
+            <Button label="Login" icon="pi pi-fw pi-sign-in" className="p-shadow-1"/>
         </Link>
     );
 
