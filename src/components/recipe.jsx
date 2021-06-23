@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { ListBox } from 'primereact/listbox';
-
+import { Button } from 'primereact/button';
 import { TabView,TabPanel } from 'primereact/tabview';
 import '../App.css';
 
@@ -23,13 +23,19 @@ export default class Recipe extends Component {
                 <div class="recipeTop">
                 <div class="recipeLeft">
                <h3>Name</h3>
+               <h4>Kategorien</h4>
                <img alt="bild" src="" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} width="400px" />
                </div>
                <div class="recipeRight">
+                <Button label="Favorit" icon="pi pi-heart" />
                 <h4>Zutaten</h4>
                     <ListBox value={this.state.selectedIngredient} options={this.ingredients} onChange={(e) => 
                         this.setState({selectedIngredient: e.value})} optionLabel="name" style={{width: '15rem'}} />
-               </div></div>
+               <h4>Dauer:</h4>
+               <h4>Schwierigkeit:</h4>
+               <h4>Erstellt von: ... am ...</h4>
+               </div>
+               </div>
                <div class="recipePreparation">
                <TabView>
                         <TabPanel header="Schritt 1">

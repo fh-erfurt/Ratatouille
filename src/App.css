@@ -36,13 +36,13 @@
     transform: rotate(360deg);
   }
 }
-.home{
+.row{
   display: flex;
   flex-direction: row;
   justify-content:space-around;
   padding-top:5%;
 }
-.home img{
+.row img{
   width:100%;
   object-fit: contain;
 }
@@ -70,6 +70,9 @@
   flex-direction: row;
   justify-content: space-around;
   padding-bottom:2%;
+}
+.recipeRight{
+  margin:1%;
 }
 
 @media only screen and (max-width: 800px){

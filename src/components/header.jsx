@@ -16,7 +16,7 @@ const Header = (props) => {
     const navigateToPage = useCallback((path) => history.push(path), [history]);
 
     const [windowEmailActive, setWindowEmailActive] = useState(false);
-        useEffect(() => {
+    useEffect(() => {
             window.$email != null && setWindowEmailActive(true);
         }, []);
 
@@ -50,7 +50,7 @@ const Header = (props) => {
         { 
             label: 'Rezepte',
             icon: 'pi pi-fw pi-file',
-            command:()=>{ navigateToPage("/recipes")}
+            command:()=>{ navigateToPage("/menu")}
         },
         {
             label: 'Erstellen',//in Profil einfügen?
