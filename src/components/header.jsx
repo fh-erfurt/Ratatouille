@@ -27,7 +27,7 @@ const Header = (props) => {
     windowEmailActive !== false ? (
         <Button
         label="Logout"
-        icon="pi pi-fw pi-sign-in"
+        icon="pi pi-fw pi-sign-out"
         onClick={() => {
                             setCount(count => count + 1);
                             window.$email = null;

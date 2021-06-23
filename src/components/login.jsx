@@ -91,24 +91,21 @@ const Login = (props) => {
     return (
         <React.Fragment>
             <Toast ref={toast} />
-
-            <div className="p-field p-grid">
-                <label htmlFor="email" className="p-col-fixed" style={{width:'100px'}}>Email</label>
-                <div className="p-col">
-                    <InputText id="email" name="Email" onChange={e => setEmail(e.target.value)} type="text"/>
+            <div className="p-mt-6" >
+                <div className="p-field p-grid">
+                    <div className="p-col">
+                        <InputText placeholder="... Email Adresse" id="email" name="Email" onChange={e => setEmail(e.target.value)} type="text"/>
+                    </div>
+                </div>
+                
+                <div className="p-field p-grid">
+                    <div className="p-col">
+                        <Password placeholder="... Password "id="password" name="Password" onChange={e => setPassword(e.target.value)} type="text" feedback={false} />
+                    </div>
                 </div>
             </div>
-            
-            <div className="p-field p-grid">
-                <label htmlFor="password" className="p-col-fixed" style={{width:'100px'}}>Password</label>
-                <div className="p-col">
-                    <Password id="password" name="Password" onChange={e => setPassword(e.target.value)} type="text" feedback={false} />
-                </div>
-            </div>
-
-            <Button onClick={login} label="Anmelden" className="p-button-rounded p-button-secondary" />
-            <Button onClick={register} label="Registrieren" className="p-button-rounded p-button-secondary" />
-
+            <Button onClick={login} label="Anmelden" className="p-button-primary p-mr-2" />
+            <Button onClick={register} label="Registrieren" className="p-button-primary" />
         </React.Fragment>
     );
 };

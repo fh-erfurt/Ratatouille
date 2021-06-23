@@ -1,4 +1,6 @@
 import './App.css';
+import 'primeflex/primeflex.css';
+
 import Header from './components/header';
 import Home from './components/home';
 import RecipesMenu from './components/recipesMenu';
