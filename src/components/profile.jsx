@@ -51,7 +51,9 @@ const Profile = (props) => {
             }
         });
     }
-
+    /**
+     * Sends Password to backend
+     */
     const submitPassword = async () => {
         if (Pass !== "")
         {

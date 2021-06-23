@@ -18,7 +18,11 @@ import{
   Route
 } from 'react-router-dom';
 
+/**
+ * Animation for Buttons
+ */
 PrimeReact.ripple = true;
+
 function App() {
 
   const HomePage=()=>{
