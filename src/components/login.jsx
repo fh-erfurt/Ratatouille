@@ -95,17 +95,17 @@ const Login = (props) => {
             <div className="p-mt-6" >
                 <div className="p-field p-grid">
                     <div className="p-col">
-                        <InputText placeholder="... Email Adresse" id="email" name="Email" onChange={e => setEmail(e.target.value)} type="text"/>
+                        <InputText placeholder="... Email Adresse" id="email" name="Email" onChange={e => setEmail(e.target.value)} type="text" className="email"/>
                     </div>
                 </div>
                 
                 <div className="p-field p-grid">
                     <div className="p-col">
-                        <Password placeholder="... Password "id="password" name="Password" onChange={e => setPassword(e.target.value)} type="text" feedback={false} />
+                        <Password toggleMask placeholder="... Password "id="password" name="Password" onChange={e => setPassword(e.target.value)} type="text" feedback={false} className="password"/>
                     </div>
                 </div>
             </div>
-            <Button onClick={login} label="Anmelden" className="test p-button-primary p-mr-2" />
+            <Button onClick={login} label="Anmelden" className="p-button-primary p-mr-2" />
             <Button onClick={register} label="Registrieren" className="p-button-primary" />
         </React.Fragment>
     );
