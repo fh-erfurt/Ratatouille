@@ -103,7 +103,7 @@ const CreateRecipe = (props) => {
        console.log(recipedifficulty);
         const res = await axios({
             method: "post",
-            url: "http://localhost:3002/api/recipes/create",
+            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/create",
             data: {
                 "name": recipeName,
                 "imageurl": recipeImageUrl,

@@ -45,7 +45,7 @@ const Profile = (props) => {
         let id;
         const res = await axios({
             method: "get",
-            url: "http://localhost:3002/api&accountmgr/" + window.$id,
+            url: "https://ratatouilleexpress.retch.duckdns.org/api/accountmgr/" + window.$id,
           }).catch(error => {
             return { error: error };
           });
@@ -62,7 +62,7 @@ const Profile = (props) => {
         {
             const res = await axios({
                 method: "post",
-                url: "http://localhost:3002/api/accountmgr/newpw",
+                url: "https://ratatouilleexpress.retch.duckdns.org/api/accountmgr/newpw",
                 data: {
                     "accountId": window.$id,
                     "password": Pass

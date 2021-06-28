@@ -17,7 +17,7 @@ const Home = () => {
     const fetchProducts = async () => {
         const res = await axios({
             method: "get",
-            url: "http://localhost:3002/api/recipes",
+            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes",
           })
         setProducts(res.data);
     };

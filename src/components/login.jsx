@@ -54,7 +54,7 @@ const Login = (props) => {
     const login = async () => {
         const res = await axios({
             method: "post",
-            url: "http://localhost:3002/api/accountmgr/login",
+            url: "https://ratatouilleexpress.retch.duckdns.org/api/accountmgr/login",
             data: {
                 "email": Email,
                 "password": Pass
@@ -84,7 +84,7 @@ const Login = (props) => {
     const register = async () => {
         const res = await axios({
             method: "post",
-            url: "http://localhost:3002/api/accountmgr/register",
+            url: "https://ratatouilleexpress.retch.duckdns.org/api/accountmgr/register",
             data: {
                 "email": Email,
                 "password": Pass
