@@ -28,8 +28,8 @@ const CreateRecipe = (props) => {
 
     const handleOnAddRecipeSuccess = useCallback(() => history.push('/'), [history]);
 
-    const [recipeName, setRecipeName] = useState();
-    const [recipeImageUrl, setRecipeImageUrl] = useState();
+    const [recipeName, setRecipeName] = useState("");
+    const [recipeImageUrl, setRecipeImageUrl] = useState("");
     const [recipeavgtime, setRecipeAvgTime] = useState('30');
     const [recipedifficulty, setRecipeDifficulty] = useState();
     const [recipeingredients, setRecipeIngredients] = useState();
@@ -68,7 +68,8 @@ const CreateRecipe = (props) => {
    const checkIfInputIsValid = () =>{
         console.log(recipeName , recipeImageUrl , recipedifficulty , recipeingredients , recipeinstruction , selectedcategorys)
         //ich kann nicht selectedcategorys mit ins IF nehem ... dann geht es nicht mehr idk
-        if (recipeName & recipeImageUrl & recipeingredients & recipeinstruction & recipedifficulty !== undefined ){
+        //if (recipeName & recipeImageUrl & recipeingredients & recipeinstruction & recipedifficulty !== undefined ){
+        if (true) {
             
             addRecipe();
         }
@@ -97,18 +98,21 @@ const CreateRecipe = (props) => {
     }
 
    const addRecipe = async () => {
+       console.log(window.$id);
+       console.log(JSON.stringify(selectedcategorys));
+       console.log(recipedifficulty);
         const res = await axios({
             method: "post",
-            url: "http://localhost:8000/createrecipe",
+            url: "http://localhost:3002/api/recipes/create",
             data: {
                 "name": recipeName,
                 "imageurl": recipeImageUrl,
                 "averagetimeinminutes": recipeavgtime,
-                "difficulty": recipedifficulty,
+                "difficulty": JSON.stringify(recipedifficulty),
                 "ingredients": recipeingredients,
                 "preparation": recipeinstruction,
-                "categories": selectedcategorys,
-                "createdbyuser": window.$email
+                "categories": JSON.stringify(selectedcategorys),
+                "creatorId": window.$id
             }
           }).catch(error => {
             return { error: error };
@@ -120,7 +124,6 @@ const CreateRecipe = (props) => {
                 sleep(1500).then(r => {
                     handleOnAddRecipeSuccess();
                 });
-                
           }
           else {
                 showAddRecipeError();

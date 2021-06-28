@@ -69,7 +69,7 @@ const Header = (props) => {
         }
     ];
 
-    const start = <img alt="logo" src="showcase/images/logo.png" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} height="40" className="p-mr-2"></img>;
+    const start = <img alt="logo" src="showcase/images/logo.png" onError={(e) => e.target.src='https://i.ibb.co/ctFM7hW/rataicon.png'} height="40" className="p-mr-2"></img>;
 
 
     return (

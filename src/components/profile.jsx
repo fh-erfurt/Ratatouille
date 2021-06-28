@@ -45,18 +45,14 @@ const Profile = (props) => {
         let id;
         const res = await axios({
             method: "get",
-            url: "http://localhost:8000/accounts",
+            url: "http://localhost:3002/api&accountmgr/" + window.$id,
           }).catch(error => {
             return { error: error };
           });
 
-          res.data.forEach(account => {
-            if (account.email.toLowerCase() === window.$email)
-            {
-                id = account.id;
-                setEmail(res.data[id].email);
-            }
-        });
+          if (res.status === 200) {
+              setEmail(res.data.email);
+          }
     }
     /**
      * Sends new Password to backend
@@ -66,9 +62,9 @@ const Profile = (props) => {
         {
             const res = await axios({
                 method: "post",
-                url: "http://localhost:8000/accountmgr/newpassword",
+                url: "http://localhost:3002/api/accountmgr/newpw",
                 data: {
-                    "email": window.$email,
+                    "accountId": window.$id,
                     "password": Pass
                 }
               }).catch(error => {

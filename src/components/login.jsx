@@ -49,34 +49,33 @@ const Login = (props) => {
     }
 
     /**
-     * Fetches all accounts from the backend and checks if given password matches the given email
+     * Sends Email and password to api and checks response
      */
     const login = async () => {
-        let loggedin = false;
         const res = await axios({
-            method: "get",
-            url: "http://localhost:8000/accounts",
+            method: "post",
+            url: "http://localhost:3002/api/accountmgr/login",
+            data: {
+                "email": Email,
+                "password": Pass
+            }
           }).catch(error => {
             return { error: error };
           });
 
-          //console.log(res.data);
+          console.log(res.data);
 
-        res.data.forEach(account => {
-            if (account.email.toLowerCase() === Email.toLowerCase() && account.password === Pass)
-            {
-                loggedin = true;
-                window.$email = Email.toLowerCase();
-                showLoginSuccess();
+          if (res.status === 200) {
+              window.$email = Email.toLowerCase();
+              window.$id = res.data.accountId;
+              showLoginSuccess();
                 sleep(2000).then(r => {
                     handleOnLoginSuccess();
                 });
-            }
-        });
-
-        if (!loggedin) {
+          }
+          else {
             showLoginError();
-        }
+          }
     }
 
     /**
@@ -85,7 +84,7 @@ const Login = (props) => {
     const register = async () => {
         const res = await axios({
             method: "post",
-            url: "http://localhost:8000/accountmgr/register",
+            url: "http://localhost:3002/api/accountmgr/register",
             data: {
                 "email": Email,
                 "password": Pass
@@ -95,7 +94,10 @@ const Login = (props) => {
           });
 
           if (res.status === 200) {
-            showRegistrationSuccess();
+              console.log(res.data);
+              window.$email = res.data.email;
+              window.$id = res.data.id;
+              showRegistrationSuccess();
           }
           else {
               showRegistrationError();

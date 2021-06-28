@@ -7,7 +7,6 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
-    "express": "^4.17.1",
     "node-sass": "^6.0.0",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
@@ -24,7 +23,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "backend": "node backend.ts",
     "doc": "jsdoc -c jsdoc.json"
   },
   "eslintConfig": {

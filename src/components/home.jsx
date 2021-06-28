@@ -17,7 +17,7 @@ const Home = () => {
     const fetchProducts = async () => {
         const res = await axios({
             method: "get",
-            url: "http://localhost:8000/recipes",
+            url: "http://localhost:3002/api/recipes",
           })
         setProducts(res.data);
     };
@@ -31,8 +31,8 @@ const Home = () => {
     }
 
     return (
-        <div class="home">
-            <div class="row">
+        <div className="home">
+            <div className="row">
             <img alt="Let's get Cooking" src={imageHome} ></img>
             <img alt="Bild" src="" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} height="500" ></img>
             </div>

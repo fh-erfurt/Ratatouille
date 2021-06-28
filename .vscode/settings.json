@@ -1,0 +1,30 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "netcup.retch100.tk",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "netcup",
+            "database": "cws",
+            "username": "dbuser",
+            "password": "Aot57odS0a9Ux6Hg"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "netcup.retch100.tk",
+            "port": 7414,
+            "driver": "MariaDB",
+            "name": "rata",
+            "database": "ratatouille",
+            "username": "admin",
+            "password": "rr02WoSIkKVfDjl0M01MTgpr2kE3Es7Yf8hV6mN8vHJoH3QRp7"
+        }
+    ]
+}
