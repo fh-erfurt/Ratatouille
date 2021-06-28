@@ -6,14 +6,9 @@
 Before the start make sure you installed all modules<br>
 <code>npm install</code>
 <br>
-<code>npm upgrade</code>
+<code>npm upgrade --force</code>
 <br>
 <br>
 Start development server
 <br>
 <code>npm run start</code>
-<br>
-<br>
-Start express api
-<br>
-<code>npm run backend</code>
