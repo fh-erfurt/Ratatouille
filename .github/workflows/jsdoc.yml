@@ -1,4 +1,4 @@
-name: jsdoc
+name: gh-pages
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  jsdoc-create:
+  build:
     runs-on: ubuntu-latest
     
     strategy:
@@ -18,13 +18,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      - name: Build jsdoc with Node.js ${{ matrix.node-version }}
+      - name: Build jsdoc and react app with Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm upgrade --force
       - run: npm install jsdoc better-docs --force
       - run: npm run doc
+      - run: npm run build
 
       # Publishes created docs folder to gh-pages branch
       - name: Deploy
