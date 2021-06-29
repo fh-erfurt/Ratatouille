@@ -157,4 +157,3 @@ sketch
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/react,node,visualstudiocode
-package-lock.json
