@@ -8,12 +8,7 @@ const RecipesMenu = () => {
              
                 <div class="recipes">
                     <RecipeCard></RecipeCard>
-                    <RecipeCard></RecipeCard>
-                    <RecipeCard></RecipeCard>
-                    <RecipeCard></RecipeCard>
-                    <RecipeCard></RecipeCard>
-                    <RecipeCard></RecipeCard>
-                    <RecipeCard></RecipeCard>
+                    
                     </div></div>
         );
     
