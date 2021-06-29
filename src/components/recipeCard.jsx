@@ -8,19 +8,8 @@ const RecipeCard = () => {
     const [currentPosition, setCurrentPosition] = useState(3);
     const [final, setFinal] = useState([]);
 
-    useEffect(() => {
-        fetchProducts();
-        postSomeRecipes();
-     }, []);
 
-     
-    const fetchProducts = async () => {
-        const res = await axios({
-            method: "get",
-            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes",
-        })
-        setProducts(res.data);
-    };
+
 
     const cardheader = (x) => (
         <img src={x.imageurl} alt="recipe" width="500"/>
