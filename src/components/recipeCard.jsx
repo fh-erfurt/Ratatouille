@@ -23,7 +23,7 @@ const RecipeCard = () => {
     };
 
     const cardheader = (x) => (
-        <img src={x.imageurl} width="500"/>
+        <img src={x.imageurl} alt="recipe" width="500"/>
     );  
 
     const cardfooter = (
@@ -34,10 +34,10 @@ const RecipeCard = () => {
 
     const postSomeRecipes = () =>{
         let x = [];
-       for (let element of products) {
+        for (let element of products) {
           x.push(<Card title={element.name} subTitle={element.categories} style={{ width: '25em' }} footer={cardfooter} header={cardheader(element)}/>);  
-         };
-         setFinal(x);
+        };
+        setFinal(x);
     };
     
 
