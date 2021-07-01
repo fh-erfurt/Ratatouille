@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { InputText } from 'primereact/inputtext';
 import { Carousel } from 'primereact/carousel';
-import imageHome from '../images/imageHome.PNG'
+import imageHome from '../images/imageHome.PNG';
+import homepage from '../images/homepage.jpg';
 import { Button } from 'primereact/button';
 import axios from "axios";
 
@@ -34,7 +35,7 @@ const Home = () => {
         <div className="home">
             <div className="row">
             <img alt="Let's get Cooking" src={imageHome} ></img>
-            <img alt="Bild" src="" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} height="500" ></img>
+            <img alt="homepage" src={homepage}  height="500" ></img>
             </div>
          <div className="card">
            <Carousel value={products} itemTemplate={productTemplate} />

@@ -3,7 +3,7 @@ import { Card } from 'primereact/card';
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import axios from "axios";
 
-const RecipesMenu = () => {
+const Favoriten = () => {
     const [products, setProducts] = useState(null);
     const [status, setStatus] = useState(404);
     const [recipecards, setRecipeCards] = useState([]);
@@ -18,11 +18,9 @@ const RecipesMenu = () => {
                 let allRecipes = recipecards;
                 allRecipes.push (
                     <React.Fragment key={product.id}>
-                        <div className = 'allRecipes'>
-                        <Card className="p-mb-2" title={product.name} subTitle={product.categories} style={{ width: '25em', height:'30em' }} footer={product.averagetimeinminutes + " Minuten"} header={<div><img alt="pictureRecipe" src={product.imageurl}></img></div>}>
+                        <Card className="p-mb-2" title={product.name} subTitle={product.categories} style={{ width: '25em' }} footer={product.averagetimeinminutes + " Minuten"} header={<div><img alt="pictureRecipe" src={product.imageurl}></img></div>}>
                         
                         </Card>
-                        </div>
                     </React.Fragment>
                 );
                 setRecipeCards(allRecipes);
@@ -55,10 +53,10 @@ const RecipesMenu = () => {
     else {
         return (
             <React.Fragment>
-                <p>Rezepte konnten nicht geladen werden. Bitte später erneut versuchen.</p>
+                <p>Keine Favoriten gefunden.</p>
             </React.Fragment>
         );
     }
 }
 
-export default RecipesMenu;
+export default Favoriten;
