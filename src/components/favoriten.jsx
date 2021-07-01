@@ -12,6 +12,7 @@ const Favoriten = () => {
         fetchProducts();
      }, []);
 
+
      useEffect(() => {
         if (products) {
             products.forEach(product => {
@@ -33,7 +34,10 @@ const Favoriten = () => {
     const fetchProducts = async () => {
         const res = await axios({
             method: "get",
-            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/myfavorites/" + window.$id,
+            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/myfavorites/",
+            data: {
+                "accountId": window.$id,
+            }
         }).catch(error => {
             return { error: error };
         });
