@@ -31,8 +31,8 @@ const Favoriten = () => {
 
     const fetchProducts = async () => {
         const res = await axios({
-            method: "get",
-            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/myfavorites/",
+            method: "post",
+            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/myfavorites",
             data: {
                 "accountId": window.$id,
             }
