@@ -3,7 +3,7 @@ import { Card } from 'primereact/card';
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import axios from "axios";
 
-const Favoriten = () => {
+const MyRecipesMenu = () => {
     const [products, setProducts] = useState(null);
     const [status, setStatus] = useState(404);
     const [recipecards, setRecipeCards] = useState([]);
@@ -53,6 +53,7 @@ const Favoriten = () => {
     if (status === 200) {
         return (
             <React.Fragment>
+                
                 {recipecards}
             </React.Fragment>
         );
@@ -60,10 +61,10 @@ const Favoriten = () => {
     else {
         return (
             <React.Fragment>
-                <p>Keine vorhandene Eigenen Rezepte.</p>
+                <p>Keine vorhandene eigenen Rezepte.</p>
             </React.Fragment>
         );
     }
 }
 
-export default Favoriten;
+export default MyRecipesMenu;
