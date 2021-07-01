@@ -4,6 +4,7 @@ import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
+import MyRecipesMenu from './MyRecipesMenu.jsx';
 
 /**
  * Component for showing details of the user and allowing to change the account password.
@@ -101,6 +102,7 @@ const Profile = (props) => {
                         <div>
                         <Button onClick={submitPassword} label="Speichern" className="p-button-primary p-mr-2" />
                         </div>
+                        <MyRecipesMenu></MyRecipesMenu>
                     </div>
                 </div>
         </React.Fragment>
