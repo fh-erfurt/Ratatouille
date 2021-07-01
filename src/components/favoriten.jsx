@@ -18,9 +18,11 @@ const Favoriten = () => {
                 let allRecipes = recipecards;
                 allRecipes.push (
                     <React.Fragment key={product.id}>
-                        <Card className="p-mb-2" title={product.name} subTitle={product.categories} style={{ width: '25em' }} footer={product.averagetimeinminutes + " Minuten"} header={<div><img alt="pictureRecipe" src={product.imageurl}></img></div>}>
+                        <div className = 'allRecipes'>
+                        <Card className="p-mb-2" title={product.name} subTitle={product.categories} style={{ width: '25em', height:'30em' }} footer={product.averagetimeinminutes + " Minuten"} header={<div><img alt="pictureRecipe" src={product.imageurl}></img></div>}>
                         
                         </Card>
+                        </div>
                     </React.Fragment>
                 );
                 setRecipeCards(allRecipes);
@@ -31,7 +33,7 @@ const Favoriten = () => {
     const fetchProducts = async () => {
         const res = await axios({
             method: "get",
-            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes",
+            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/myfavorites",
         }).catch(error => {
             return { error: error };
         });
@@ -53,7 +55,7 @@ const Favoriten = () => {
     else {
         return (
             <React.Fragment>
-                <p>Keine Favoriten gefunden.</p>
+                <p>Keine vorhandene Favoriten.</p>
             </React.Fragment>
         );
     }
