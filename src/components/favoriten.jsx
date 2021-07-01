@@ -18,7 +18,7 @@ const Favoriten = () => {
                 let allRecipes = recipecards;
                 allRecipes.push (
                     <React.Fragment key={product.id}>
-                        <div className = 'allRecipes'>
+                        <div class="oneRecipe p-m-1 p-p-1 p-m-lg-3 p-b-lg-3"> 
                         <Card className="p-mb-2" title={product.name} subTitle={product.categories} style={{ width: '25em', height:'30em' }} footer={product.averagetimeinminutes + " Minuten"} header={<div><img alt="pictureRecipe" src={product.imageurl}></img></div>}>
                         
                         </Card>
@@ -33,7 +33,7 @@ const Favoriten = () => {
     const fetchProducts = async () => {
         const res = await axios({
             method: "get",
-            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/myfavorites",
+            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/myfavorites/" + window.$id,
         }).catch(error => {
             return { error: error };
         });
