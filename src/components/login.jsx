@@ -110,13 +110,13 @@ const Login = (props) => {
             <div className="p-mt-6" >
                 <div className="p-field p-grid">
                     <div className="p-col">
-                        <InputText placeholder="... Email Adresse" id="email" name="Email" onChange={e => setEmail(e.target.value)} type="text" className="email"/>
+                        <InputText placeholder="Email Adresse" id="email" name="Email" onChange={e => setEmail(e.target.value)} type="text" className="email"/>
                     </div>
                 </div>
                 
                 <div className="p-field p-grid">
                     <div className="p-col">
-                        <Password toggleMask placeholder="... Password "id="password" name="Password" onChange={e => setPassword(e.target.value)} type="text" feedback={false} className="password"/>
+                        <Password placeholder="Password "id="password" name="Password" onChange={e => setPassword(e.target.value)} type="text" feedback={false} className="password"/>
                     </div>
                 </div>
             </div>
