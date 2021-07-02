@@ -32,8 +32,8 @@ const CreateRecipe = (props) => {
     const [recipeImageUrl, setRecipeImageUrl] = useState("");
     const [recipeavgtime, setRecipeAvgTime] = useState('30');
     const [recipedifficulty, setRecipeDifficulty] = useState();
-    const [recipeingredients, setRecipeIngredients] = useState();
-    const [recipeinstruction, setRecipeInstruction] = useState();
+    const [recipeingredients, setRecipeIngredients] = useState("");
+    const [recipeinstruction, setRecipeInstruction] = useState("");
     const [selectedcategorys, setSelectedCategorys] = useState();
 
     const difficultys = [
@@ -59,17 +59,16 @@ const CreateRecipe = (props) => {
        setRecipeName("");
        setRecipeImageUrl("");
        setRecipeAvgTime("30");
-       setRecipeDifficulty(""); 
+       setRecipeDifficulty(); 
        setRecipeIngredients(""); 
        setRecipeInstruction("");
-       setSelectedCategorys("");
+       setSelectedCategorys();
    };
     
    const checkIfInputIsValid = () =>{
         console.log(recipeName , recipeImageUrl , recipedifficulty , recipeingredients , recipeinstruction , selectedcategorys)
         //ich kann nicht selectedcategorys mit ins IF nehem ... dann geht es nicht mehr idk
-        //if (recipeName & recipeImageUrl & recipeingredients & recipeinstruction & recipedifficulty !== undefined ){
-        if (true) {
+        if ((recipeName & recipeImageUrl & recipeingredients & recipeinstruction !== "" )&(recipedifficulty !== undefined)){
             
             addRecipe();
         }
