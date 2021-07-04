@@ -49,6 +49,21 @@ const Login = (props) => {
     }
 
     /**
+     * Request cat pic from thatcopy.pw/catapi
+     * @returns Cat pic webp url
+     */
+    const requestCatPic = async () => {
+        const res = await axios({
+            method: "get",
+            url: "https://thatcopy.pw/catapi/rest/"
+          }).catch(error => {
+            return { error: error };
+          });
+
+          return res.data.webpurl;
+    }
+
+    /**
      * Sends Email and password to api and checks response
      */
     const login = async () => {
@@ -82,12 +97,14 @@ const Login = (props) => {
      * Sends a new email and password to the backend to register a new user
      */
     const register = async () => {
+        const picurl = await requestCatPic();
         const res = await axios({
             method: "post",
             url: "https://ratatouilleexpress.retch.duckdns.org/api/accountmgr/register",
             data: {
-                "email": Email,
-                "password": Pass
+                "email": Email.toLocaleLowerCase(),
+                "password": Pass,
+                "pictureurl": picurl
             }
           }).catch(error => {
             return { error: error };
