@@ -34,7 +34,7 @@ const CreateRecipe = (props) => {
     const [recipedifficulty, setRecipeDifficulty] = useState();
     const [recipeingredients, setRecipeIngredients] = useState("");
     const [recipeinstruction, setRecipeInstruction] = useState("");
-    const [selectedcategorys, setSelectedCategorys] = useState();
+    const [selectedcategorys, setSelectedCategorys] = useState([]);
 
     const difficultys = [
         {name: 'einfach'},
@@ -62,19 +62,49 @@ const CreateRecipe = (props) => {
        setRecipeDifficulty(); 
        setRecipeIngredients(""); 
        setRecipeInstruction("");
-       setSelectedCategorys();
+       setSelectedCategorys([]);
    };
     
    const checkIfInputIsValid = () =>{
         console.log(recipeName , recipeImageUrl , recipedifficulty , recipeingredients , recipeinstruction , selectedcategorys)
-        //ich kann nicht selectedcategorys mit ins IF nehem ... dann geht es nicht mehr idk
-        if ((recipeName & recipeImageUrl & recipeingredients & recipeinstruction !== "" )&(recipedifficulty !== undefined)){
-            
-            addRecipe();
+
+        if(recipedifficulty){
+            if(recipeinstruction !== ""){
+                if(recipeingredients !== ""){
+                    if(recipeImageUrl !== ""){
+                        if(recipeName !== ""){
+                            if(selectedcategorys.length == 0){
+                                console.log("arrrrraaaay:"+ selectedcategorys)
+                                showInputValidError("Kategorien");
+                               }   
+                            else{
+                                addRecipe()
+                                console.log("Kategorien: " + recipeName)
+                               }
+                        }   
+                        else{
+                            showInputValidError("Rezeptname");
+                            console.log("Rezeptname: " + recipeName)
+                        }
+                    }
+                    else{
+                        showInputValidError("Bild Url");
+                        console.log("Bild Url: " + recipeImageUrl)
+                    }
+                }
+                else{
+                    showInputValidError("Zutaten");
+                    console.log("Zutaten: " + recipeingredients)
+                }
+            }
+            else{
+                showInputValidError("Arbeitsanweisung");
+                console.log("Arbeitsanweisung: " + recipeinstruction)
+            }
         }
         else{
-            
-            showInputValidError();
+            showInputValidError("Schwierigkeit");
+            console.log("Schwierigkeit: " + recipedifficulty)
         }
     };  
    const showAddRecipeSuccess = () => {
@@ -87,9 +117,9 @@ const CreateRecipe = (props) => {
         toast.current.show({severity:'error', summary: 'Speichern fehlgeschlagen!', detail:'Bitte versuchen Sie es erneut.', life: 3000, closable: false});
     };
 
-    const showInputValidError = () => {
+    const showInputValidError = (entry) => {
         toast.current.clear();
-        toast.current.show({severity:'error', summary: 'Es fehlen etwas!', detail:'Bitte alle Felder füllen.', life: 3000, closable: false});
+        toast.current.show({severity:'error', summary: ("Es fehlt "+ entry + "!"), detail:'Bitte alle Felder füllen.', life: 3000, closable: false});
     };
 
     const clearToast = () => {
