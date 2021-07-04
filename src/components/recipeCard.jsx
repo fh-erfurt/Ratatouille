@@ -24,22 +24,27 @@ const RecipeCard = ({cardProduct}) => {
            });
         }
 
-    const checkUserStatus = () =>{
-        if(window.$id === undefined && window.$id !== cardProduct.creatorId)
-        {
-            <p>nicht von mir</p>
+        const editRecipe = () =>{
+
         }
-        else if(window.$id === cardProduct.creatorId){
-            <p>von mir</p>
+
+    const checkUserStatus = () =>{
+        if(window.$id === undefined || window.$id !== cardProduct.creatorId)
+        {
+            return(<div onClick={setfavorite} className = "recipeButton"><Button icon="pi pi-heart" className="p-button-rounded p-button-help p-button-text"/></div>); 
+        }
+        else if(window.$id === cardProduct.creatorId)
+        {
+            return(<div onClick={editRecipe} className = "recipeButton"><Button icon="pi pi-pencil" className="p-button-rounded p-button-help p-button-text"/></div>);
         }
     }
 
     return(
-    checkUserStatus(),
+    
     console.log(cardProduct.creatorId),
     
     <Card className="p-mb-2" title={cardProduct.name} subTitle={<Chip label={cardProduct.categories} className="p-mr-2 p-mb-2 custom-chip" />} style={{ width: '25em', height:'30em'}} footer={cardProduct.averagetimeinminutes + " Minuten"} header={<div><img alt="pictureRecipe" src={cardProduct.imageurl}></img></div>}>
-        <div onClick={setfavorite} className = "likeButton"><Button icon="pi pi-heart" className="p-button-rounded p-button-help p-button-text"/></div>
+        <div className = "button">{checkUserStatus()}</div>
     </Card>
     
     )
