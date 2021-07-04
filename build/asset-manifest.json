@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/Ratatouille/build/static/css/main.7c1310f3.chunk.css",
-    "main.js": "/Ratatouille/build/static/js/main.dbe1e8b6.chunk.js",
-    "main.js.map": "/Ratatouille/build/static/js/main.dbe1e8b6.chunk.js.map",
-    "runtime-main.js": "/Ratatouille/build/static/js/runtime-main.53b6b08e.js",
-    "runtime-main.js.map": "/Ratatouille/build/static/js/runtime-main.53b6b08e.js.map",
+    "main.css": "/Ratatouille/build/static/css/main.160d29ef.chunk.css",
+    "main.js": "/Ratatouille/build/static/js/main.097de40f.chunk.js",
+    "main.js.map": "/Ratatouille/build/static/js/main.097de40f.chunk.js.map",
+    "runtime-main.js": "/Ratatouille/build/static/js/runtime-main.ad81192f.js",
+    "runtime-main.js.map": "/Ratatouille/build/static/js/runtime-main.ad81192f.js.map",
     "static/css/2.9f6fea01.chunk.css": "/Ratatouille/build/static/css/2.9f6fea01.chunk.css",
-    "static/js/2.6aceba61.chunk.js": "/Ratatouille/build/static/js/2.6aceba61.chunk.js",
-    "static/js/2.6aceba61.chunk.js.map": "/Ratatouille/build/static/js/2.6aceba61.chunk.js.map",
-    "static/js/3.a4f0fd22.chunk.js": "/Ratatouille/build/static/js/3.a4f0fd22.chunk.js",
-    "static/js/3.a4f0fd22.chunk.js.map": "/Ratatouille/build/static/js/3.a4f0fd22.chunk.js.map",
+    "static/js/2.ae0e6cdc.chunk.js": "/Ratatouille/build/static/js/2.ae0e6cdc.chunk.js",
+    "static/js/2.ae0e6cdc.chunk.js.map": "/Ratatouille/build/static/js/2.ae0e6cdc.chunk.js.map",
+    "static/js/3.7ffc90d4.chunk.js": "/Ratatouille/build/static/js/3.7ffc90d4.chunk.js",
+    "static/js/3.7ffc90d4.chunk.js.map": "/Ratatouille/build/static/js/3.7ffc90d4.chunk.js.map",
     "index.html": "/Ratatouille/build/index.html",
     "static/css/2.9f6fea01.chunk.css.map": "/Ratatouille/build/static/css/2.9f6fea01.chunk.css.map",
-    "static/css/main.7c1310f3.chunk.css.map": "/Ratatouille/build/static/css/main.7c1310f3.chunk.css.map",
-    "static/js/2.6aceba61.chunk.js.LICENSE.txt": "/Ratatouille/build/static/js/2.6aceba61.chunk.js.LICENSE.txt",
+    "static/css/main.160d29ef.chunk.css.map": "/Ratatouille/build/static/css/main.160d29ef.chunk.css.map",
+    "static/js/2.ae0e6cdc.chunk.js.LICENSE.txt": "/Ratatouille/build/static/js/2.ae0e6cdc.chunk.js.LICENSE.txt",
     "static/media/imageHome.adcf868c.PNG": "/Ratatouille/build/static/media/imageHome.adcf868c.PNG",
     "static/media/primeicons.css": "/Ratatouille/build/static/media/primeicons.e61f3495.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.53b6b08e.js",
+    "static/js/runtime-main.ad81192f.js",
     "static/css/2.9f6fea01.chunk.css",
-    "static/js/2.6aceba61.chunk.js",
-    "static/css/main.7c1310f3.chunk.css",
-    "static/js/main.dbe1e8b6.chunk.js"
+    "static/js/2.ae0e6cdc.chunk.js",
+    "static/css/main.160d29ef.chunk.css",
+    "static/js/main.097de40f.chunk.js"
   ]
 }
