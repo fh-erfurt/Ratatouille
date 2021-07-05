@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Ratatouille/build/static/css/main.79570e57.chunk.css",
-    "main.js": "/Ratatouille/build/static/js/main.5fd8ff11.chunk.js",
-    "main.js.map": "/Ratatouille/build/static/js/main.5fd8ff11.chunk.js.map",
+    "main.css": "/Ratatouille/build/static/css/main.9fa77244.chunk.css",
+    "main.js": "/Ratatouille/build/static/js/main.ebd5251e.chunk.js",
+    "main.js.map": "/Ratatouille/build/static/js/main.ebd5251e.chunk.js.map",
     "runtime-main.js": "/Ratatouille/build/static/js/runtime-main.ad81192f.js",
     "runtime-main.js.map": "/Ratatouille/build/static/js/runtime-main.ad81192f.js.map",
     "static/css/2.9f6fea01.chunk.css": "/Ratatouille/build/static/css/2.9f6fea01.chunk.css",
@@ -12,16 +12,16 @@
     "static/js/3.7ffc90d4.chunk.js.map": "/Ratatouille/build/static/js/3.7ffc90d4.chunk.js.map",
     "index.html": "/Ratatouille/build/index.html",
     "static/css/2.9f6fea01.chunk.css.map": "/Ratatouille/build/static/css/2.9f6fea01.chunk.css.map",
-    "static/css/main.79570e57.chunk.css.map": "/Ratatouille/build/static/css/main.79570e57.chunk.css.map",
+    "static/css/main.9fa77244.chunk.css.map": "/Ratatouille/build/static/css/main.9fa77244.chunk.css.map",
     "static/js/2.b38115d2.chunk.js.LICENSE.txt": "/Ratatouille/build/static/js/2.b38115d2.chunk.js.LICENSE.txt",
-    "static/media/imageHome.adcf868c.PNG": "/Ratatouille/build/static/media/imageHome.adcf868c.PNG",
+    "static/media/Cooking.1f16cdcd.png": "/Ratatouille/build/static/media/Cooking.1f16cdcd.png",
     "static/media/primeicons.css": "/Ratatouille/build/static/media/primeicons.e61f3495.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.ad81192f.js",
     "static/css/2.9f6fea01.chunk.css",
     "static/js/2.b38115d2.chunk.js",
-    "static/css/main.79570e57.chunk.css",
-    "static/js/main.5fd8ff11.chunk.js"
+    "static/css/main.9fa77244.chunk.css",
+    "static/js/main.ebd5251e.chunk.js"
   ]
 }
