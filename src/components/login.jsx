@@ -150,21 +150,24 @@ const Login = (props) => {
     return (
         <React.Fragment>
             <Toast ref={toast} onClick={clearToast} className="ToastMsg" />
-            <div className="p-mt-6" >
-                <div className="p-field p-grid">
-                    <div className="p-col">
-                        <InputText placeholder="Email Adresse" id="email" name="Email" onChange={e => setEmail(e.target.value)} type="text" className="email"/>
-                    </div>
+                <div className="p-d-block p-mx-auto p-md-2 p-mt-6 loginform">
+                        <div className="p-inputgroup">
+                            <span className="p-inputgroup-addon">
+                                <i className="pi pi-user"></i>
+                            </span>
+                            <InputText placeholder="Email Adresse" id="email" name="Email" onChange={e => setEmail(e.target.value)} type="text"/>
+                        </div>
+                        <div className="p-inputgroup p-mt-1">
+                            <span className="p-inputgroup-addon">
+                                <i className="pi pi-key"></i>
+                            </span>
+                            <Password toggleMask placeholder="Password "id="password" name="Password" onChange={e => setPassword(e.target.value)} type="text" feedback={false}/>
+                        </div>
+                        <div className="p-mt-2 buttons">
+                            <Button onClick={login} label="Anmelden" className="p-button-primary p-mr-2 p-shadow-1" />
+                            <Button onClick={register} label="Registrieren" className="p-button-primary p-shadow-1" />
+                        </div>
                 </div>
-                
-                <div className="p-field p-grid">
-                    <div className="p-col">
-                        <Password placeholder="Password "id="password" name="Password" onChange={e => setPassword(e.target.value)} type="text" feedback={false} className="password"/>
-                    </div>
-                </div>
-            </div>
-            <Button onClick={login} label="Anmelden" className="p-button-primary p-mr-2 p-shadow-1" />
-            <Button onClick={register} label="Registrieren" className="p-button-primary p-shadow-1" />
         </React.Fragment>
     );
 };
