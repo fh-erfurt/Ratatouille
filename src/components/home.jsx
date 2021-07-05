@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Carousel } from 'primereact/carousel';
-import imageHome from '../images/imageHome.PNG'
+import LetsGet from '../images/Lets_get_.png';
+import Cooking from '../images/Cooking.png';
 import axios from "axios";
 import { Card } from 'primereact/card';
 
@@ -20,7 +21,7 @@ const Home = () => {
                 let allRecipes = recipecards;
                 allRecipes.push (
                     <React.Fragment key={product.id}>
-                        <Card title={product.name} header={<img src={product.imageurl}></img>} style={{ width: '33em'}}/>
+                        <Card className="Card" title={product.name} footer={product.averagetimeinminutes + " Minuten"} header={<img src={product.imageurl}></img>} style={{border:'1px solid var(--surface-d)'}}/>
                     </React.Fragment>
                 );
                 setRecipeCards(allRecipes);
@@ -44,17 +45,36 @@ const Home = () => {
     const itemTemplate = (recipes) => {
       return recipes;
     }
-  
+    const responsiveOptions = [
+        {
+            breakpoint: '1200px',
+            numVisible: 3,
+            numScroll: 2
+        },
+        {
+            breakpoint: '1020px',
+            numVisible: 2,
+            numScroll: 2
+        },
+        {
+            breakpoint: '550px',
+            numVisible: 1,
+            numScroll: 1
+        }
+    ];
 
     return (
-        <div className="home">
-            <div className="row">
-            <img alt="Let's get Cooking" src={imageHome} ></img>
-            <img alt="Bild" src="" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} height="500" ></img>
-            </div>
-         <div className="card">
-         <Carousel value={recipecards} itemTemplate={itemTemplate} numVisible={3} numScroll={1} circular
-                    autoplayInterval={4000}  />
+        <div className="home" class="p-mt-6">
+            <div className="row" class="p-grid p-m-3">
+            <div class="p-col">
+            <img class="p-mr-5" className="Images" alt="Let's" src={LetsGet} width="450px"></img> 
+            <img alt="logo" class="p-mr-2" src="showcase/images/logo.png" onError={(e) => e.target.src='https://i.ibb.co/d6P2dT2/rataicon.png'}
+              className="logo" width="180px"></img>
+             <img class="p-ml-5" className="Images" alt="Cooking" src={Cooking} width="450px"></img></div></div>
+
+         <div className="card" class="p-mt-6">
+         <Carousel value={recipecards} itemTemplate={itemTemplate} numVisible={4} numScroll={2} responsiveOptions={responsiveOptions}circular
+                    autoplayInterval={5000}  />
          </div>
          </div>
     );

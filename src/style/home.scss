@@ -1,9 +1,15 @@
-.row{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
+.Card {
+  width:90%;
+  height:26.1em;
+}
+@media only screen and (max-width: 750px) {
+  .Images{
+    width:60%;
   }
-  .row img{
-    width:100%;
-    object-fit: contain;
+  .logo{
+    width:22%;
   }
+}
+
+
+
