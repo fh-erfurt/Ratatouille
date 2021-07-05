@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Ratatouille/build/static/css/main.160d29ef.chunk.css",
-    "main.js": "/Ratatouille/build/static/js/main.fe047e50.chunk.js",
-    "main.js.map": "/Ratatouille/build/static/js/main.fe047e50.chunk.js.map",
+    "main.js": "/Ratatouille/build/static/js/main.d368741e.chunk.js",
+    "main.js.map": "/Ratatouille/build/static/js/main.d368741e.chunk.js.map",
     "runtime-main.js": "/Ratatouille/build/static/js/runtime-main.ad81192f.js",
     "runtime-main.js.map": "/Ratatouille/build/static/js/runtime-main.ad81192f.js.map",
     "static/css/2.9f6fea01.chunk.css": "/Ratatouille/build/static/css/2.9f6fea01.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.9f6fea01.chunk.css",
     "static/js/2.b38115d2.chunk.js",
     "static/css/main.160d29ef.chunk.css",
-    "static/js/main.fe047e50.chunk.js"
+    "static/js/main.d368741e.chunk.js"
   ]
 }
