@@ -40,12 +40,27 @@ const Login = (props) => {
         toast.current.show({severity:'error', summary: 'Registrierung fehlgeschlagen', detail:'Email Adresse wird bereits verwendet', life: 3000, closable: false});
     }
 
+    const showNoValidCredentialsError = () => {
+        toast.current.clear();
+        toast.current.show({severity:'error', summary: 'Registrierung fehlgeschlagen', detail: 'Bitte eine gültige Daten angeben', life: 3000, closable: false});
+    }
+
     const sleep = (milliseconds) => {
         return new Promise(resolve => setTimeout(resolve, milliseconds))
     }
 
     const clearToast = () => {
         toast.current.clear();
+    }
+
+    /**
+     * Cheks whether an email is valid
+     * @param {*} email 
+     * @returns true or false depending on whether it is a valid email
+     */
+    const validateEmail = (email) => {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
     }
 
     /**
@@ -67,7 +82,8 @@ const Login = (props) => {
      * Sends Email and password to api and checks response
      */
     const login = async () => {
-        const res = await axios({
+        if (Pass !== "") {
+            const res = await axios({
             method: "post",
             url: "https://ratatouilleexpress.retch.duckdns.org/api/accountmgr/login",
             data: {
@@ -91,18 +107,24 @@ const Login = (props) => {
           else {
             showLoginError();
           }
+        }
+        else {
+            showNoValidCredentialsError();
+        }
     }
 
     /**
      * Sends a new email and password to the backend to register a new user
      */
     const register = async () => {
-        const picurl = await requestCatPic();
-        const res = await axios({
+        const mail = Email.toLocaleLowerCase();
+        if (validateEmail(mail) && Pass !== "") {
+            const picurl = await requestCatPic();
+            const res = await axios({
             method: "post",
             url: "https://ratatouilleexpress.retch.duckdns.org/api/accountmgr/register",
             data: {
-                "email": Email.toLocaleLowerCase(),
+                "email": mail,
                 "password": Pass,
                 "pictureurl": picurl
             }
@@ -119,6 +141,10 @@ const Login = (props) => {
           else {
               showRegistrationError();
           }
+        }
+        else {
+            showNoValidCredentialsError();
+        }
     }
 
     return (
