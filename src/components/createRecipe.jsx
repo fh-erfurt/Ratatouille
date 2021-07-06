@@ -64,6 +64,10 @@ const CreateRecipe = (props) => {
        setRecipeInstruction("");
        setSelectedCategorys([]);
    };
+
+   const setImageUrlToDefault = () =>{
+    setRecipeImageUrl("http://myminidoxie.com/wp-content/uploads/2012/11/which-came-first-the-wiener-or-the-dachshund.jpg");
+};
     
    const checkIfInputIsValid = () =>{
         console.log(recipeName , recipeImageUrl , recipedifficulty , recipeingredients , recipeinstruction , selectedcategorys)
@@ -72,24 +76,46 @@ const CreateRecipe = (props) => {
             if(recipeinstruction !== ""){
                 if(recipeingredients !== ""){
                     if(recipeImageUrl !== ""){
+                        if(recipeImageUrl.match(/(https?:\/\/.*\.(?:png|jpg|jpeg|gif|))/) != null){
+                            if(recipeName !== ""){
+                                if(selectedcategorys.length == 0){
+                                    console.log("arrrrraaaay:"+ selectedcategorys)
+                                    showInputValidError("Kategorien");
+                                   }   
+                                else{
+                                    addRecipe("");
+                                    console.log("Kategorien: " + selectedcategorys)
+                                   }
+                            }   
+                            else{
+                                showInputValidError("Rezeptname");
+                                console.log("Rezeptname: " + recipeName)
+                            }
+                        }
+                        else
+                        {
+                            showAddRecipeImageUrlError();
+                        }
+                        
+                    }
+                    else{
+                        //showInputValidError("Bild Url");
+                        //console.log("Bild Url: " + recipeImageUrl)
+                        setImageUrlToDefault();
                         if(recipeName !== ""){
                             if(selectedcategorys.length == 0){
                                 console.log("arrrrraaaay:"+ selectedcategorys)
                                 showInputValidError("Kategorien");
                                }   
                             else{
-                                addRecipe()
-                                console.log("Kategorien: " + recipeName)
+                                addRecipe("mit Platzhalter als Bild");
+                                console.log("Kategorien: " + selectedcategorys)
                                }
                         }   
                         else{
                             showInputValidError("Rezeptname");
                             console.log("Rezeptname: " + recipeName)
                         }
-                    }
-                    else{
-                        showInputValidError("Bild Url");
-                        console.log("Bild Url: " + recipeImageUrl)
                     }
                 }
                 else{
@@ -107,10 +133,11 @@ const CreateRecipe = (props) => {
             console.log("Schwierigkeit: " + recipedifficulty)
         }
     };  
-   const showAddRecipeSuccess = () => {
+   const showAddRecipeSuccess = (entry) => {
         toast.current.clear();
-        toast.current.show({severity:'success', summary: 'Rezept wurde gespeichert!', detail:"", life: 1500, closable: false});
+        toast.current.show({severity:'success', summary: 'Rezept wurde gespeichert!', detail:(entry), life: 1500, closable: false});
     };
+    
 
     const showAddRecipeError = () => {
         toast.current.clear();
@@ -122,11 +149,16 @@ const CreateRecipe = (props) => {
         toast.current.show({severity:'error', summary: ("Es fehlt "+ entry + "!"), detail:'Bitte alle Felder füllen.', life: 3000, closable: false});
     };
 
+    const showAddRecipeImageUrlError = () => {
+        toast.current.clear();
+        toast.current.show({severity:'error', summary: 'Bild Url ist ungültig!', detail:'Die Url sollte mit "https://" beginnen und mit ".jpg, .png, .jpeg, .gif" enden.', life: 5000, closable: false});
+    };
+
     const clearToast = () => {
         toast.current.clear();
     }
 
-   const addRecipe = async () => {
+   const addRecipe = async (entry) => {
        console.log(window.$id);
        console.log(JSON.stringify(selectedcategorys));
        console.log(recipedifficulty);
@@ -149,7 +181,7 @@ const CreateRecipe = (props) => {
 
           if (res.status === 200) {
                 changeInputToDefault();
-                showAddRecipeSuccess();
+                showAddRecipeSuccess(entry);
                 sleep(1500).then(r => {
                     handleOnAddRecipeSuccess();
                 });
