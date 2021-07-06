@@ -1,7 +1,3 @@
-.recipecard{
-    padding:1%;
-  }
-  
   .recipe{
     display:flex;
     flex-direction: column;
@@ -10,10 +6,6 @@
     display:flex;
     flex-direction: row;
     justify-content: space-around;
-    padding-bottom:2%;
-  }
-  .recipeRight{
-    margin:1%;
   }
   @media only screen and (max-width: 800px){
     .recipeTop{

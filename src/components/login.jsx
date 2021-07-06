@@ -40,6 +40,11 @@ const Login = (props) => {
         toast.current.show({severity:'error', summary: 'Registrierung fehlgeschlagen', detail:'Email Adresse wird bereits verwendet', life: 3000, closable: false});
     }
 
+    const showNoValidCredentialsError = () => {
+        toast.current.clear();
+        toast.current.show({severity:'error', summary: 'Registrierung fehlgeschlagen', detail: 'Bitte eine gültige Daten angeben', life: 3000, closable: false});
+    }
+
     const sleep = (milliseconds) => {
         return new Promise(resolve => setTimeout(resolve, milliseconds))
     }
@@ -49,10 +54,36 @@ const Login = (props) => {
     }
 
     /**
+     * Cheks whether an email is valid
+     * @param {*} email 
+     * @returns true or false depending on whether it is a valid email
+     */
+    const validateEmail = (email) => {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+
+    /**
+     * Request cat pic from thatcopy.pw/catapi
+     * @returns Cat pic webp url
+     */
+    const requestCatPic = async () => {
+        const res = await axios({
+            method: "get",
+            url: "https://thatcopy.pw/catapi/rest/"
+          }).catch(error => {
+            return { error: error };
+          });
+
+          return res.data.webpurl;
+    }
+
+    /**
      * Sends Email and password to api and checks response
      */
     const login = async () => {
-        const res = await axios({
+        if (Pass !== "") {
+            const res = await axios({
             method: "post",
             url: "https://ratatouilleexpress.retch.duckdns.org/api/accountmgr/login",
             data: {
@@ -76,18 +107,26 @@ const Login = (props) => {
           else {
             showLoginError();
           }
+        }
+        else {
+            showNoValidCredentialsError();
+        }
     }
 
     /**
      * Sends a new email and password to the backend to register a new user
      */
     const register = async () => {
-        const res = await axios({
+        const mail = Email.toLocaleLowerCase();
+        if (validateEmail(mail) && Pass !== "") {
+            const picurl = await requestCatPic();
+            const res = await axios({
             method: "post",
             url: "https://ratatouilleexpress.retch.duckdns.org/api/accountmgr/register",
             data: {
-                "email": Email,
-                "password": Pass
+                "email": mail,
+                "password": Pass,
+                "pictureurl": picurl
             }
           }).catch(error => {
             return { error: error };
@@ -102,26 +141,33 @@ const Login = (props) => {
           else {
               showRegistrationError();
           }
+        }
+        else {
+            showNoValidCredentialsError();
+        }
     }
 
     return (
         <React.Fragment>
             <Toast ref={toast} onClick={clearToast} className="ToastMsg" />
-            <div className="p-mt-6" >
-                <div className="p-field p-grid">
-                    <div className="p-col">
-                        <InputText placeholder="... Email Adresse" id="email" name="Email" onChange={e => setEmail(e.target.value)} type="text" className="email"/>
-                    </div>
+                <div className="p-d-block p-mx-auto p-md-2 p-mt-6 loginform">
+                        <div className="p-inputgroup">
+                            <span className="p-inputgroup-addon">
+                                <i className="pi pi-user"></i>
+                            </span>
+                            <InputText placeholder="Email Adresse" id="email" name="Email" onChange={e => setEmail(e.target.value)} type="text"/>
+                        </div>
+                        <div className="p-inputgroup p-mt-1">
+                            <span className="p-inputgroup-addon">
+                                <i className="pi pi-key"></i>
+                            </span>
+                            <Password toggleMask placeholder="Password "id="password" name="Password" onChange={e => setPassword(e.target.value)} type="text" feedback={false}/>
+                        </div>
+                        <div className="p-mt-2 buttons">
+                            <Button onClick={login} label="Anmelden" className="p-button-primary p-mr-2 p-shadow-1" />
+                            <Button onClick={register} label="Registrieren" className="p-button-primary p-shadow-1" />
+                        </div>
                 </div>
-                
-                <div className="p-field p-grid">
-                    <div className="p-col">
-                        <Password toggleMask placeholder="... Password "id="password" name="Password" onChange={e => setPassword(e.target.value)} type="text" feedback={false} className="password"/>
-                    </div>
-                </div>
-            </div>
-            <Button onClick={login} label="Anmelden" className="p-button-primary p-mr-2 p-shadow-1" />
-            <Button onClick={register} label="Registrieren" className="p-button-primary p-shadow-1" />
         </React.Fragment>
     );
 };

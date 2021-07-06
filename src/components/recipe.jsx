@@ -25,7 +25,7 @@ export default class Recipe extends Component {
                <h4>Kategorien</h4>
                <img alt="bild" src="" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} width="400px" />
                </div>
-               <div class="recipeRight">
+               <div class="recipeRight" class="p-mt-4">
                 <Button label="Favorit" icon="pi pi-heart" />
                 <h4>Zutaten</h4>
                     <ListBox value={this.state.selectedIngredient} options={this.ingredients} onChange={(e) => 
