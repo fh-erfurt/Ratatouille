@@ -64,10 +64,12 @@ const RecipeCard = ({cardProduct}) => {
     return(
     
     console.log(cardProduct.creatorId),
+    <div className = "fullCard">
+        <Card className="p-mb-2" title={cardProduct.name} subTitle={loopCategories()} style={{ width: '25em', height:'32em'}} footer={<div className = "p-pb-1 ">{cardProduct.averagetimeinminutes + " Minuten"}</div>} header={<div><img alt="pictureRecipe" src={cardProduct.imageurl}></img></div>}>
+        </Card>
+        <div className = "cardButton">{checkUserStatus()}</div>
+    </div>
     
-    <Card className="p-mb-2" title={cardProduct.name} subTitle={loopCategories()} style={{ width: '25em', height:'32em'}} footer={<div className = "p-pb-1 ">{cardProduct.averagetimeinminutes + " Minuten"}</div>} header={<div><img alt="pictureRecipe" src={cardProduct.imageurl}></img></div>}>
-        <div className = "p-pb-1 p-pr-1">{checkUserStatus()}</div>
-    </Card>
     
     )
     
