@@ -11,13 +11,17 @@ const RecipesMenu = () => {
     const [products, setProducts] = useState(null);
     const [status, setStatus] = useState(404);
     const [recipecards, setRecipeCards] = useState([]);
+    const [favourites, setFavourites] = useState(null);
 
     useLayoutEffect(() => {
         fetchProducts();
+        fetchFavourites();
      }, []);
 
      useEffect(() => {
         if (products) {
+            console.log(products)
+
             products.forEach(product => {
                 let allRecipes = recipecards;
              
@@ -35,6 +39,20 @@ const RecipesMenu = () => {
      }, [products]);
 
     const fetchProducts = async () => {
+        const fav = await axios({
+            method: "get",
+            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes",
+        }).catch(error => {
+            return { error: error };
+        });
+
+        setProducts(fav.data);
+        if (fav.status === 200) {
+            setStatus(200);
+        }
+    };
+
+    const fetchFavourites = async () => {
         const res = await axios({
             method: "get",
             url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes",

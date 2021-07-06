@@ -8,6 +8,8 @@ import { Chip } from 'primereact/chip';
 
 const RecipeCard = ({cardProduct}) => {
     const [loginStatus, setLogingStatus] = useState([]);
+    const [allCategories, setAllCategories] = useState([]);
+    const [categoriecards, setCategorieCards] = useState([]);
 
     const   setfavorite = async () => {
 
@@ -24,10 +26,28 @@ const RecipeCard = ({cardProduct}) => {
            });
         }
 
+        const loopCategories = () =>{
+            
+
+            
+          /*  setAllCategories(cardProduct.categories);
+                
+
+            allCategories.forEach(categorie => {
+                let allCategories = categoriecards;
+             
+                allCategories.push (
+                   
+                    <Chip label={categorie} className="p-mr-2 p-mb-2 custom-chip" />
+                );
+                setCategorieCards(allCategories);
+            })
+   */
+        }
+
         const editRecipe = () =>{
 
         }
-
         
 
     const checkUserStatus = () =>{
@@ -45,7 +65,7 @@ const RecipeCard = ({cardProduct}) => {
     
     console.log(cardProduct.creatorId),
     
-    <Card className="p-mb-2" title={cardProduct.name} subTitle={<Chip label={cardProduct.categories} className="p-mr-2 p-mb-2 custom-chip" />} style={{ width: '25em', height:'32em'}} footer={<div className = "p-pb-1 ">{cardProduct.averagetimeinminutes + " Minuten"}</div>} header={<div><img alt="pictureRecipe" src={cardProduct.imageurl}></img></div>}>
+    <Card className="p-mb-2" title={cardProduct.name} subTitle={loopCategories()} style={{ width: '25em', height:'32em'}} footer={<div className = "p-pb-1 ">{cardProduct.averagetimeinminutes + " Minuten"}</div>} header={<div><img alt="pictureRecipe" src={cardProduct.imageurl}></img></div>}>
         <div className = "p-pb-1 p-pr-1">{checkUserStatus()}</div>
     </Card>
     
