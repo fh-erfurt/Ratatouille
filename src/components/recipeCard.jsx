@@ -2,38 +2,74 @@ import React, { useEffect, useState } from "react";
 import { Card } from 'primereact/card';
 import axios from "axios";
 import { Button } from 'primereact/button';
-
-const RecipeCard = () => {
-    const [products, setProducts] = useState([{id: 1, name: "SUPERyummy", imageurl: "https://cdn.pixabay.com/photo/2017/05/25/21/22/pizza-2344399_960_720.jpg", categories: "[Hauptspeise, Vegetarisch, Vegan, Backen]" },{id: 1, name: "SUPERyummy", imageurl: "https://cdn.pixabay.com/photo/2017/05/25/21/22/pizza-2344399_960_720.jpg", categories: "[Hauptspeise, Vegetarisch, Vegan, Backen]" },{id: 1, name: "SUPERyummy", imageurl: "https://cdn.pixabay.com/photo/2017/05/25/21/22/pizza-2344399_960_720.jpg", categories: "[Hauptspeise, Vegetarisch, Vegan, Backen]" }]);
-    const [currentPosition, setCurrentPosition] = useState(3);
-    const [final, setFinal] = useState([]);
+import { Chip } from 'primereact/chip';
 
 
 
+const RecipeCard = ({cardProduct},{favourites}) => {
+    const [loginStatus, setLogingStatus] = useState([]);
+    const [categoriecards, setCategorieCards] = useState([]);
+    const [parsedCat, setparsedCat] = useState([]);
+    const   setfavorite = async () => {
 
-    const cardheader = (x) => (
-        <img src={x.imageurl} alt="recipe" width="500"/>
-    );  
+         const res = await axios({
+             method: "post",
+             url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/like",
+             data: {
+                 "accountId": window.$id,
+                 "recipeId": cardProduct.id 
+                 
+             }
+           }).catch(error => {
+             return { error: error };
+           });
+        }
 
-    const cardfooter = (
-        <span>
-            <Button label="Favorit" icon="pi pi-heart" />
-        </span>
-    );
+        const loopCategories = () =>{
+            
+            console.log(cardProduct.categories);
+            console.log(JSON.parse(cardProduct.categories));
 
-    const postSomeRecipes = () =>{
-        let x = [];
-        for (let element of products) {
-          x.push(<Card title={element.name} subTitle={element.categories} style={{ width: '25em' }} footer={cardfooter} header={cardheader(element)}/>);  
-        };
-        setFinal(x);
-    };
+
+            JSON.parse(cardProduct.categories).forEach(categorie => {
+                let allCategories = categoriecards;
+             
+                allCategories.push (
+                   
+                    <Chip label={categorie.name} className="p-mr-2 p-mb-2 custom-chip" />
+                );
+                setCategorieCards(allCategories);
+            })
+
+        }
+
+        const editRecipe = () =>{
+
+        }
+        
+
+    const checkUserStatus = () =>{
+        if(window.$id === undefined || window.$id !== cardProduct.creatorId)
+        {
+            return(<div onClick={setfavorite} className = "recipeButton"><Button icon="pi pi-heart" className="p-button-rounded p-button-help p-button-text"/></div>); 
+        }
+        else if(window.$id === cardProduct.creatorId)
+        {
+            return(<div onClick={editRecipe} className = "recipeButton" ><Button icon="pi pi-pencil" className="p-button-rounded p-button-info p-button-text"/></div>);
+        }
+    }
+
+    return(
     
-
-    return (
-        <div class="recipecard"> 
-        {final}
-        </div>
-    );
+    console.log(cardProduct.creatorId),
+    <div className = "fullCard">
+        <Card className="p-mb-2" title={cardProduct.name} subTitle={loopCategories()} style={{ width: '25em', height:'32em'}} footer={<div className = "p-pb-1 ">{cardProduct.averagetimeinminutes + " Minuten"}</div>} header={<div><img alt="pictureRecipe" src={cardProduct.imageurl}></img></div>}>
+        </Card>
+        <div className = "cardButton">{checkUserStatus()}</div>
+    </div>
+    
+    
+    )
+    
 }
 export default RecipeCard;

@@ -9,6 +9,7 @@ import Recipe from './components/recipe';
 import Login from './components/login';
 import Profile from './components/profile';
 import CreateRecipe from './components/createRecipe';
+import Favoriten from './components/favoriten';
 import React from 'react';
 
 import PrimeReact from "primereact/api";
@@ -64,6 +65,13 @@ function App() {
         <CreateRecipe></CreateRecipe>
       </React.Fragment> )
   }
+  const FavoriteRecipe=()=>{
+    return (
+    <React.Fragment>
+      <Header></Header>
+      <Favoriten></Favoriten>
+    </React.Fragment> )
+  }
     return(
       <Router>
         <div className="App">
@@ -82,6 +90,9 @@ function App() {
             </Route>
             <Route path="/create">
               <CreateRecipePage/>
+            </Route>
+            <Route path="/favorites">
+              <FavoriteRecipe/>
             </Route>
             <Route path="/">
               <HomePage/>

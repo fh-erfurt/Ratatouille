@@ -1,8 +1,13 @@
 .recipesmenu{
     padding: 2%;
   }
-  .recipes{
-    display:flex;
-    flex-direction:row;
-    flex-flow: row wrap;
-  }
+
+  .oneRecipe {
+    float:left;
+}
+
+.p-chip.custom-chip {
+  background: var(--primary-color);
+  color: var(--primary-color-text);
+}
+
