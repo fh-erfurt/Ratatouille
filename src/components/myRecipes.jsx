@@ -3,7 +3,7 @@ import { Card } from 'primereact/card';
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import axios from "axios";
 
-const MyRecipesMenu = () => {
+const MyRecipes = () => {
     const [products, setProducts] = useState(null);
     const [status, setStatus] = useState(404);
     const [recipecards, setRecipeCards] = useState([]);
@@ -63,4 +63,4 @@ const MyRecipesMenu = () => {
     }
 }
 
-export default MyRecipesMenu;
+export default MyRecipes;
