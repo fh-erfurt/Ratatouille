@@ -15,7 +15,7 @@ const RecipesMenu = () => {
 
     useLayoutEffect(() => {
         fetchProducts();
-        fetchFavourites();
+        //fetchFavourites();
      }, []);
 
      useEffect(() => {
@@ -29,7 +29,8 @@ const RecipesMenu = () => {
                    
                     <React.Fragment key={product.id}> 
                         <div class="oneRecipe p-p-1 p-m-lg-3 p-b-lg-3"> 
-                        <RecipeCard cardProduct = {product}></RecipeCard>
+                        <RecipeCard cardProduct = {product}
+                          favourites = {favourites}  ></RecipeCard>
                         </div>
                     </React.Fragment>
                 );
@@ -39,20 +40,6 @@ const RecipesMenu = () => {
      }, [products]);
 
     const fetchProducts = async () => {
-        const fav = await axios({
-            method: "get",
-            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes",
-        }).catch(error => {
-            return { error: error };
-        });
-
-        setProducts(fav.data);
-        if (fav.status === 200) {
-            setStatus(200);
-        }
-    };
-
-    const fetchFavourites = async () => {
         const res = await axios({
             method: "get",
             url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes",
@@ -62,6 +49,20 @@ const RecipesMenu = () => {
 
         setProducts(res.data);
         if (res.status === 200) {
+            setStatus(200);
+        }
+    };
+
+    const fetchFavourites = async () => {
+        const fav = await axios({
+            method: "get",
+            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes",
+        }).catch(error => {
+            return { error: error };
+        });
+
+        setProducts(fav.data);
+        if (fav.status === 200) {
             setStatus(200);
         }
     };

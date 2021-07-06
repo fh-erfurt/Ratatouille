@@ -6,11 +6,10 @@ import { Chip } from 'primereact/chip';
 
 
 
-const RecipeCard = ({cardProduct}) => {
+const RecipeCard = ({cardProduct},{favourites}) => {
     const [loginStatus, setLogingStatus] = useState([]);
-    const [allCategories, setAllCategories] = useState([]);
     const [categoriecards, setCategorieCards] = useState([]);
-
+    const [parsedCat, setparsedCat] = useState([]);
     const   setfavorite = async () => {
 
          const res = await axios({
@@ -28,21 +27,20 @@ const RecipeCard = ({cardProduct}) => {
 
         const loopCategories = () =>{
             
+            console.log(cardProduct.categories);
+            console.log(JSON.parse(cardProduct.categories));
 
-            
-          /*  setAllCategories(cardProduct.categories);
-                
 
-            allCategories.forEach(categorie => {
+            JSON.parse(cardProduct.categories).forEach(categorie => {
                 let allCategories = categoriecards;
              
                 allCategories.push (
                    
-                    <Chip label={categorie} className="p-mr-2 p-mb-2 custom-chip" />
+                    <Chip label={categorie.name} className="p-mr-2 p-mb-2 custom-chip" />
                 );
                 setCategorieCards(allCategories);
             })
-   */
+
         }
 
         const editRecipe = () =>{
