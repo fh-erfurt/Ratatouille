@@ -1,75 +1,91 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Card } from 'primereact/card';
 import axios from "axios";
 import { Button } from 'primereact/button';
 import { Chip } from 'primereact/chip';
 
 
+const RecipeCard = (props) => {
+    const [showlike, setShowLike] = useState(props.liked);
 
-const RecipeCard = ({cardProduct},{favourites}) => {
-    const [loginStatus, setLogingStatus] = useState([]);
-    const [categoriecards, setCategorieCards] = useState([]);
-    const [parsedCat, setparsedCat] = useState([]);
-    const   setfavorite = async () => {
+    const toggleLike = async () => {
+        if (window.$id) {
+            const res = await axios({
+            method: "post",
+            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/like",
+            data: {
+                "accountId": window.$id,
+                "recipeId": props.id
+            }
+            }).catch(error => {
+                return { error: error };
+            });
 
-         const res = await axios({
-             method: "post",
-             url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/like",
-             data: {
-                 "accountId": window.$id,
-                 "recipeId": cardProduct.id 
-                 
-             }
-           }).catch(error => {
-             return { error: error };
-           });
-        }
-
-        const loopCategories = () =>{
             
-            console.log(cardProduct.categories);
-            console.log(JSON.parse(cardProduct.categories));
-
-
-            JSON.parse(cardProduct.categories).forEach(categorie => {
-                let allCategories = categoriecards;
-             
-                allCategories.push (
-                   
-                    <Chip label={categorie.name} className="p-mr-2 p-mb-2 custom-chip" />
-                );
-                setCategorieCards(allCategories);
-            })
-
-        }
-
-        const editRecipe = () =>{
-
-        }
-        
-
-    const checkUserStatus = () =>{
-        if(window.$id === undefined || window.$id !== cardProduct.creatorId)
-        {
-            return(<div onClick={setfavorite} className = "recipeButton"><Button icon="pi pi-heart" className="p-button-rounded p-button-help p-button-text"/></div>); 
-        }
-        else if(window.$id === cardProduct.creatorId)
-        {
-            return(<div onClick={editRecipe} className = "recipeButton" ><Button icon="pi pi-pencil" className="p-button-rounded p-button-info p-button-text"/></div>);
+            if (res.status === 200) {
+                if (showlike === false) {
+                    setShowLike(true);
+                }
+                else {
+                    setShowLike(false);
+                }
+            }
         }
     }
 
+    let chips = [];
+    props.categories.forEach((category) => {
+        chips.push(
+            <Chip label={category} className="p-shadow-1 p-mr-2 p-mb-2 custom-chip" />
+        )
+    })
+
+    const header = (
+        <img alt="Card" style={{ height:'15rem', "border-radius": "5px 5px 2px 2px"}} src="showcase/demo/images/usercard.png" onError={(e) => e.target.src=props.img} />
+    );
+
+    let footer;
+    if (window.$id) {
+        if (showlike) {
+        footer = (
+            <span>
+                <Button className="p-shadow-1 likebtn" label="Like" icon="pi pi-check" onClick={toggleLike} />
+            </span>
+        );
+        }
+        else {
+            footer = (
+                <span>
+                    <Button className="p-shadow-1 likebtn" label="Like" icon="pi pi-heart" onClick={toggleLike} />
+                </span>
+            );
+        }
+        }
+        else {
+            if (showlike) {
+            footer = (
+                <span>
+                    <Button disabled className="p-shadow-1 likebtn" label="Like" icon="pi pi-check" onClick={toggleLike} />
+                </span>
+            );
+        }
+        else {
+            footer = (
+                <span>
+                    <Button disabled className="p-shadow-1 likebtn" label="Like" icon="pi pi-heart" onClick={toggleLike} />
+                </span>
+            );
+        }
+    }
+    
     return(
-    
-    console.log(cardProduct.creatorId),
-    <div className = "fullCard">
-        <Card className="p-mb-2" title={cardProduct.name} subTitle={loopCategories()} style={{ width: '25em', height:'32em'}} footer={<div className = "p-pb-1 ">{cardProduct.averagetimeinminutes + " Minuten"}</div>} header={<div><img alt="pictureRecipe" src={cardProduct.imageurl}></img></div>}>
-        </Card>
-        <div className = "cardButton">{checkUserStatus()}</div>
-    </div>
-    
-    
+        <div className="fullCard p-d-block p-mx-auto" >
+            <Card className="cardContent" title={props.name} subTitle={props.time} style={{ "box-shadow": "0 4px 7px 0 rgba(0, 0, 0, 0.15) , 0 6px 10px 0 rgba(0, 0, 0, 0.19)" }} footer={footer} header={header}>
+                <p className="p-m-0" style={{lineHeight: '1.5'}}>{props.description}</p>
+                {chips}
+            </Card>
+        </div>
     )
-    
 }
+
 export default RecipeCard;
