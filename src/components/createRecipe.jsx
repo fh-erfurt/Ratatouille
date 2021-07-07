@@ -158,7 +158,7 @@ const CreateRecipe = (props) => {
         toast.current.clear();
     }
 
-   const addRecipe = async () => {
+   const addRecipe = async (entry) => {
        console.log("Sending recipe to backend");
        let catarray = [];
        console.log(window.$id);
