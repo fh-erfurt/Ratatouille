@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/Ratatouille/build/static/css/main.f05c23e3.chunk.css",
-    "main.js": "/Ratatouille/build/static/js/main.e66deb82.chunk.js",
-    "main.js.map": "/Ratatouille/build/static/js/main.e66deb82.chunk.js.map",
+    "main.css": "/Ratatouille/build/static/css/main.7dc00eb9.chunk.css",
+    "main.js": "/Ratatouille/build/static/js/main.467dd0bf.chunk.js",
+    "main.js.map": "/Ratatouille/build/static/js/main.467dd0bf.chunk.js.map",
     "runtime-main.js": "/Ratatouille/build/static/js/runtime-main.ad81192f.js",
     "runtime-main.js.map": "/Ratatouille/build/static/js/runtime-main.ad81192f.js.map",
     "static/css/2.9f6fea01.chunk.css": "/Ratatouille/build/static/css/2.9f6fea01.chunk.css",
-    "static/js/2.3fc0d7d5.chunk.js": "/Ratatouille/build/static/js/2.3fc0d7d5.chunk.js",
-    "static/js/2.3fc0d7d5.chunk.js.map": "/Ratatouille/build/static/js/2.3fc0d7d5.chunk.js.map",
+    "static/js/2.51f46a8b.chunk.js": "/Ratatouille/build/static/js/2.51f46a8b.chunk.js",
+    "static/js/2.51f46a8b.chunk.js.map": "/Ratatouille/build/static/js/2.51f46a8b.chunk.js.map",
     "static/js/3.7ffc90d4.chunk.js": "/Ratatouille/build/static/js/3.7ffc90d4.chunk.js",
     "static/js/3.7ffc90d4.chunk.js.map": "/Ratatouille/build/static/js/3.7ffc90d4.chunk.js.map",
     "index.html": "/Ratatouille/build/index.html",
     "static/css/2.9f6fea01.chunk.css.map": "/Ratatouille/build/static/css/2.9f6fea01.chunk.css.map",
-    "static/css/main.f05c23e3.chunk.css.map": "/Ratatouille/build/static/css/main.f05c23e3.chunk.css.map",
-    "static/js/2.3fc0d7d5.chunk.js.LICENSE.txt": "/Ratatouille/build/static/js/2.3fc0d7d5.chunk.js.LICENSE.txt",
+    "static/css/main.7dc00eb9.chunk.css.map": "/Ratatouille/build/static/css/main.7dc00eb9.chunk.css.map",
+    "static/js/2.51f46a8b.chunk.js.LICENSE.txt": "/Ratatouille/build/static/js/2.51f46a8b.chunk.js.LICENSE.txt",
     "static/media/Cooking.1f16cdcd.png": "/Ratatouille/build/static/media/Cooking.1f16cdcd.png",
     "static/media/primeicons.css": "/Ratatouille/build/static/media/primeicons.e61f3495.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.ad81192f.js",
     "static/css/2.9f6fea01.chunk.css",
-    "static/js/2.3fc0d7d5.chunk.js",
-    "static/css/main.f05c23e3.chunk.css",
-    "static/js/main.e66deb82.chunk.js"
+    "static/js/2.51f46a8b.chunk.js",
+    "static/css/main.7dc00eb9.chunk.css",
+    "static/js/main.467dd0bf.chunk.js"
   ]
 }
