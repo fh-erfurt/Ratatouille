@@ -104,7 +104,7 @@ const Profile = (props) => {
                                 <span className="p-inputgroup-addon">
                                     <i className="pi pi-key" ></i>
                                 </span>
-                                <InputText placeholder="... neues Passwort" value={Pass} onChange={e => setPassword(e.target.value)} />
+                                <InputText placeholder="neues Passwort" value={Pass} onChange={e => setPassword(e.target.value)} />
                             </div>
                             <div>
                             <Button onClick={submitPassword} label="Speichern" className="p-button-primary p-mt-1" />
