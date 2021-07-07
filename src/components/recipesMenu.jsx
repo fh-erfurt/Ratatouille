@@ -9,9 +9,9 @@ const RecipesMenu = () => {
     const [recipecards, setRecipeCards] = useState([]);
 
     useLayoutEffect(() => {
-        fetchProducts();
-        fetchFavorites();
         console.clear();
+        fetchProducts();
+        //fetchFavorites();
      }, []);
 
      useLayoutEffect(() => {
@@ -42,6 +42,9 @@ const RecipesMenu = () => {
             })
             setRecipeCards(tempcardarray);
         }
+        else {
+            console.log("no products");
+        }
      // eslint-disable-next-line react-hooks/exhaustive-deps
      }, [products, favorites]);
 
@@ -55,6 +58,28 @@ const RecipesMenu = () => {
         }).catch(error => {
             return { error: error };
         });
+
+
+        if (window.$id) {
+            console.log("Fetching favorite recipes with accountId: " + window.$id);
+            const favres = await axios({
+            method: "post",
+            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/myfavorites",
+            data: {
+                "accountId": window.$id
+            }
+            }).catch(error => {
+                return { error: error };
+            });
+
+            
+            if (favres.status === 200) {
+                setFavorites(favres.data);
+            }
+            else {
+                setFavorites([]);
+            }
+        }
 
         setProducts(res.data);
         if (res.status === 200) {
@@ -96,9 +121,7 @@ const RecipesMenu = () => {
 
         setRecipeCards(allRecipes);*/
         const card = (
-            <React.Fragment key={recipe.id}>
-                <RecipeCard className="p-mb-2 p-shadow-2" id={recipe.id} key={recipe.id} liked={alreadyliked} img={recipe.imageurl} categories={catarray} style={{ width: '25em' }} name={recipe.name} time={recipe.averagetimeinminutes + " Minuten"} />
-            </React.Fragment>
+            <RecipeCard className="p-mb-2 p-shadow-2" id={recipe.id} key={recipe.id} liked={alreadyliked} img={recipe.imageurl} categories={catarray} style={{ width: '25em' }} name={recipe.name} time={recipe.averagetimeinminutes + " Minuten"} />
         );
 
         return card; 

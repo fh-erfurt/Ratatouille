@@ -12,20 +12,17 @@ const MyRecipes = () => {
         fetchProducts();
      }, []);
 
-     useEffect(() => {
+     useLayoutEffect(() => {
         if (products) {
+            let tempcardarray = [];
             products.forEach(product => {
-                let allRecipes = recipecards;
-                allRecipes.push (
-                    <React.Fragment key={product.id}>
-                        <div class="oneRecipe p-m-1 p-p-1 p-m-lg-3 p-b-lg-3"> 
-                        <RecipeCard cardProduct = {product}></RecipeCard>
-                        </div>
-                    </React.Fragment>
-                );
-                setRecipeCards(allRecipes);
+                const catarray = product.categories.match(/[A-Za-z0-9_äÄöÖüÜß]+/g);
+
+                tempcardarray.push(genRecipeCard(product, catarray));
             })
+            setRecipeCards(tempcardarray);
         }
+     // eslint-disable-next-line react-hooks/exhaustive-deps
      }, [products]);
 
     const fetchProducts = async () => {
@@ -45,19 +42,31 @@ const MyRecipes = () => {
         }
     };
 
+    const genRecipeCard = (recipe, catarray) => {
+        const card = (
+            <React.Fragment key={recipe.id}>
+                <RecipeCard className="p-mb-2 p-shadow-2" id={recipe.id} key={recipe.id} editable={true} img={recipe.imageurl} categories={catarray} style={{ width: '25em' }} name={recipe.name} time={recipe.averagetimeinminutes + " Minuten"} />
+            </React.Fragment>
+        );
+
+        return card; 
+    }
+
     //Conditional Rendering
     if (status === 200) {
         return (
             <React.Fragment>
+                <div className="cards p-mt-4 p-mb-4">
+                    {recipecards}
+                </div>
                 
-                {recipecards}
             </React.Fragment>
         );
     }
     else {
         return (
             <React.Fragment>
-                <p>Keine vorhandene eigenen Rezepte.</p>
+                <p>Rezepte werden geladen.</p>
             </React.Fragment>
         );
     }

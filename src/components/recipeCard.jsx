@@ -49,40 +49,33 @@ const RecipeCard = (props) => {
         if (showlike) {
         footer = (
             <span>
-                <Button className="p-shadow-1 likebtn" label="Like" icon="pi pi-check" onClick={toggleLike} />
+                <Button className="p-shadow-1 likebtn" label="Like" icon="pi pi-star" onClick={toggleLike} />
             </span>
         );
         }
         else {
             footer = (
                 <span>
-                    <Button className="p-shadow-1 likebtn" label="Like" icon="pi pi-heart" onClick={toggleLike} />
+                    <Button className="p-shadow-1 likebtn" label="Like" icon="pi pi-star-o" onClick={toggleLike} />
                 </span>
             );
         }
         }
-        else {
-            if (showlike) {
-            footer = (
-                <span>
-                    <Button disabled className="p-shadow-1 likebtn" label="Like" icon="pi pi-check" onClick={toggleLike} />
-                </span>
-            );
-        }
-        else {
-            footer = (
-                <span>
-                    <Button disabled className="p-shadow-1 likebtn" label="Like" icon="pi pi-heart" onClick={toggleLike} />
-                </span>
-            );
-        }
+    else {
+        footer = (
+            <span>
+                <Button disabled className="p-shadow-1 likebtn" label="Like" icon="pi pi-star-o" onClick={toggleLike} />
+            </span>
+        );
     }
     
     return(
         <div className="fullCard p-d-block p-mx-auto" >
             <Card className="cardContent" title={props.name} subTitle={props.time} style={{ "box-shadow": "0 4px 7px 0 rgba(0, 0, 0, 0.15) , 0 6px 10px 0 rgba(0, 0, 0, 0.19)" }} footer={footer} header={header}>
                 <p className="p-m-0" style={{lineHeight: '1.5'}}>{props.description}</p>
-                {chips}
+                <div className="chip-holder">
+                    {chips}
+                </div>
             </Card>
         </div>
     )

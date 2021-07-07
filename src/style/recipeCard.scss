@@ -6,8 +6,21 @@
 
 .cardContent {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    xheight: 32rem;
+    height: 30rem;
+    position: relative;
 }
 
-.likebtn {
+.p-card-footer {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+
+.chip-holder {
+    position: absolute;
+    bottom: 65px;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 100%;
 }

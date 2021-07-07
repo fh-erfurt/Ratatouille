@@ -103,7 +103,7 @@ const Profile = (props) => {
                         <Button onClick={submitPassword} label="Speichern" className="p-button-primary p-mr-2" />
                         </div>
                     </div>
-                    <div className="MyRecepies">
+                    <div className="MyRecipes">
                         <MyRecipes></MyRecipes>
                     </div>
                 </div>
