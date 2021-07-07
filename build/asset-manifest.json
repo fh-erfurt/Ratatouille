@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Ratatouille/build/static/css/main.6abd4aca.chunk.css",
+    "main.css": "/Ratatouille/build/static/css/main.2dd12897.chunk.css",
     "main.js": "/Ratatouille/build/static/js/main.d8d2e661.chunk.js",
     "main.js.map": "/Ratatouille/build/static/js/main.d8d2e661.chunk.js.map",
     "runtime-main.js": "/Ratatouille/build/static/js/runtime-main.ad81192f.js",
@@ -12,7 +12,7 @@
     "static/js/3.7ffc90d4.chunk.js.map": "/Ratatouille/build/static/js/3.7ffc90d4.chunk.js.map",
     "index.html": "/Ratatouille/build/index.html",
     "static/css/2.9f6fea01.chunk.css.map": "/Ratatouille/build/static/css/2.9f6fea01.chunk.css.map",
-    "static/css/main.6abd4aca.chunk.css.map": "/Ratatouille/build/static/css/main.6abd4aca.chunk.css.map",
+    "static/css/main.2dd12897.chunk.css.map": "/Ratatouille/build/static/css/main.2dd12897.chunk.css.map",
     "static/js/2.7496932d.chunk.js.LICENSE.txt": "/Ratatouille/build/static/js/2.7496932d.chunk.js.LICENSE.txt",
     "static/media/Cooking.1f16cdcd.png": "/Ratatouille/build/static/media/Cooking.1f16cdcd.png",
     "static/media/primeicons.css": "/Ratatouille/build/static/media/primeicons.e61f3495.woff"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.ad81192f.js",
     "static/css/2.9f6fea01.chunk.css",
     "static/js/2.7496932d.chunk.js",
-    "static/css/main.6abd4aca.chunk.css",
+    "static/css/main.2dd12897.chunk.css",
     "static/js/main.d8d2e661.chunk.js"
   ]
 }
