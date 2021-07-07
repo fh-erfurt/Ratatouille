@@ -1,5 +1,5 @@
 import RecipeCard from './recipeCard';
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import axios from "axios";
 
 const MyRecipes = () => {

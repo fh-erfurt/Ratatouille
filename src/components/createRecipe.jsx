@@ -78,7 +78,7 @@ const CreateRecipe = (props) => {
                     if(recipeImageUrl !== ""){
                         if(recipeImageUrl.match(/(https?:\/\/.*\.(?:png|jpg|jpeg|gif|))/) != null){
                             if(recipeName !== ""){
-                                if(selectedcategorys.length == 0){
+                                if(selectedcategorys.length === 0){
                                     console.log("arrrrraaaay:"+ selectedcategorys)
                                     showInputValidError("Kategorien");
                                    }   
@@ -103,7 +103,7 @@ const CreateRecipe = (props) => {
                         //console.log("Bild Url: " + recipeImageUrl)
                         setImageUrlToDefault();
                         if(recipeName !== ""){
-                            if(selectedcategorys.length == 0){
+                            if(selectedcategorys.length === 0){
                                 console.log("arrrrraaaay:"+ selectedcategorys)
                                 showInputValidError("Kategorien");
                                }   

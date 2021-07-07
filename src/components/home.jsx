@@ -21,12 +21,13 @@ const Home = () => {
                 let allRecipes = recipecards;
                 allRecipes.push (
                     <React.Fragment key={product.id}>
-                        <Card className="Card" title={product.name} footer={product.averagetimeinminutes + " Minuten"} header={<img src={product.imageurl}></img>} style={{border:'1px solid var(--surface-d)'}}/>
+                        <Card className="Card" title={product.name} footer={product.averagetimeinminutes + " Minuten"} header={<img alt="Product" src={product.imageurl}></img>} style={{border:'1px solid var(--surface-d)'}}/>
                     </React.Fragment>
                 );
                 setRecipeCards(allRecipes);
             })
         }
+     // eslint-disable-next-line react-hooks/exhaustive-deps
      }, [products]);
 
      const fetchProducts = async () => {
