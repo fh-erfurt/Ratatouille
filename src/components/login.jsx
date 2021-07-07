@@ -150,7 +150,7 @@ const Login = (props) => {
     return (
         <React.Fragment>
             <Toast ref={toast} onClick={clearToast} className="ToastMsg" />
-                <div className="p-d-block p-mx-auto p-md-2 p-mt-6 loginform">
+                <div className="p-d-block p-mx-auto p-mt-6 loginform">
                         <div className="p-inputgroup">
                             <span className="p-inputgroup-addon">
                                 <i className="pi pi-user"></i>
