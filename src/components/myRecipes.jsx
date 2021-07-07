@@ -1,5 +1,4 @@
 import RecipeCard from './recipeCard';
-import { Card } from 'primereact/card';
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import axios from "axios";
 
@@ -45,7 +44,7 @@ const MyRecipes = () => {
     const genRecipeCard = (recipe, catarray) => {
         const card = (
             <React.Fragment key={recipe.id}>
-                <RecipeCard className="p-mb-2 p-shadow-2" id={recipe.id} key={recipe.id} editable={true} img={recipe.imageurl} categories={catarray} style={{ width: '25em' }} name={recipe.name} time={recipe.averagetimeinminutes + " Minuten"} />
+                <RecipeCard liked="editable" className="p-mb-2 p-shadow-2" id={recipe.id} key={recipe.id} editable={true} img={recipe.imageurl} categories={catarray} style={{ width: '25em' }} name={recipe.name} time={recipe.averagetimeinminutes + " Minuten"} />
             </React.Fragment>
         );
 
@@ -56,7 +55,7 @@ const MyRecipes = () => {
     if (status === 200) {
         return (
             <React.Fragment>
-                <div className="cards p-mt-4 p-mb-4">
+                <div className="">
                     {recipecards}
                 </div>
                 

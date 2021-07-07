@@ -46,28 +46,36 @@ const RecipeCard = (props) => {
 
     let footer;
     if (window.$id) {
-        if (showlike) {
+        if (showlike === true) {
         footer = (
             <span>
-                <Button className="p-shadow-1 likebtn" label="Like" icon="pi pi-star" onClick={toggleLike} />
+                <Button className="p-shadow-1 likebtn" label="Gemerkt" icon="pi pi-star" onClick={toggleLike} />
             </span>
         );
         }
-        else {
+        else if (showlike === false) {
             footer = (
                 <span>
-                    <Button className="p-shadow-1 likebtn" label="Like" icon="pi pi-star-o" onClick={toggleLike} />
+                    <Button className="p-shadow-1 likebtn" label="Merken" icon="pi pi-star-o" onClick={toggleLike} />
                 </span>
             );
         }
+        else if (showlike === "editable") {
+            footer = (
+            <span>
+                <Button className="p-shadow-1 likebtn" label="Bearbeiten" icon="pi pi-pencil" />
+            </span>
+            )
         }
+    }
     else {
         footer = (
             <span>
-                <Button disabled className="p-shadow-1 likebtn" label="Like" icon="pi pi-star-o" onClick={toggleLike} />
+                <Button disabled className="p-shadow-1 likebtn" label="Merken" icon="pi pi-star-o" onClick={toggleLike} />
             </span>
         );
     }
+    
     
     return(
         <div className="fullCard p-d-block p-mx-auto" >

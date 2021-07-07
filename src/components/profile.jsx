@@ -16,12 +16,17 @@ const Profile = (props) => {
 
     const toast = useRef(null);
 
-    const [Email, setEmail] = useState(window.$email);
+    const [Email, setEmail] = useState("");
     const [Pass, setPassword] = useState("");
+    const [Pic, setPic] = useState("");
 
     const sleep = (milliseconds) => {
         return new Promise(resolve => setTimeout(resolve, milliseconds))
     }
+
+    useEffect(() => {
+        fetchAccountInfo();
+    })
 
     const handleNotLoggedIn = useCallback(() => history.push('/login'), [history]);
     if (window.$email == null) {
@@ -43,7 +48,6 @@ const Profile = (props) => {
     }
 
     const fetchAccountInfo = async () => {
-        let id;
         const res = await axios({
             method: "get",
             url: "https://ratatouilleexpress.retch.duckdns.org/api/accountmgr/" + window.$id,
@@ -53,6 +57,7 @@ const Profile = (props) => {
 
           if (res.status === 200) {
               setEmail(res.data.email);
+              setPic(res.data.pictureurl);
           }
     }
     /**
@@ -85,27 +90,31 @@ const Profile = (props) => {
     return (
         <React.Fragment>
             <Toast ref={toast} onClick={clearToast} />
-            <div className="p-grid p-fluid">
-                    <div className="p-col-12 p-md-4">
-                        <div className="p-inputgroup" style={{width:'400px'}}>
-                            <span className="p-inputgroup-addon">
-                                <i className="pi pi-user" ></i>
-                            </span>
-                            <InputText disabled placeholder="Email Adresse" value={Email} onChange={e => setEmail(e.target.value)} />
+            <div className="p-grid p-fluid p-mt-4">
+                    <div className="p-mx-auto">
+                        <div className="p-col-12 p-md-4">
+                            <img className="profilePic p-shadow-3 p-mb-3" src={Pic} alt="Profile" />
+                            <div className="p-inputgroup" style={{width:'400px'}}>
+                                <span className="p-inputgroup-addon">
+                                    <i className="pi pi-user" ></i>
+                                </span>
+                                <InputText disabled placeholder="Email Adresse" value={Email} onChange={e => setEmail(e.target.value)} />
+                            </div>
+                            <div className="p-inputgroup p-mt-1" style={{width:'400px'}}>
+                                <span className="p-inputgroup-addon">
+                                    <i className="pi pi-key" ></i>
+                                </span>
+                                <InputText placeholder="... neues Passwort" value={Pass} onChange={e => setPassword(e.target.value)} />
+                            </div>
+                            <div>
+                            <Button onClick={submitPassword} label="Speichern" className="p-button-primary p-mt-1" />
+                            </div>
                         </div>
-                        <div className="p-inputgroup" style={{width:'400px'}}>
-                            <span className="p-inputgroup-addon">
-                                <i className="pi pi-key" ></i>
-                            </span>
-                            <InputText placeholder="... neues Passwort" value={Pass} onChange={e => setPassword(e.target.value)} />
                         </div>
-                        <div>
-                        <Button onClick={submitPassword} label="Speichern" className="p-button-primary p-mr-2" />
-                        </div>
-                    </div>
-                    <div className="MyRecipes">
-                        <MyRecipes></MyRecipes>
-                    </div>
+                    
+                </div>
+                <div className="p-mt-4 p-mx-auto MyRecipes">
+                    <MyRecipes></MyRecipes>
                 </div>
                 
         </React.Fragment>

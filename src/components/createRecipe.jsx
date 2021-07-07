@@ -199,7 +199,7 @@ const CreateRecipe = (props) => {
         
         <React.Fragment>
             <Toast ref={toast} onClick={clearToast} className="ToastMsg" />
-            <div className="createrecipe">
+            <div className="createrecipe p-mb-4">
                         <h1 >Rezept erstellen</h1>
                         <span className="recipename">
                             <label htmlFor="recipename">Rezeptname: </label>
@@ -244,8 +244,8 @@ const CreateRecipe = (props) => {
                         </div>
                         <br/>
                         <span>
-                             <Button label="Rezept einreichen" icon="pi pi-check" className="p-button-success p-buttonset" onClick={checkIfInputIsValid}/>
-                             <Button label="Zurücksetzen" icon="pi pi-replay" className="p-button-raised p-button-danger" onClick={changeInputToDefault}/>
+                             <Button label="Rezept einreichen" icon="pi pi-check" className="p-shadow-2 p-button-success p-buttonset p-mr-2" onClick={checkIfInputIsValid}/>
+                             <Button label="Zurücksetzen" icon="pi pi-replay" className="p-shadow-2 p-button-danger" onClick={changeInputToDefault}/>
                         </span>
             </div>
         </React.Fragment>
