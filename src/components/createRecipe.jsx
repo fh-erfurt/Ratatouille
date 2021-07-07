@@ -158,10 +158,13 @@ const CreateRecipe = (props) => {
         toast.current.clear();
     }
 
-   const addRecipe = async (entry) => {
+   const addRecipe = async () => {
+       console.log("Sending recipe to backend");
+       let catarray = [];
        console.log(window.$id);
-       console.log(JSON.stringify(selectedcategorys));
-       console.log(recipedifficulty);
+       selectedcategorys.forEach(cat => {
+           catarray.push(cat.name);
+       })
         const res = await axios({
             method: "post",
             url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/create",
@@ -169,10 +172,10 @@ const CreateRecipe = (props) => {
                 "name": recipeName,
                 "imageurl": recipeImageUrl,
                 "averagetimeinminutes": recipeavgtime,
-                "difficulty": JSON.stringify(recipedifficulty),
+                "difficulty": recipedifficulty.name,
                 "ingredients": recipeingredients,
                 "preparation": recipeinstruction,
-                "categories": JSON.stringify(selectedcategorys),
+                "categories": JSON.stringify(catarray),
                 "creatorId": window.$id
             }
           }).catch(error => {
