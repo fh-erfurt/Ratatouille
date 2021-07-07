@@ -108,7 +108,7 @@ const RecipesMenu = () => {
     if (status === 200) {
         return (
             <React.Fragment>
-                <div className="cards p-mt-4">
+                <div className="cards p-mt-4 p-mb-4">
                     {recipecards}
                 </div>
                 
