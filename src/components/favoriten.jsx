@@ -1,6 +1,4 @@
 import RecipeCard from './recipeCard';
-import { Button } from 'primereact/button';
-import { Card } from 'primereact/card';
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import axios from "axios";
 

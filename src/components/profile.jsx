@@ -20,10 +20,6 @@ const Profile = (props) => {
     const [Pass, setPassword] = useState("");
     const [Pic, setPic] = useState("");
 
-    const sleep = (milliseconds) => {
-        return new Promise(resolve => setTimeout(resolve, milliseconds))
-    }
-
     useEffect(() => {
         fetchAccountInfo();
     })
@@ -46,6 +42,8 @@ const Profile = (props) => {
     const clearToast = () => {
         toast.current.clear();
     }
+    
+
 
     const fetchAccountInfo = async () => {
         const res = await axios({
