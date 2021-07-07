@@ -73,7 +73,7 @@ const Home = () => {
              <img class="p-ml-5" className="Images" alt="Cooking" src={Cooking} width="450px"></img></div></div>
 
          <div className="card" class="p-mt-6">
-         <Carousel value={recipecards} itemTemplate={itemTemplate} numVisible={4} numScroll={2} responsiveOptions={responsiveOptions}circular
+         <Carousel className="carousel" value={recipecards} itemTemplate={itemTemplate} numVisible={4} numScroll={2} responsiveOptions={responsiveOptions}circular
                     autoplayInterval={5000}  />
          </div>
          </div>
