@@ -11,6 +11,7 @@ import Profile from './components/profile';
 import CreateRecipe from './components/createRecipe';
 import Favoriten from './components/favoriten';
 import React from 'react';
+import { HashRouter } from 'react-router-dom';
 
 import PrimeReact from "primereact/api";
 import{
@@ -73,7 +74,7 @@ function App() {
     </React.Fragment> )
   }
     return(
-      <Router>
+      <HashRouter>
         <div className="App">
           <Switch>
             <Route path="/menu">
@@ -99,10 +100,8 @@ function App() {
             </Route>
           </Switch>
         </div>
-      </Router>
+      </HashRouter>
     )
-
- 
 }
 
 export default App;
