@@ -26,55 +26,49 @@ function App() {
   const HomePage=()=>{
     return (
     <React.Fragment>
-      <Header></Header>
       <Home></Home>
     </React.Fragment> )
   }
   const RecipesMenuPage=()=>{
     return (
       <React.Fragment>
-        <Header></Header>
         <RecipesMenu></RecipesMenu>
       </React.Fragment> )
   }
   const RecipePage=()=>{
     return (
       <React.Fragment>
-        <Header></Header>
         <Recipe></Recipe>
       </React.Fragment> )
   }
   const LoginPage=()=>{
     return (
       <React.Fragment>
-        <Header></Header>
         <Login></Login>
       </React.Fragment> )
   }
   const ProfilePage=()=>{
     return (
       <React.Fragment>
-        <Header></Header>
         <Profile></Profile>
       </React.Fragment> )
   }
   const CreateRecipePage=()=>{
     return (
       <React.Fragment>
-        <Header></Header>
         <CreateRecipe></CreateRecipe>
       </React.Fragment> )
   }
   const FavoriteRecipe=()=>{
     return (
     <React.Fragment>
-      <Header></Header>
       <Favoriten></Favoriten>
     </React.Fragment> )
   }
     return(
-      <Router>
+      <Router hashType="noslash" >
         <div className="App">
+          <Header></Header>
           <Switch>
             <Route path="/menu">
               <RecipesMenuPage/>
