@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Card } from 'primereact/card';
 import axios from "axios";
 import { Button } from 'primereact/button';
 import { Chip } from 'primereact/chip';
+import { useHistory } from 'react-router-dom';
 
 
 const RecipeCard = (props) => {
     const [showlike, setShowLike] = useState(props.liked);
+    const history = useHistory();
 
     const toggleLike = async () => {
         if (window.$id) {
@@ -32,6 +34,9 @@ const RecipeCard = (props) => {
             }
         }
     }
+
+    const pushToRecipeDetailPage = useCallback(() => history.push('/recipe/'+ props.id), [history, props.id]);
+
 
     let chips = [];
     props.categories.forEach((category) => {
@@ -63,7 +68,7 @@ const RecipeCard = (props) => {
         else if (showlike === "editable") {
             footer = (
             <span>
-                <Button className="p-shadow-1 likebtn" label="Bearbeiten" icon="pi pi-pencil" />
+                <Button className="p-shadow-1 likebtn" label="Bearbeiten" icon="pi pi-pencil" onClick={pushToRecipeDetailPage} />
             </span>
             )
         }
