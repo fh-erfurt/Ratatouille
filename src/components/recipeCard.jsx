@@ -46,7 +46,7 @@ const RecipeCard = (props) => {
     const deleteRecipe= async () => {
         if (window.$id) {
             const res = await axios({
-            method: "put",
+            method: "delete",
             url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/mycreated/delete/"+ props.id,
             data: {
                 "accountId": window.$id 
