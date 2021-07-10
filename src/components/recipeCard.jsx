@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Card } from 'primereact/card';
 import axios from "axios";
 import { Button } from 'primereact/button';
@@ -11,7 +11,10 @@ import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 const RecipeCard = (props) => {
     const [showlike, setShowLike] = useState(props.liked);
     const history = useHistory();
-
+    const [test, settest] = useState();
+    useEffect(() => {
+        
+     }, [test]);
     const toggleLike = async () => {
         if (window.$id) {
             const res = await axios({
@@ -39,6 +42,7 @@ const RecipeCard = (props) => {
 
     const pushToRecipeDetailPage = useCallback(() => history.push('/recipe/edit/'+ props.id), [history, props.id]);
     const pushToRecipePage = useCallback(() => history.push('/recipe/'+ props.id), [history, props.id]);
+    const pushToProfilpage = useCallback(() => history.push('/'));
     const deleteRecipe= async () => {
         if (window.$id) {
             const res = await axios({
@@ -50,6 +54,7 @@ const RecipeCard = (props) => {
             }).catch(error => {
                 return { error: error };
             });
+            pushToProfilpage();
         }}
 
     const confirm1 = () => {
@@ -60,6 +65,7 @@ const RecipeCard = (props) => {
             acceptLabel: "Ja",
             rejectLabel: "Nein",
             accept: () => deleteRecipe()
+            
 
         });
     };
