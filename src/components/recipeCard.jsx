@@ -106,7 +106,8 @@ const RecipeCard = (props) => {
     else {
         footer = (
             <span>
-                <Button disabled className="p-shadow-1 likebtn" label="Merken" icon="pi pi-star-o" onClick={toggleLike} />
+                <Button className="p-shadow-1 likebtn " label="" icon="pi pi-window-maximize" onClick={pushToRecipePage} />
+                
             </span>
         );
     }
