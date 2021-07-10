@@ -4,6 +4,8 @@ import axios from "axios";
 import { Button } from 'primereact/button';
 import { Chip } from 'primereact/chip';
 import { useHistory } from 'react-router-dom';
+import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+
 
 
 const RecipeCard = (props) => {
@@ -35,8 +37,32 @@ const RecipeCard = (props) => {
         }
     }
 
-    const pushToRecipeDetailPage = useCallback(() => history.push('/recipe/'+ props.id), [history, props.id]);
+    const pushToRecipeDetailPage = useCallback(() => history.push('/recipe/edit/'+ props.id), [history, props.id]);
+    const pushToRecipePage = useCallback(() => history.push('/recipe/'+ props.id), [history, props.id]);
+    const deleteRecipe= async () => {
+        if (window.$id) {
+            const res = await axios({
+            method: "put",
+            url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/mycreated/delete/"+ props.id,
+            data: {
+                "accountId": window.$id 
+            }
+            }).catch(error => {
+                return { error: error };
+            });
+        }}
 
+    const confirm1 = () => {
+        confirmDialog({
+            message: 'Wollen Sie das Rezept wirklich löschen?',
+            header: 'Löschen',
+            icon: 'pi pi-exclamation-triangle',
+            acceptLabel: "Ja",
+            rejectLabel: "Nein",
+            accept: () => deleteRecipe()
+
+        });
+    };
 
     let chips = [];
     props.categories.forEach((category) => {
@@ -48,12 +74,13 @@ const RecipeCard = (props) => {
     const header = (
         <img alt="Card" style={{ height:'15rem', "border-radius": "5px 5px 2px 2px"}} src="showcase/demo/images/usercard.png" onError={(e) => e.target.src=props.img} />
     );
-
+    
     let footer;
     if (window.$id) {
         if (showlike === true) {
         footer = (
             <span>
+                <Button className="p-shadow-1 likebtn" label="" icon="pi pi-window-maximize" onClick={pushToRecipePage} />
                 <Button className="p-shadow-1 likebtn" label="Gemerkt" icon="pi pi-star" onClick={toggleLike} />
             </span>
         );
@@ -61,15 +88,17 @@ const RecipeCard = (props) => {
         else if (showlike === false) {
             footer = (
                 <span>
+                    <Button className="p-shadow-1 likebtn" label="" icon="pi pi-window-maximize" onClick={pushToRecipePage} />
                     <Button className="p-shadow-1 likebtn" label="Merken" icon="pi pi-star-o" onClick={toggleLike} />
                 </span>
             );
         }
         else if (showlike === "editable") {
             footer = (
-            <span>
-                <Button className="p-shadow-1 likebtn" label="Bearbeiten" icon="pi pi-pencil" onClick={pushToRecipeDetailPage} />
-            </span>
+                <span >
+                     <Button className="p-shadow-1 likebtn p-mb-2 p-lg-3 p-mr-2" label="" icon="pi pi-pencil" onClick={pushToRecipeDetailPage} />
+                     <Button className="p-shadow-1 likebtn p-button-danger p-mb-2  " label="" icon="pi-trash" onClick={confirm1} />
+                </span>
             )
         }
     }

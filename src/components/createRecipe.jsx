@@ -27,7 +27,7 @@ const CreateRecipe = (props) => {
     };
 
     const handleOnAddRecipeSuccess = useCallback(() => history.push('/'), [history]);
-
+    const defaultImage = "http://myminidoxie.com/wp-content/uploads/2012/11/which-came-first-the-wiener-or-the-dachshund.jpg"
     const [recipeName, setRecipeName] = useState("");
     const [recipeImageUrl, setRecipeImageUrl] = useState("");
     const [recipeavgtime, setRecipeAvgTime] = useState('30');
@@ -52,7 +52,26 @@ const CreateRecipe = (props) => {
         { name: 'Salat'},
         { name: 'Backen'},
         { name: 'Torte'},
-        { name: 'Vegan'}
+        { name: 'Vegan'},
+        { name: 'Dessert'},
+        { name: 'Beilage'},
+        { name: 'Fisch'},
+        { name: 'Obst'},
+        { name: 'Eis'},
+        { name: 'Kuchen'},
+        { name: 'Pizza'},
+        { name: 'Frühstück'},
+        { name: 'Brot'},
+        { name: 'Fleisch'},
+        { name: 'Käse'},
+        { name: 'Warm'},
+        { name: 'Kalt'},
+        { name: 'Vorspeise'},
+        { name: 'Süßspeise'},
+        { name: 'Vollkorn'},
+        { name: 'Plätzchen'},
+        { name: 'Schmoren'},
+        { name: 'Snack'}
     ];
 
    const changeInputToDefault = () =>{
@@ -64,11 +83,7 @@ const CreateRecipe = (props) => {
        setRecipeInstruction("");
        setSelectedCategorys([]);
    };
-
-   const setImageUrlToDefault = () =>{
-    setRecipeImageUrl("http://myminidoxie.com/wp-content/uploads/2012/11/which-came-first-the-wiener-or-the-dachshund.jpg");
-};
-    
+ 
    const checkIfInputIsValid = () =>{
         console.log(recipeName , recipeImageUrl , recipedifficulty , recipeingredients , recipeinstruction , selectedcategorys)
 
@@ -83,7 +98,7 @@ const CreateRecipe = (props) => {
                                     showInputValidError("Kategorien");
                                    }   
                                 else{
-                                    addRecipe("");
+                                    addRecipe("", recipeImageUrl);
                                     console.log("Kategorien: " + selectedcategorys)
                                    }
                             }   
@@ -99,16 +114,13 @@ const CreateRecipe = (props) => {
                         
                     }
                     else{
-                        //showInputValidError("Bild Url");
-                        //console.log("Bild Url: " + recipeImageUrl)
-                        setImageUrlToDefault();
                         if(recipeName !== ""){
                             if(selectedcategorys.length === 0){
                                 console.log("arrrrraaaay:"+ selectedcategorys)
                                 showInputValidError("Kategorien");
                                }   
                             else{
-                                addRecipe("mit Platzhalter als Bild");
+                                addRecipe("mit Platzhalter als Bild", defaultImage);
                                 console.log("Kategorien: " + selectedcategorys)
                                }
                         }   
@@ -158,7 +170,7 @@ const CreateRecipe = (props) => {
         toast.current.clear();
     }
 
-   const addRecipe = async (entry) => {
+   const addRecipe = async (entry,imageUrl) => {
        console.log("Sending recipe to backend");
        let catarray = [];
        console.log(window.$id);
@@ -170,7 +182,7 @@ const CreateRecipe = (props) => {
             url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/create",
             data: {
                 "name": recipeName,
-                "imageurl": recipeImageUrl,
+                "imageurl": imageUrl,
                 "averagetimeinminutes": recipeavgtime,
                 "difficulty": recipedifficulty.name,
                 "ingredients": recipeingredients,
@@ -204,19 +216,19 @@ const CreateRecipe = (props) => {
                         <span className="recipename">
                             <label htmlFor="recipename">Rezeptname: </label>
                             <br/>
-                            <InputText id="recipename" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} placeholder ="... Bauernsalat" /> 
+                            <InputText style={{width: "35rem"}} id="recipename" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} placeholder ="... Bauernsalat" /> 
                             <br/>
                         </span>
                         <br/>  
                         <span className="recipeimageurl">
                             <label htmlFor="recipeimageurl">Bild Url: </label>
                             <br/>
-                            <InputText id="recipeimageurl" value={recipeImageUrl} onChange={(e) => setRecipeImageUrl(e.target.value)} placeholder ="... http://link-zum-bild"/> 
+                            <InputText style={{width: "35rem"}} id="recipeimageurl" value={recipeImageUrl} onChange={(e) => setRecipeImageUrl(e.target.value)} placeholder ="... http://link-zum-bild"/> 
                             <br/>
                         </span>
                         <br/>  
                         <div className="recipeavetime">
-                            <span>Arbeitszeit: {recipeavgtime} Minuten</span>
+                            <span>Arbeitszeit: {recipeavgtime} Min.</span>
                             <br/>
                             <InputNumber value={recipeavgtime} style={{ width: '12rem', hight: '12rem' }} mode="decimal" onValueChange={(e) => setRecipeAvgTime(e.target.value)} />
                             <Slider value={recipeavgtime} style={{ width: '12rem', hight: '12rem', margin: "auto"  }} onChange={(e) => setRecipeAvgTime(e.value)}  min={0} max={555}/>
@@ -229,17 +241,17 @@ const CreateRecipe = (props) => {
                         </div>
                         <div className="recipecategory">
                             <h5>Zutaten: </h5>
-                            <InputTextarea value={recipeingredients} onChange={(e) => setRecipeIngredients(e.target.value)} placeholder="... Eier 3Stk, Milch 300ml, ..." rows={5} cols={30} autoResize />
+                            <InputTextarea style={{width: "35rem"}} value={recipeingredients} onChange={(e) => setRecipeIngredients(e.target.value)} placeholder="... Eier 3Stk, Milch 300ml, ..." rows={5} cols={30} autoResize />
                 
                         </div>
                         <div className="recipecategory">
                             <h5>Arbeitsanweisung: </h5>
-                            <InputTextarea value={recipeinstruction} onChange={(e) => setRecipeInstruction(e.target.value)} placeholder="... erst Mixen, dann Backen" rows={5} cols={30} autoResize />
+                            <InputTextarea style={{width: "35rem"}} value={recipeinstruction} onChange={(e) => setRecipeInstruction(e.target.value)} placeholder="... erst Mixen, dann Backen" rows={5} cols={30} autoResize />
             
                         </div>
                         <div className="recipecategory">
                             <h5>Kategorien</h5>
-                            <MultiSelect value={selectedcategorys} options={categorys} onChange={(e) => setSelectedCategorys(e.value)} optionLabel="name" filter filterPlaceholder= "Vegan" selectionLimit = "4" placeholder="Wähle eine Kategorie" display="chip" showSelectAll={false} />
+                            <MultiSelect  value={selectedcategorys} options={categorys} onChange={(e) => setSelectedCategorys(e.value)} optionLabel="name" filter filterPlaceholder= "z.B: Backen" selectionLimit = "4" placeholder="Wähle eine Kategorie" display="chip" showSelectAll={false} />
                             <br/>
                         </div>
                         <br/>

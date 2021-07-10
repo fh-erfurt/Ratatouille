@@ -10,6 +10,7 @@ import Login from './components/login';
 import Profile from './components/profile';
 import CreateRecipe from './components/createRecipe';
 import Favoriten from './components/favoriten';
+import Recipe from './components/recipe';
 import React from 'react';
 
 import PrimeReact from "primereact/api";
@@ -72,10 +73,16 @@ function App() {
             <Route path="/menu">
               <RecipesMenuPage/>
             </Route>
-            <Route path="/recipe/:recipeId" render={(props) => 
+            <Route path="/recipe/edit/:recipeId" render={(props) => 
               <React.Fragment>
                 <Header></Header>
                 <RecipeDetail recipeId={props} />
+              </React.Fragment> } 
+            />
+            <Route path="/recipe/:recipeId" render={(props) => 
+              <React.Fragment>
+                <Header></Header>
+                <Recipe recipeId={props} />
               </React.Fragment> } 
             />
             <Route path="/login">
