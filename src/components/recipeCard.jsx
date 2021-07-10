@@ -97,7 +97,7 @@ const RecipeCard = (props) => {
             footer = (
                 <span >
                      <Button className="p-shadow-1 likebtn p-mb-2 p-lg-3 p-mr-2" label="" icon="pi pi-pencil" onClick={pushToRecipeDetailPage} />
-                     <Button className="p-shadow-1 likebtn p-button-danger p-mb-2  " label="" icon="pi-trash" onClick={confirm1} />
+                     <Button className="p-shadow-1 likebtn p-button-danger p-mb-2  " label="" icon="pi pi-trash" onClick={confirm1} />
                 </span>
             )
         }

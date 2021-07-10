@@ -33,7 +33,7 @@ const RecipeDetail = (props) => {
             <div className = "recipeMeta">
                 <h1>{recipe.name}</h1>
                 <div className = "recipeMetaInfo">
-                    <img alt="Product" style = {{borderRadius: "5px 5px 5px 5px", maxHeight: "25vw"}} src={recipe.imageurl}></img>
+                    <img alt="Product" style = {{borderRadius: "5px 5px 5px 5px", maxHeight: "25rem"}} src={recipe.imageurl}></img>
                     <div>
                          <Chip label={recipe.averagetimeinminutes + " Min."} icon="pi pi-clock" className="p-mr-2 p-mb-2 custom-chip" />
                          <Chip label={recipe.difficulty} icon=" pi pi-compass" className="p-mr-2 p-mb-2 custom-chip" />
