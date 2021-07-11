@@ -11,7 +11,7 @@ const RecipeDetail = (props) => {
 
     const recipeID = props.recipeId.match.params.recipeId;
     const [recipe, setRecipe] = useState("");
-    const [recipecreatedat, setCreatedAt] = useState("2021-06-29T14:03:01.000Z");
+    const [recipecreatedat, setCreatedAt] = useState("");
 
     const fetchRecipeInfo = async () => {
         const res = await axios({
@@ -23,8 +23,17 @@ const RecipeDetail = (props) => {
 
           if (res.status === 200) {
               setRecipe(res.data);
-              setCreatedAt(res.data.createdAt)
+
+              const dt = new Date(convertIsoDateToTimeStamp(res.data.createdAt));
+              const datestr = dt.getDate() + "." + (dt.getMonth()+1) + "." + dt.getFullYear();
+
+              setCreatedAt(datestr);
           }
+    }
+
+    const convertIsoDateToTimeStamp = (isoDate) => {
+        const date = new Date(isoDate);
+        return date.getTime();
     }
 
     return (
@@ -37,7 +46,7 @@ const RecipeDetail = (props) => {
                     <div>
                          <Chip label={recipe.averagetimeinminutes + " Min."} icon="pi pi-clock" className="p-mr-2 p-mb-2 custom-chip p-shadow-1" />
                          <Chip label={recipe.difficulty} icon=" pi pi-compass" className="p-mr-2 p-mb-2 custom-chip p-shadow-1" />
-                         <Chip label={((recipecreatedat.split("T"))[0]).replaceAll('-','.')} icon=" pi pi-calendar" className="p-mr-2 p-mb-2 custom-chip p-shadow-1" />
+                         <Chip label={recipecreatedat} icon=" pi pi-calendar" className="p-mr-2 p-mb-2 custom-chip p-shadow-1" />
                     </div>
                 </div>
                 <div>
