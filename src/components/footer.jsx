@@ -8,7 +8,7 @@ const Footer = (props) => {
 
 
     return (
-        <div className="p-mt-6">
+        <div className="p-mt-6 appFooter">
             <p>Licensed under GPL v3</p>
         </div>
     );
