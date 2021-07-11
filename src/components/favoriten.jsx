@@ -1,12 +1,19 @@
 import RecipeCard from './recipeCard';
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useCallback, useLayoutEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
 import axios from "axios";
 
 const Favoriten = () => {
+    const history = useHistory();
     const [products, setProducts] = useState(null);
     const [favorites, setFavorites] = useState(null);
     const [status, setStatus] = useState(404);
     const [recipecards, setRecipeCards] = useState([]);
+
+    const handleNotLoggedIn = useCallback(() => history.push('/login'), [history]);
+    if (window.$email == null) {
+        handleNotLoggedIn();
+    }
 
     useLayoutEffect(() => {
         console.clear();

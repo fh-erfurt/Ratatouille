@@ -73,7 +73,7 @@ const Header = (props) => {
 
 
     return (
-        <div>
+        <div className="appHeader">
             <div className="card">
                 <Menubar model={items} start={start} end={
                 <div>
