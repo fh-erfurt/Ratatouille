@@ -11,6 +11,7 @@ import Profile from './components/profile';
 import CreateRecipe from './components/createRecipe';
 import Favoriten from './components/favoriten';
 import Recipe from './components/recipe';
+import Footer from './components/footer';
 import React from 'react';
 
 import PrimeReact from "primereact/api";
@@ -101,6 +102,7 @@ function App() {
               <HomePage/>
             </Route>
           </Switch>
+          <Footer></Footer>
         </div>
       </Router>
     )
