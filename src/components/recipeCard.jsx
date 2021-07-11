@@ -87,7 +87,7 @@ const RecipeCard = (props) => {
         footer = (
             <span>
                 <Button className="p-shadow-1 likebtn" label="" icon="pi pi-window-maximize" onClick={pushToRecipePage} />
-                <Button className="p-shadow-1 likebtn" label="Gemerkt" icon="pi pi-star" onClick={toggleLike} />
+                <Button className="p-shadow-1 likebtn p-ml-2" label="Gemerkt" icon="pi pi-star" onClick={toggleLike} />
             </span>
         );
         }
@@ -95,7 +95,7 @@ const RecipeCard = (props) => {
             footer = (
                 <span>
                     <Button className="p-shadow-1 likebtn" label="" icon="pi pi-window-maximize" onClick={pushToRecipePage} />
-                    <Button className="p-shadow-1 likebtn" label="Merken" icon="pi pi-star-o" onClick={toggleLike} />
+                    <Button className="p-shadow-1 likebtn p-ml-2" label="Merken" icon="pi pi-star-o" onClick={toggleLike} />
                 </span>
             );
         }

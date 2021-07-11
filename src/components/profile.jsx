@@ -90,7 +90,7 @@ const Profile = (props) => {
             <Toast ref={toast} onClick={clearToast} />
             <div className="p-grid p-fluid p-mt-4">
                     <div className="p-mx-auto">
-                        <div className="p-col-12 p-md-4">
+                        <div className="p-col-12">
                             <img className="profilePic p-shadow-3 p-mb-3" src={Pic} alt="Profile" />
                             <div className="p-inputgroup" style={{width:'400px'}}>
                                 <span className="p-inputgroup-addon">
@@ -105,7 +105,7 @@ const Profile = (props) => {
                                 <InputText placeholder="neues Passwort" value={Pass} onChange={e => setPassword(e.target.value)} />
                             </div>
                             <div>
-                            <Button onClick={submitPassword} label="Speichern" className="p-button-primary p-mt-1" />
+                            <Button onClick={submitPassword} label="Speichern" className="p-button-primary p-mt-1 pwSaveBtn p-shadow-1" />
                             </div>
                         </div>
                         </div>

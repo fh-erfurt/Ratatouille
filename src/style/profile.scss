@@ -4,6 +4,10 @@
     border-radius: 50%;
     object-fit:cover;
     border: 2px solid rgb(80, 75, 75);
-    margin: 0 0 0 35px;
     filter: saturate(60%);
+}
+
+.pwSaveBtn {
+    max-width: 7rem;
+    float: left;
 }
