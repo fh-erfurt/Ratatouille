@@ -1,7 +1,15 @@
 .Card {
   width:90%;
-  height:26.1em;
+  height:26.2em;
 }
+.Card img{
+    height: 250px;
+    object-fit: cover;
+}
+.carousel .p-carousel-items-content{
+  padding-left:2.5%;
+ }
+
 @media only screen and (max-width: 750px) {
   .Images{
     width:60%;
