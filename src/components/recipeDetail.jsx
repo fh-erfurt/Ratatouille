@@ -239,7 +239,7 @@ const RecipeDetail = (props) => {
         
         <React.Fragment>
             <Toast ref={toast} onClick={clearToast}  className="ToastMsg" />
-            <div className="createrecipe p-mb-4">
+            <div className="createrecipe p-mb-4 p-mx-auto">
                         <h1 >Rezept bearbeiten</h1>
                         <span className="recipename">
                             <label htmlFor="recipename">Rezeptname: </label>
