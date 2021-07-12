@@ -18,6 +18,7 @@ const RecipeDetail = (props) => {
     useEffect(() => {
         fetchRecipeInfo();  
         changeInputToDefault();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     const defaultImage = "http://myminidoxie.com/wp-content/uploads/2012/11/which-came-first-the-wiener-or-the-dachshund.jpg"

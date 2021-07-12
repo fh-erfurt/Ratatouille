@@ -4,7 +4,7 @@ import axios from "axios";
 import { Button } from 'primereact/button';
 import { Chip } from 'primereact/chip';
 import { useHistory } from 'react-router-dom';
-import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+import { confirmDialog } from 'primereact/confirmdialog';
 
 
 
@@ -42,9 +42,11 @@ const RecipeCard = (props) => {
 
     const pushToRecipeDetailPage = useCallback(() => history.push('/recipe/edit/'+ props.id), [history, props.id]);
     const pushToRecipePage = useCallback(() => history.push('/recipe/'+ props.id), [history, props.id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const pushToProfilpage = useCallback(() => history.push('/'));
     const deleteRecipe= async () => {
         if (window.$id) {
+            // eslint-disable-next-line no-unused-vars
             const res = await axios({
             method: "delete",
             url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/mycreated/delete/"+ props.id,
@@ -78,7 +80,7 @@ const RecipeCard = (props) => {
     })
 
     const header = (
-        <img alt="Card" style={{ height:'15rem', "border-radius": "5px 5px 2px 2px"}} src="showcase/demo/images/usercard.png" onError={(e) => e.target.src=props.img} />
+        <img alt="Card" className="recipeCardImg" src="showcase/demo/images/usercard.png" onError={(e) => e.target.src=props.img} />
     );
     
     let footer;

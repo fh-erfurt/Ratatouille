@@ -1,6 +1,5 @@
 .fullCard {
     max-width: 90vw;
-    xheight: 32rem;
     width: 25rem;
 }
 
@@ -23,4 +22,9 @@
     left: 50%;
     transform: translate(-50%,0);
     width: 100%;
+}
+
+.recipeCardImg {
+    height:15rem;
+    border-radius: 5px 5px 2px 2px;
 }

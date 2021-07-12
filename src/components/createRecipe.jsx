@@ -211,27 +211,22 @@ const CreateRecipe = (props) => {
         
         <React.Fragment>
             <Toast ref={toast} onClick={clearToast} className="ToastMsg" />
-            <div className="createrecipe p-mb-4">
+            <div className="createrecipe p-mb-4 p-mx-auto">
                         <h1 >Rezept erstellen</h1>
-                        <span className="recipename">
-                            <label htmlFor="recipename">Rezeptname: </label>
-                            <br/>
-                            <InputText style={{width: "35rem"}} id="recipename" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} placeholder ="... Bauernsalat" /> 
-                            <br/>
+                        <span className="">
+                            <h5 htmlFor="recipename">Rezeptname: </h5>
+                            <InputText className="createRecipeInputText" id="recipename" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} placeholder ="Bauernsalat" /> 
                         </span>
                         <br/>  
-                        <span className="recipeimageurl">
-                            <label htmlFor="recipeimageurl">Bild Url: </label>
-                            <br/>
-                            <InputText style={{width: "35rem"}} id="recipeimageurl" value={recipeImageUrl} onChange={(e) => setRecipeImageUrl(e.target.value)} placeholder ="... http://link-zum-bild"/> 
-                            <br/>
+                        <span className="">
+                            <h5 htmlFor="recipeimageurl">Bild Url: </h5>
+                            <InputText className="createRecipeInputText" id="recipeimageurl" value={recipeImageUrl} onChange={(e) => setRecipeImageUrl(e.target.value)} placeholder ="http://link-zum-bild"/> 
                         </span>
                         <br/>  
-                        <div className="recipeavetime">
-                            <span>Arbeitszeit: {recipeavgtime} Min.</span>
-                            <br/>
-                            <InputNumber value={recipeavgtime} style={{ width: '12rem', hight: '12rem' }} mode="decimal" onValueChange={(e) => setRecipeAvgTime(e.target.value)} />
-                            <Slider value={recipeavgtime} style={{ width: '12rem', hight: '12rem', margin: "auto"  }} onChange={(e) => setRecipeAvgTime(e.value)}  min={0} max={555}/>
+                        <div className="">
+                            <h5>Arbeitszeit: {recipeavgtime} Min.</h5>
+                            <InputNumber className="recipeavgtimecontent" value={recipeavgtime} mode="decimal" onValueChange={(e) => setRecipeAvgTime(e.target.value)} />
+                            <Slider className="recipeavgtimecontent p-mx-auto" value={recipeavgtime} onChange={(e) => setRecipeAvgTime(e.value)}  min={0} max={555}/>
                             
                         </div>
                         <div className="recipedifficulty">
@@ -239,25 +234,25 @@ const CreateRecipe = (props) => {
                             <SelectButton value={recipedifficulty} options={difficultys} onChange={(e) => setRecipeDifficulty(e.value)} optionLabel="name"/>
                             
                         </div>
-                        <div className="recipecategory">
+                        <div className="">
                             <h5>Zutaten: </h5>
-                            <InputTextarea style={{width: "35rem"}} value={recipeingredients} onChange={(e) => setRecipeIngredients(e.target.value)} placeholder="... Eier 3Stk, Milch 300ml, ..." rows={5} cols={30} autoResize />
+                            <InputTextarea className="createRecipeInputText" value={recipeingredients} onChange={(e) => setRecipeIngredients(e.target.value)} placeholder="Eier 3Stk, Milch 300ml, ..." rows={5} cols={30} autoResize />
                 
                         </div>
-                        <div className="recipecategory">
+                        <div className="">
                             <h5>Arbeitsanweisung: </h5>
-                            <InputTextarea style={{width: "35rem"}} value={recipeinstruction} onChange={(e) => setRecipeInstruction(e.target.value)} placeholder="... erst Mixen, dann Backen" rows={5} cols={30} autoResize />
+                            <InputTextarea className="createRecipeInputText" value={recipeinstruction} onChange={(e) => setRecipeInstruction(e.target.value)} placeholder="erst Mixen, dann Backen, ..." rows={5} cols={30} autoResize />
             
                         </div>
-                        <div className="recipecategory">
+                        <div className="">
                             <h5>Kategorien</h5>
                             <MultiSelect  value={selectedcategorys} options={categorys} onChange={(e) => setSelectedCategorys(e.value)} optionLabel="name" filter filterPlaceholder= "z.B: Backen" selectionLimit = "4" placeholder="Wähle eine Kategorie" display="chip" showSelectAll={false} />
                             <br/>
                         </div>
                         <br/>
                         <span>
-                             <Button label="Rezept einreichen" icon="pi pi-check" className="p-shadow-2 p-button-success p-buttonset p-mr-2" onClick={checkIfInputIsValid}/>
-                             <Button label="Zurücksetzen" icon="pi pi-replay" className="p-shadow-2 p-button-danger" onClick={changeInputToDefault}/>
+                             <Button label="Rezept einreichen" icon="pi pi-check" className="p-shadow-2 p-button-success p-buttonset p-mr-2 p-mb-2" onClick={checkIfInputIsValid}/>
+                             <Button label="Zurücksetzen" icon="pi pi-replay" className="p-shadow-2 p-button-danger p-mb-2" onClick={changeInputToDefault}/>
                         </span>
             </div>
         </React.Fragment>

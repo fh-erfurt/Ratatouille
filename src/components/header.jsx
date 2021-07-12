@@ -49,7 +49,7 @@ const Header = (props) => {
         },
         { 
             label: 'Rezepte',
-            icon: 'pi pi-fw pi-file',
+            icon: 'pi pi-fw pi-book',
             command:()=>{ navigateToPage("/menu")}
         },
         {

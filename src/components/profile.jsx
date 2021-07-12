@@ -90,15 +90,15 @@ const Profile = (props) => {
             <Toast ref={toast} onClick={clearToast} />
             <div className="p-grid p-fluid p-mt-4">
                     <div className="p-mx-auto">
-                        <div className="p-col-12">
+                        <div className="p-col-12 profileInputGroup">
                             <img className="profilePic p-shadow-3 p-mb-3" src={Pic} alt="Profile" />
-                            <div className="p-inputgroup" style={{width:'400px'}}>
+                            <div className="p-inputgroup">
                                 <span className="p-inputgroup-addon">
                                     <i className="pi pi-user" ></i>
                                 </span>
                                 <InputText disabled placeholder="Email Adresse" value={Email} onChange={e => setEmail(e.target.value)} />
                             </div>
-                            <div className="p-inputgroup p-mt-1" style={{width:'400px'}}>
+                            <div className="p-inputgroup p-mt-1">
                                 <span className="p-inputgroup-addon">
                                     <i className="pi pi-key" ></i>
                                 </span>

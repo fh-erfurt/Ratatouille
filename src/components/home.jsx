@@ -65,18 +65,21 @@ const Home = () => {
     ];
 
     return (
-        <div className="home" class="p-mt-6">
-            <div className="row" class="p-grid p-m-3">
-            <div class="p-col">
-            <img class="p-mr-5" className="Images" alt="Let's" src={LetsGet} width="450px"></img> 
-            <img alt="logo" class="p-mr-2" src="showcase/images/logo.png" onError={(e) => e.target.src='https://i.ibb.co/d6P2dT2/rataicon.png'}
-              className="logo" width="180px"></img>
-             <img class="p-ml-5" className="Images" alt="Cooking" src={Cooking} width="450px"></img></div></div>
-
-         <div className="card" class="p-mt-6">
-         <Carousel className="carousel" value={recipecards} itemTemplate={itemTemplate} numVisible={4} numScroll={2} responsiveOptions={responsiveOptions}circular
-                    autoplayInterval={5000}  />
-         </div>
+        <div className="home p-mt-6">
+            <div className="row p-grid p-m-3">
+                <div className="p-col">
+                    <img className="Images p-mr-5" alt="Let's" src={LetsGet} width="450px"></img> 
+                    <img alt="logo" src="showcase/images/logo.png" onError={(e) => e.target.src='https://i.ibb.co/d6P2dT2/rataicon.png'}
+                    className="logo p-mr-2" width="180px">
+                    </img>
+                    <img className="Images p-ml-5" alt="Cooking" src={Cooking} width="450px"></img>
+                </div>
+            </div>
+            <div className="card p-mt-6">
+                <Carousel className="carousel " value={recipecards} itemTemplate={itemTemplate} numVisible={4} numScroll={2} responsiveOptions={responsiveOptions}circular
+                            autoplayInterval={5000}
+                />
+            </div>
          </div>
     );
 }

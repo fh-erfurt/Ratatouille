@@ -1,5 +1,6 @@
 .profilePic {
     width: 20rem;
+    max-width: 75vw;
     aspect-ratio: 1/1;
     border-radius: 50%;
     object-fit:cover;
@@ -10,4 +11,9 @@
 .pwSaveBtn {
     max-width: 7rem;
     float: left;
+}
+
+.profileInputGroup {
+    max-width: 90vw;
+    width: 25rem;
 }

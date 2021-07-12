@@ -5,6 +5,7 @@ import axios from "axios";
 
 const Favoriten = () => {
     const history = useHistory();
+    // eslint-disable-next-line no-unused-vars
     const [products, setProducts] = useState(null);
     const [favorites, setFavorites] = useState(null);
     const [status, setStatus] = useState(404);
