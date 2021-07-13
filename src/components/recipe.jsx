@@ -25,7 +25,7 @@ const RecipeDetail = (props) => {
               setRecipe(res.data);
 
               const dt = new Date(convertIsoDateToTimeStamp(res.data.createdAt));
-              const datestr = dt.getDate() + "." + (dt.getMonth()+1) + "." + dt.getFullYear();
+              const datestr = dt.getDate() + ". " + konvertiereMonatszahlZuMonatsName(dt.getMonth()+1) + " " + dt.getFullYear();
 
               setCreatedAt(datestr);
           }
@@ -36,8 +36,39 @@ const RecipeDetail = (props) => {
         return date.getTime();
     }
 
+    const konvertiereMonatszahlZuMonatsName = (monatszahl) => {
+        switch (monatszahl) {
+            default:
+                return "";
+            case 1:
+                return "Jan";
+            case 2:
+                return "Feb";
+            case 3:
+                return "Mär";
+            case 4:
+                return "Apr";
+            case 5:
+                return "Mai";
+            case 6:
+                return "Jun";
+            case 7:
+                return "Jul";
+            case 8:
+                return "Aug";
+            case 9:
+                return "Sep";
+            case 10:
+                return "Okt";
+            case 11:
+                return "Nov";
+            case 12:
+                return "Dez";
+        }
+    }
+
+
     return (
-        
         <React.Fragment>
             <div className = "recipeMeta">
                 <h1>{recipe.name}</h1>
