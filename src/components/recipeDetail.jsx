@@ -15,6 +15,11 @@ const RecipeDetail = (props) => {
     const history = useHistory();
     const toast = useRef(null);
 
+    const handleNotLoggedIn = useCallback(() => history.push('/login'), [history]);
+    if (window.$email == null) {
+        handleNotLoggedIn();
+    }
+
     useEffect(() => {
         fetchRecipeInfo();  
         changeInputToDefault();
@@ -239,54 +244,51 @@ const RecipeDetail = (props) => {
         
         <React.Fragment>
             <Toast ref={toast} onClick={clearToast}  className="ToastMsg" />
-            <div className="createrecipe p-mb-4 p-mx-auto">
+            <div className="recipeDetail p-mb-4 p-mx-auto">
                         <h1 >Rezept bearbeiten</h1>
                         <span className="recipename">
-                            <label htmlFor="recipename">Rezeptname: </label>
-                            <br/>
-                            <InputText style={{width: "40rem"}} id="recipename" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} placeholder ="... Bauernsalat" /> 
+                            <h5 htmlFor="recipename">Rezeptname: </h5>
+                            <InputText className="recipeDetailInputText" id="recipename" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} placeholder ="... Bauernsalat" /> 
                             <br/>
                         </span>
                         <br/>  
                         <span className="recipeimageurl">
-                            <label htmlFor="recipeimageurl">Bild Url: </label>
-                            <br/>
-                            <InputText style={{width: "35rem"}} id="recipeimageurl" value={recipeImageUrl} onChange={(e) => setRecipeImageUrl(e.target.value)} placeholder ="... http://link-zum-bild"/> 
+                            <h5 htmlFor="recipeimageurl">Bild Url: </h5>
+                            <InputText className="recipeDetailInputText" id="recipeimageurl" value={recipeImageUrl} onChange={(e) => setRecipeImageUrl(e.target.value)} placeholder ="... http://link-zum-bild"/> 
                             <br/>
                         </span>
                         <br/>  
-                        <div className="recipeavetime">
-                            <span>Arbeitszeit: {recipeavgtime} Min.</span>
-                            <br/>
-                            <InputNumber value={recipeavgtime} style={{ width: '12rem', hight: '12rem' }} mode="decimal" onValueChange={(e) => setRecipeAvgTime(e.target.value)} />
-                            <Slider value={recipeavgtime} style={{ width: '12rem', hight: '12rem', margin: "auto"  }} onChange={(e) => setRecipeAvgTime(e.value)}  min={0} max={555}/>
+                        <div className="">
+                            <h5>Arbeitszeit: {recipeavgtime} Min.</h5>
+                            <InputNumber className="recipedetailavgtimecontent" value={recipeavgtime} mode="decimal" onValueChange={(e) => setRecipeAvgTime(e.target.value)} />
+                            <Slider className="recipedetailavgtimecontent p-mx-auto" value={recipeavgtime} onChange={(e) => setRecipeAvgTime(e.value)}  min={0} max={555}/>
                             
                         </div>
-                        <div className="recipedifficulty">
+                        <div className="">
                             <h5>Schwierigkeit</h5>
                             <SelectButton value={recipedifficulty} options={difficultys} onChange={(e) => setRecipeDifficulty(e.value)} optionLabel="name"/>
                             
                         </div>
-                        <div className="recipecategory">
+                        <div className="">
                             <h5>Zutaten: </h5>
-                            <InputTextarea  style={{width: "40rem"}} value={recipeingredients} onChange={(e) => setRecipeIngredients(e.target.value)} placeholder="... Eier 3Stk, Milch 300ml, ..." rows={5} cols={30} autoResize />
+                            <InputTextarea  className="recipeDetailInputText" value={recipeingredients} onChange={(e) => setRecipeIngredients(e.target.value)} placeholder="... Eier 3Stk, Milch 300ml, ..." rows={5} cols={30} autoResize />
                 
                         </div>
-                        <div className="recipecategory">
+                        <div className="">
                             <h5>Arbeitsanweisung: </h5>
-                            <InputTextarea style={{width: "40rem"}} value={recipeinstruction} onChange={(e) => setRecipeInstruction(e.target.value)} placeholder="... erst Mixen, dann Backen" rows={5} cols={30} autoResize />
+                            <InputTextarea className="recipeDetailInputText" value={recipeinstruction} onChange={(e) => setRecipeInstruction(e.target.value)} placeholder="... erst Mixen, dann Backen" rows={5} cols={30} autoResize />
             
                         </div>
-                        <div className="recipecategory">
+                        <div className="">
                             <h5>Kategorien</h5>
                             <MultiSelect value={selectedcategorys} options={categorys} onChange={(e) => setSelectedCategorys(e.value)} optionLabel="name" filter filterPlaceholder= "z.B: Backen" selectionLimit = "4" placeholder="Wähle eine Kategorie" display="chip" showSelectAll={false} />
                             <br/>
                         </div>
                         <br/>
                         <span>
-                             <Button label="Rezept speichern" icon="pi pi-check" className="p-shadow-2 p-button-success p-buttonset p-mr-2" onClick = {checkIfInputIsValid} />
-                             <Button label="Zurücksetzen" icon="pi pi-replay" className="p-shadow-2 p-button-warning p-mr-2" onClick={changeInputToDefault}/>
-                             <Button label="Abbrechen" icon="pi pi-times" className="p-shadow-2 p-button-danger" onClick={handleStoreAndCancel}/>
+                             <Button label="Speichern" icon="pi pi-check" className="p-shadow-2 p-button-success p-buttonset p-m-2" onClick = {checkIfInputIsValid} />
+                             <Button label="Zurücksetzen" icon="pi pi-replay" className="p-shadow-2 p-button-warning p-m-2" onClick={changeInputToDefault}/>
+                             <Button label="Abbrechen" icon="pi pi-times" className="p-shadow-2 p-button-danger p-m-2" onClick={handleStoreAndCancel}/>
                         </span>
             </div>
         </React.Fragment>
