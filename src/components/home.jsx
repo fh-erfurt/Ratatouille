@@ -37,7 +37,7 @@ const Home = () => {
         }).catch(error => {
             return { error: error };
         });
-        setProducts(res.data);
+        setProducts(sortArrayRandom(res.data));
         if (res.status === 200) {
             setStatus(200);
         }
@@ -46,6 +46,12 @@ const Home = () => {
     const itemTemplate = (recipes) => {
       return recipes;
     }
+
+    const sortArrayRandom = (array) => {
+        let sortedArray = array.sort(() => Math.random() - 0.5);
+        return sortedArray;
+    }
+
     const responsiveOptions = [
         {
             breakpoint: '1200px',

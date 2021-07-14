@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { Card } from 'primereact/card';
 import axios from "axios";
 import { Button } from 'primereact/button';
@@ -7,14 +7,9 @@ import { useHistory } from 'react-router-dom';
 import { confirmDialog } from 'primereact/confirmdialog';
 
 
-
 const RecipeCard = (props) => {
     const [showlike, setShowLike] = useState(props.liked);
     const history = useHistory();
-    const [test, settest] = useState();
-    useEffect(() => {
-        
-     }, [test]);
     const toggleLike = async () => {
         if (window.$id) {
             const res = await axios({
