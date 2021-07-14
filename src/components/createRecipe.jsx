@@ -10,13 +10,18 @@ import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import axios from "axios";
 
-
-
-
+/**
+* Component for creating a recipe.
+*
+* @component
+*/
 const CreateRecipe = (props) => {
     const history = useHistory();
     const toast = useRef(null);
     
+    /**
+    * Restricts access to the page if the user is not logged in
+    */
     const handleNotLoggedIn = useCallback(() => history.push('/login'), [history]);
     if (window.$email == null) {
         handleNotLoggedIn();
@@ -84,7 +89,10 @@ const CreateRecipe = (props) => {
        setSelectedCategorys([]);
    };
  
-   const checkIfInputIsValid = () =>{
+    /**
+    * Fetches all recipes from the API
+    */
+    const checkIfInputIsValid = () =>{
         console.log(recipeName , recipeImageUrl , recipedifficulty , recipeingredients , recipeinstruction , selectedcategorys)
 
         if(recipedifficulty){
@@ -145,7 +153,7 @@ const CreateRecipe = (props) => {
             console.log("Schwierigkeit: " + recipedifficulty)
         }
     };  
-   const showAddRecipeSuccess = (entry) => {
+    const showAddRecipeSuccess = (entry) => {
         toast.current.clear();
         toast.current.show({severity:'success', summary: 'Rezept wurde gespeichert!', detail:(entry), life: 1500, closable: false});
     };
@@ -170,7 +178,10 @@ const CreateRecipe = (props) => {
         toast.current.clear();
     }
 
-   const addRecipe = async (entry,imageUrl) => {
+    /**
+    * Sends recipe to the API
+    */
+    const addRecipe = async (entry,imageUrl) => {
        console.log("Sending recipe to backend");
        let catarray = [];
        console.log(window.$id);
@@ -206,9 +217,7 @@ const CreateRecipe = (props) => {
           }
     }
 
-
     return (
-        
         <React.Fragment>
             <Toast ref={toast} onClick={clearToast} className="ToastMsg" />
             <div className="createrecipe p-mb-4 p-mx-auto">

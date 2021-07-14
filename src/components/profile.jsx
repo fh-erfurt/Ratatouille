@@ -7,10 +7,10 @@ import { useHistory } from 'react-router-dom';
 import MyRecipes from './myRecipes.jsx';
 
 /**
- * Component for showing details of the user and allowing to change the account password.
- *
- * @component
- */
+* Component for showing details of the user and allowing to change the account password.
+*
+* @component
+*/
 const Profile = (props) => {
     const history = useHistory();
 
@@ -24,6 +24,9 @@ const Profile = (props) => {
         fetchAccountInfo();
     })
 
+    /**
+    * Restricts access to the page if the user is not logged in
+    */
     const handleNotLoggedIn = useCallback(() => history.push('/login'), [history]);
     if (window.$email == null) {
         handleNotLoggedIn();
@@ -44,7 +47,9 @@ const Profile = (props) => {
     }
     
 
-
+    /**
+    * Fetches the account information from the server and sets the state accordingly.
+    */
     const fetchAccountInfo = async () => {
         const res = await axios({
             method: "get",
@@ -58,9 +63,10 @@ const Profile = (props) => {
               setPic(res.data.pictureurl);
           }
     }
+
     /**
-     * Sends new Password to backend
-     */
+    * Sends new Password to backend
+    */
     const submitPassword = async () => {
         if (Pass !== "")
         {

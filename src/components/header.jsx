@@ -7,7 +7,11 @@ import "primeicons/primeicons.css";
 import { useHistory } from 'react-router-dom';
 import { Menubar } from "primereact/menubar";
 
-
+/**
+* Header component.
+*
+* @component
+*/
 const Header = (props) => {
 
     const history = useHistory();
@@ -70,7 +74,6 @@ const Header = (props) => {
     ];
 
     const start = <img alt="logo" src="showcase/images/logo.png" onError={(e) => e.target.src='https://i.ibb.co/d6P2dT2/rataicon.png'} height="40" className="p-mr-2"></img>;
-
 
     return (
         <div className="appHeader">

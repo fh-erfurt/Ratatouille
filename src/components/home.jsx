@@ -5,14 +5,20 @@ import Cooking from '../images/Cooking.png';
 import axios from "axios";
 import { Card } from 'primereact/card';
 
-
+/**
+* Home component.
+*
+* @component
+*/
 const Home = () => {
     const [products, setProducts] = useState(null);
+    // eslint-disable-next-line no-unused-vars
     const [status, setStatus] = useState(404);
     const [recipecards, setRecipeCards] = useState([]);
 
     useLayoutEffect(() => {
         fetchProducts();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
      }, []);
 
     useEffect(() => {
@@ -30,7 +36,10 @@ const Home = () => {
      // eslint-disable-next-line react-hooks/exhaustive-deps
      }, [products]);
 
-     const fetchProducts = async () => {
+    /**
+    * Fetches all recipes from the API
+    */
+    const fetchProducts = async () => {
         const res = await axios({
             method: "get",
             url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes",
@@ -47,6 +56,9 @@ const Home = () => {
       return recipes;
     }
 
+    /**
+    * Sorts array of recipes by random
+    */
     const sortArrayRandom = (array) => {
         let sortedArray = array.sort(() => Math.random() - 0.5);
         return sortedArray;

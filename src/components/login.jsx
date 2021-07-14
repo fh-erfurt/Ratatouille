@@ -7,10 +7,10 @@ import { Toast } from 'primereact/toast';
 import { useHistory } from 'react-router-dom';
 
 /**
- * Component to authenticate the user with email and password.
- *
- * @component
- */
+* Component to authenticate the user with email and password.
+*
+* @component
+*/
 const Login = (props) => {
     const history = useHistory();
 
@@ -54,19 +54,19 @@ const Login = (props) => {
     }
 
     /**
-     * Cheks whether an email is valid
-     * @param {*} email 
-     * @returns true or false depending on whether it is a valid email
-     */
+    * Cheks whether an email is valid
+    * @param {*} email 
+    * @returns true or false depending on whether it is a valid email
+    */
     const validateEmail = (email) => {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     }
 
     /**
-     * Request cat pic from thatcopy.pw/catapi
-     * @returns Cat pic webp url
-     */
+    * Request cat pic from thatcopy.pw/catapi
+    * @returns Cat pic webp url
+    */
     const requestCatPic = async () => {
         const res = await axios({
             method: "get",
@@ -79,8 +79,8 @@ const Login = (props) => {
     }
 
     /**
-     * Sends Email and password to api and checks response
-     */
+    * Sends Email and password to api and checks response
+    */
     const login = async () => {
         if (Pass !== "") {
             const res = await axios({
@@ -114,8 +114,8 @@ const Login = (props) => {
     }
 
     /**
-     * Sends a new email and password to the backend to register a new user
-     */
+    * Sends a new email and password to the backend to register a new user
+    */
     const register = async () => {
         const mail = Email.toLocaleLowerCase();
         if (validateEmail(mail) && Pass !== "") {

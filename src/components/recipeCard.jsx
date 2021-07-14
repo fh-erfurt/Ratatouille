@@ -6,7 +6,11 @@ import { Chip } from 'primereact/chip';
 import { useHistory } from 'react-router-dom';
 import { confirmDialog } from 'primereact/confirmdialog';
 
-
+/**
+* Card component.
+*
+* @component
+*/
 const RecipeCard = (props) => {
     const [showlike, setShowLike] = useState(props.liked);
     const history = useHistory();
@@ -62,8 +66,6 @@ const RecipeCard = (props) => {
             acceptLabel: "Ja",
             rejectLabel: "Nein",
             accept: () => deleteRecipe()
-            
-
         });
     };
 

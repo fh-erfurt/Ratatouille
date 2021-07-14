@@ -2,6 +2,11 @@ import RecipeCard from './recipeCard';
 import React, { useLayoutEffect, useState } from "react";
 import axios from "axios";
 
+/**
+* Component see all recipes.
+*
+* @component
+*/
 const RecipesMenu = () => {
     const [products, setProducts] = useState(null);
     const [favorites, setFavorites] = useState(null);
@@ -38,6 +43,9 @@ const RecipesMenu = () => {
      // eslint-disable-next-line react-hooks/exhaustive-deps
      }, [products, favorites]);
 
+    /**
+    * Fetches all recipes from the API
+    */
     const fetchAllRecipes = async () => {
         const res = await axios({
             method: "get",
@@ -71,12 +79,15 @@ const RecipesMenu = () => {
             }
         }
 
-        setProducts(res.data);
+        setProducts(res.data.reverse());
         if (res.status === 200) {
             setStatus(200);
         }
     };
 
+    /**
+    * Generates a recipe card for each recipe
+    */
     const genRecipeCard = (recipe, alreadyliked, catarray) => {
         const card = (
             <RecipeCard className="p-mb-2 p-shadow-2" id={recipe.id} key={recipe.id} liked={alreadyliked} img={recipe.imageurl} categories={catarray} style={{ width: '25em' }} name={recipe.name} time={recipe.averagetimeinminutes + " Minuten"} />

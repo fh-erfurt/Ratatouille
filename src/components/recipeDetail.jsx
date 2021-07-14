@@ -10,11 +10,18 @@ import { InputNumber } from 'primereact/inputnumber';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 
-
+/**
+* Component to see and edit details of recipe.
+*
+* @component
+*/
 const RecipeDetail = (props) => {
     const history = useHistory();
     const toast = useRef(null);
 
+    /**
+    * Restricts access to the page if the user is not logged in
+    */
     const handleNotLoggedIn = useCallback(() => history.push('/login'), [history]);
     if (window.$email == null) {
         handleNotLoggedIn();
@@ -87,6 +94,9 @@ const RecipeDetail = (props) => {
    
     const handleStoreAndCancel = useCallback(() => history.push('/#profile'), [history]);
 
+    /**
+    * Fetches info for the recipe from the backend
+    */
     const fetchRecipeInfo = async () => {
         const res = await axios({
             method: "get",
@@ -110,7 +120,6 @@ const RecipeDetail = (props) => {
     const sleep = (milliseconds) => {
         return new Promise(resolve => setTimeout(resolve, milliseconds))
     };
-
         
        const checkIfInputIsValid = () =>{
             console.log(recipeName , recipeImageUrl , recipedifficulty , recipeingredients , recipeinstruction , selectedcategorys)
@@ -200,9 +209,9 @@ const RecipeDetail = (props) => {
             toast.current.clear();
         }
     
-
-
-
+    /**
+    * Sends the updated recipe to the server
+    */
     const updateRecipe = async (entry, entry1) => {
         console.log("Sending recipe to backend");
         let catarray = [];
@@ -238,10 +247,8 @@ const RecipeDetail = (props) => {
                  showAddRecipeError();
            }
      }
- 
     
    return (
-        
         <React.Fragment>
             <Toast ref={toast} onClick={clearToast}  className="ToastMsg" />
             <div className="recipeDetail p-mb-4 p-mx-auto">

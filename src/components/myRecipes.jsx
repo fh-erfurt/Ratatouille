@@ -2,6 +2,11 @@ import RecipeCard from './recipeCard';
 import React, { useLayoutEffect, useState } from "react";
 import axios from "axios";
 
+/**
+* Component to see own recipes.
+*
+* @component
+*/
 const MyRecipes = () => {
     const [products, setProducts] = useState(null);
     const [status, setStatus] = useState(404);
@@ -24,6 +29,9 @@ const MyRecipes = () => {
      // eslint-disable-next-line react-hooks/exhaustive-deps
      }, [products]);
 
+    /**
+    * Fetches all recipes from the API
+    */
     const fetchProducts = async () => {
         const res = await axios({
             method: "post",
@@ -41,6 +49,9 @@ const MyRecipes = () => {
         }
     };
 
+    /**
+    * Generates a recipe card for each recipe
+    */
     const genRecipeCard = (recipe, catarray) => {
         const card = (
             <React.Fragment key={recipe.id}>

@@ -3,6 +3,11 @@ import React, { useCallback, useLayoutEffect, useState } from "react";
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
 
+/**
+* Component to see favorites.
+*
+* @component
+*/
 const Favoriten = () => {
     const history = useHistory();
     // eslint-disable-next-line no-unused-vars
@@ -11,6 +16,9 @@ const Favoriten = () => {
     const [status, setStatus] = useState(404);
     const [recipecards, setRecipeCards] = useState([]);
 
+    /**
+    * Restricts access to the page if the user is not logged in
+    */
     const handleNotLoggedIn = useCallback(() => history.push('/login'), [history]);
     if (window.$email == null) {
         handleNotLoggedIn();
@@ -49,26 +57,29 @@ const Favoriten = () => {
 
      
 
+    /**
+    * Fetches all recipes from the API
+    */
     const fetchAllRecipes = async () => {
-     console.log("Fetching favorite recipes with accountId: " + window.$id);
-     const favres = await axios({
-     method: "post",
-     url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/myfavorites",
-     data: {
-         "accountId": window.$id
-     }
-     }).catch(error => {
-         return { error: error };
-     })
+    console.log("Fetching favorite recipes with accountId: " + window.$id);
+    const favres = await axios({
+    method: "post",
+    url: "https://ratatouilleexpress.retch.duckdns.org/api/recipes/myfavorites",
+    data: {
+        "accountId": window.$id
+    }
+    }).catch(error => {
+        return { error: error };
+    })
      
-     if (favres.status === 200) {
-         setFavorites(favres.data);
-         setStatus(200);
-     }
-     else {
-         console.log("faild to load")
-         setFavorites([]);
-     }
+    if (favres.status === 200) {
+        setFavorites(favres.data);
+        setStatus(200);
+    }
+    else {
+        console.log("faild to load")
+        setFavorites([]);
+        }
     };
 
     const genRecipeCard = (recipe, alreadyliked, catarray) => {

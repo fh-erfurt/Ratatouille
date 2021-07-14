@@ -2,7 +2,11 @@ import React, {  useEffect, useState } from "react";
 import axios from "axios";
 import { Chip } from 'primereact/chip';
 
-
+/**
+* Component to see details of the recipe.
+*
+* @component
+*/
 const RecipeDetail = (props) => {
 
     useEffect(() => {
@@ -13,6 +17,9 @@ const RecipeDetail = (props) => {
     const [recipe, setRecipe] = useState("");
     const [recipecreatedat, setCreatedAt] = useState("");
 
+    /**
+    * Fetches the recipe info from the API
+    */
     const fetchRecipeInfo = async () => {
         const res = await axios({
             method: "get",
@@ -25,18 +32,26 @@ const RecipeDetail = (props) => {
               setRecipe(res.data);
 
               const dt = new Date(convertIsoDateToTimeStamp(res.data.createdAt));
-              const datestr = dt.getDate() + ". " + konvertiereMonatszahlZuMonatsName(dt.getMonth()+1) + " " + dt.getFullYear();
+              const datestr = dt.getDate() + ". " + convertMonthNumberToMonthName(dt.getMonth()+1) + " " + dt.getFullYear();
 
               setCreatedAt(datestr);
           }
     }
 
+    /**
+    * Converts date from db to tmestamp
+    * @returns Javascript timestamp
+    */
     const convertIsoDateToTimeStamp = (isoDate) => {
         const date = new Date(isoDate);
         return date.getTime();
     }
 
-    const konvertiereMonatszahlZuMonatsName = (monatszahl) => {
+    /**
+    * Converts month number to german month name
+    * @returns Month name
+    */
+    const convertMonthNumberToMonthName = (monatszahl) => {
         switch (monatszahl) {
             default:
                 return "";
@@ -67,10 +82,9 @@ const RecipeDetail = (props) => {
         }
     }
 
-
     return (
         <React.Fragment>
-            <div className = "recipeMeta">
+            <div className = "recipeMeta p-mb-6">
                 <h1>{recipe.name}</h1>
                 <div className = "recipeMetaInfo">
                     <img alt="Product" className="recipeIMG p-mb-3 p-shadow-3" src={recipe.imageurl}></img>
