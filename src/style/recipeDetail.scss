@@ -1,6 +1,6 @@
 
 .recipeMeta{
-    max-width: 90vw;
+    max-width: $viewportmaxwidth;
     width: 40rem;
     margin: auto;
     text-align: left;
@@ -12,15 +12,15 @@
 }
 
 .recipeDetail{
-    max-width: 90vw;
+    max-width: $viewportmaxwidth;
     width: 40rem;
 }
 
 .recipeDetailInputText {
-    max-width: 80vw;
-    width: 30rem;
+    max-width: $recipeinputtextfieldmaxwidth;
+    width: $recipeinputtextfieldwidth;
 }
 
 .recipedetailavgtimecontent {
-    width: 12rem;
+    width: $recipeavgtime;
 }

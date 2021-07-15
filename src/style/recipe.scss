@@ -2,18 +2,22 @@
     display:flex;
     flex-direction: column;
   }
+  
   .recipeIMG {
     width: 35rem;
-    max-width: 90vw;
+    max-width: $viewportmaxwidth;
     border-radius: 7px;
   }
+
   .recipeTop{
     display:flex;
     flex-direction: row;
     justify-content: space-around;
   }
+
   @media only screen and (max-width: 800px){
     .recipeTop{
       flex-direction: column;
       align-items: center;
-    }}
+    }
+  }
