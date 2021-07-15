@@ -90,7 +90,7 @@ const CreateRecipe = (props) => {
    };
  
     /**
-    * Fetches all recipes from the API
+    * Checks if the user has entered all the required fields
     */
     const checkIfInputIsValid = () =>{
         console.log(recipeName , recipeImageUrl , recipedifficulty , recipeingredients , recipeinstruction , selectedcategorys)
